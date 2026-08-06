@@ -1,0 +1,65 @@
+name: CI
+
+# Cloudflare's Git integration already builds and deploys main on push, so this
+# workflow deliberately does NOT deploy — two deploy paths on one commit race
+# each other. What was missing is a gate: rebuild every generated file from the
+# transcriptions and fail the PR if anything is stale, invalid, or inconsistent.
+#
+# If you ever disconnect the Cloudflare Git integration and want GitHub to own
+# the deploy instead, uncomment the `deploy` job at the bottom and add
+# CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as repository secrets.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Rebuild the roster from the transcriptions
+        run: npm run build:roster
+
+      - name: Rebuild the timeline from the transcriptions
+        run: npm run build:timeline
+
+      - name: Validate timeline.json
+        run: npm run check:data
+
+      # The generated files are committed so the Worker can serve them without a
+      # build step. That only works if they match their sources — if a rebuild
+      # changes anything, the commit is stale and the PR should say so.
+      - name: Fail if generated files are stale
+        run: |
+          if ! git diff --quiet -- public/data; then
+            echo "::error::public/data is out of date. Run 'npm run build:roster && npm run build:timeline' and commit the result."
+            git diff --stat -- public/data
+            exit 1
+          fi
+          echo "Generated files match their transcriptions."
+
+  # deploy:
+  #   needs: check
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: npm
+  #     - run: npm ci
+  #     - run: npx wrangler deploy
+  #       env:
+  #         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  #         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

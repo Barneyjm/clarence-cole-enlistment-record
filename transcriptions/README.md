@@ -39,7 +39,7 @@ goes here, if the page carries one.
 | --- | --- |
 | `page` | PDF page number. Must match the filename. |
 | `document` | Short id of the document this page belongs to, e.g. `SO 66`. |
-| `kind` | `order`, `morning-report`, or `other`. |
+| `kind` | `order`, `morning-report`, or `other`. Drives which builder reads the page. |
 | `date` | Date of the document, `YYYY-MM-DD`. |
 | `covers` | Which part of the document is on this page. |
 | `verified` | `true` once a human has checked the rows against the image. |
@@ -79,3 +79,51 @@ plausible and it is completely wrong.
 ```sh
 node tools/deskew-page.mjs 248
 ```
+
+## Morning-report pages
+
+Order pages are one table of men. A morning-report frame is a different shape: it
+carries one or two report cards, each a different day, each with its own station,
+record of events and strength. So `kind: morning-report` pages use one `## <date>`
+section per card instead of a single table.
+
+```markdown
+---
+page: 104
+kind: morning-report
+document: Btry C morning reports
+unit: Btry C 153rd FA Bn
+dates: 1944-12-15, 1944-12-16
+cards: 2
+verified: false
+---
+
+## 1944-12-16
+
+card: R
+station: Hurtgen 1/2 Mi W wF0335 Nord de Guerre Zone (Germany)
+strength: 96 present for duty, 11 absent, 107 assigned
+
+> In position firing. (Map Lendersdorf 1:25,000 Sheet 5204.)
+
+| grade | name | asn | action | flags |
+| --- | --- | --- | --- | --- |
+| Pvt | Thompson, John A. | 31611323 | Assigned & joined fr Hq 3d Repl Depot | |
+```
+
+- The `>` blockquote is the Record of Events block, verbatim.
+- `strength` is the enlisted line: present for duty, absent, assigned.
+- The table is personnel *actions*, not a roster. `build-roster.mjs` skips these
+  pages entirely — a card is not a roster row — but `build-timeline.mjs` reads
+  them, and the Battery C cross-reference matches their serials against the
+  orders.
+- Same row conventions as the orders: `asn` is the identity key, `?` for a
+  character that cannot be read, field names in `flags` when a reading is shaky.
+
+```sh
+npm run build:timeline   # morning-report pages -> timeline.json
+npm run build:roster     # order pages          -> roster.json
+```
+
+Both builders parse through `tools/lib/pages.mjs`, so the format has one
+definition and cannot drift between them.

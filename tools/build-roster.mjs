@@ -10,8 +10,9 @@
  * Fails on: a filename that disagrees with its `page`, a row with no serial
  * number, or two pages that record the same serial number differently.
  */
-import { readFileSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
-import { dirname, resolve, basename } from "node:path";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { readPages, parseTable, parseCards } from "./lib/pages.mjs";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -47,59 +48,18 @@ const DOCUMENTS = {
   },
 };
 
-function parseFrontMatter(text) {
-  const match = text.match(/^---\n([\s\S]*?)\n---\n?/);
-  if (!match) return [{}, text];
-  const meta = {};
-  for (const line of match[1].split("\n")) {
-    const i = line.indexOf(":");
-    if (i === -1) continue;
-    const key = line.slice(0, i).trim();
-    let value = line.slice(i + 1).trim();
-    if (value === "true") value = true;
-    else if (value === "false") value = false;
-    else if (/^\d+$/.test(value)) value = Number(value);
-    meta[key] = value;
-  }
-  return [meta, text.slice(match[0].length)];
-}
-
-/** Pull the pipe table out of a page body. Returns [] when there isn't one. */
-function parseTable(body) {
-  const lines = body.split("\n").map((l) => l.trim());
-  const start = lines.findIndex((l) => l.startsWith("|") && /\bname\b/i.test(l));
-  if (start === -1) return [];
-
-  const cells = (line) =>
-    line.replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim());
-
-  const header = cells(lines[start]);
-  const rows = [];
-  for (let i = start + 2; i < lines.length; i++) {
-    if (!lines[i].startsWith("|")) break;
-    const values = cells(lines[i]);
-    const row = {};
-    header.forEach((key, idx) => {
-      row[key] = values[idx] ?? "";
-    });
-    rows.push(row);
-  }
-  return rows;
-}
-
 const errors = [];
 const warnings = [];
 
-const files = readdirSync(SRC)
-  .filter((f) => /^p\d+\.md$/.test(f))
-  .sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)));
+// Only the orders build the roster. Morning-report pages live in the same
+// directory and the same format, but a card is not a roster row.
+const allPages = readPages(SRC);
+const files = allPages.filter((p) => p.meta.kind !== "morning-report");
 
 const byAsn = new Map();
 const pages = [];
 
-for (const file of files) {
-  const [meta, body] = parseFrontMatter(readFileSync(resolve(SRC, file), "utf8"));
-  const expected = Number(basename(file, ".md").slice(1));
+for (const { file, page: expected, meta, body } of files) {
   if (meta.page !== expected) {
     errors.push(`${file}: front matter says page ${meta.page}, filename says ${expected}`);
   }
@@ -182,26 +142,22 @@ const people = [...byAsn.values()];
 // differ by one or two characters is recorded as probable — microfilm digits are
 // genuinely ambiguous — and names both readings so a human can adjudicate.
 // A partially-legible serial is never matched; "330?????" is not an identity.
-const REPORTS = resolve(ROOT, "data/morning-reports.jsonl");
-const cards = readFileSync(REPORTS, "utf8")
-  .split("\n")
-  .filter((l) => l.trim())
-  .map((l) => JSON.parse(l));
-
 const mrBySerial = new Map();
 const mrBySurname = new Map();
-for (const card of cards) {
-  for (const p of card.personnel ?? []) {
-    if (!p.name || /^\d+ (EM|Officers)/i.test(p.name) || /^Above/i.test(p.name)) continue;
-    const serial = (p.serial ?? "").replace(/^O-?/i, "");
-    const surname = p.name.toLowerCase().split(",")[0].replace(/[^a-z]/g, "");
-    const entry = { name: p.name, serial, date: card.date };
-    if (serial) {
-      if (!mrBySerial.has(serial)) mrBySerial.set(serial, []);
-      mrBySerial.get(serial).push(entry);
+for (const page of allPages.filter((p) => p.meta.kind === "morning-report")) {
+  for (const card of parseCards(page.body)) {
+    for (const p of card.personnel) {
+      if (!p.name || /^\d+ (EM|Officers)/i.test(p.name) || /^Above/i.test(p.name)) continue;
+      const serial = (p.serial ?? "").replace(/^O-?/i, "");
+      const surname = p.name.toLowerCase().split(",")[0].replace(/[^a-z]/g, "");
+      const entry = { name: p.name, serial, date: card.date, page: page.page };
+      if (serial && !serial.includes("?")) {
+        if (!mrBySerial.has(serial)) mrBySerial.set(serial, []);
+        mrBySerial.get(serial).push(entry);
+      }
+      if (!mrBySurname.has(surname)) mrBySurname.set(surname, []);
+      mrBySurname.get(surname).push(entry);
     }
-    if (!mrBySurname.has(surname)) mrBySurname.set(surname, []);
-    mrBySurname.get(surname).push(entry);
   }
 }
 

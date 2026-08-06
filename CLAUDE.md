@@ -11,13 +11,12 @@ microfilm. Read `README.md` first; it documents the data contracts.
 
 ## Load-bearing invariants
 
-**`data/morning-reports.jsonl` is the source of truth for the morning-report
-cards; `transcriptions/*.md` is the source of truth for the orders.** Neither is
-the source of truth for everything — see "Two transcription homes" below.
-`public/data/timeline.json` holds *both* hand-authored events and events
-generated from the JSONL. Generated events carry `"generated": true` and are
+**`transcriptions/pNNN.md` is the source of truth for everything read off the
+film** — orders and morning-report cards alike, one file per frame, `kind` in the
+front matter deciding which builder reads it. `public/data/timeline.json` holds
+*both* hand-authored events and events generated from those pages. Generated events carry `"generated": true` and are
 destroyed and rebuilt by `npm run build:timeline`. Editing one in `timeline.json`
-loses the change on the next build. Edit the JSONL.
+loses the change on the next build. Edit the page file.
 
 **The build must never touch hand-authored events.** `build-timeline.mjs` filters
 on the `generated` flag alone. If you change that filter you can silently delete
@@ -66,9 +65,13 @@ balance. It is the gate before `npm run deploy`.
 
 ## Transcription status
 
-Frames 1–218 of 284 are transcribed: 397 daily reports, 2 May 1944 – 12 July 1945.
-Frames 219–284 cover mid-July to 10 October 1945 — occupation, the battery's
-dissolution into four other battalions, and the Calas staging area near Marseille.
+221 frames of 284: 210 morning-report frames (397 daily cards, 2 May 1944 –
+12 July 1945) and 11 order pages. Don't quote a number from memory — run
+`npm run build:timeline`, which counts the files.
+
+Still to do: frames 12, 158, 207, 209, 211, 213, 215, 217 (missed inside the
+morning-report range during a fast pass) and 219–247, 253–264, 271–284, covering
+the occupation, the dissolution of the battery, and the sailing home.
 
 Working from the source PDF: render with `pdftoppm -jpeg -r 220`, then crop
 `1819x2210+0+200` per page to isolate the two cards. The film drifts horizontally,
@@ -90,17 +93,16 @@ He is also not on Special Orders 66, despite 80 points putting him in range of t
 men being sent home. He stayed with Battery C and sailed six weeks later. The site
 states this explicitly rather than leaving it as an absence.
 
-## Two transcription homes (post-PR#2)
+## One format, one parser
 
-Orders live in `transcriptions/` as one markdown file per PDF page. Morning-report
-cards live in `data/morning-reports.jsonl` as one object per card. They came from
-two independent efforts and are **not** unified yet.
+`tools/lib/pages.mjs` defines the page format and both builders parse through it,
+so orders and cards cannot drift apart. `build-roster.mjs` skips
+`kind: morning-report` pages — a card is not a roster row — and
+`build-timeline.mjs` reads only those. Adding a page of either kind needs no
+build change.
 
-`build-roster.mjs` reads every `p<n>.md` and treats each table row as a person
-requiring a serial. Dropping morning-report pages into `transcriptions/` without
-first teaching it to skip `kind: morning-report` will break the roster build.
-That patch, plus rewriting `build-timeline.mjs` to read markdown, is what
-unification costs. Until then nothing goes in both homes.
+Frame counts are computed from the files, never asserted in prose or constants.
+An earlier hardcoded 218 was wrong by eight frames for weeks.
 
 ## The skew problem, and the morning reports
 

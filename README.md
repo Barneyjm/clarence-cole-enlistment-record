@@ -76,10 +76,10 @@ npm run deploy   # publish to Cloudflare
 
 ```
 wrangler.jsonc            assets-only Worker config
-transcriptions/           orders read off the film, one file per PDF page
-data/                     the morning-report transcription
-  morning-reports.jsonl   397 daily cards, one JSON object per card
-  gazetteer.json          place name to coordinate, phase bands, station overrides
+transcriptions/           EVERYTHING read off the film, one file per PDF page
+                          kind: order          -> roster.json
+                          kind: morning-report -> timeline.json
+data/gazetteer.json       place name to coordinate, phase bands, station overrides
 public/                   everything served
   assets/app.js           renders the timeline from JSON
   assets/map.js           SVG maps, no tiles and no external libraries
@@ -91,30 +91,18 @@ public/                   everything served
   data/geo/theater.json   generated coastline, committed
   images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from Natural Earth data
-tools/build-roster.mjs    transcriptions/*.md -> roster.json, + Battery C match
-tools/build-timeline.mjs  morning-reports.jsonl -> timeline.json
+tools/lib/pages.mjs       the page format, parsed in one place
+tools/build-roster.mjs    order pages -> roster.json, + Battery C match
+tools/build-timeline.mjs  morning-report pages -> timeline.json
 tools/compare-transcription.mjs  second-reader diff for a page
 tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
 ```
 
-### Two transcription homes, and why
-
-Orders are wide tabular documents and live in `transcriptions/`, one file per
-page. Morning-report cards are a different shape — a record-of-events paragraph,
-a strength block, and a handful of personnel lines — and live in
-`data/morning-reports.jsonl`, one object per card.
-
-They arrived from two independent efforts and have not been unified. Folding the
-morning reports into `transcriptions/` is the right end state and is on the list
-below; it needs `build-roster.mjs` to skip pages whose `kind` is not `order`, and
-`build-timeline.mjs` to read markdown instead of JSONL. Until then: **orders go
-in `transcriptions/`, cards go in the JSONL, and nothing goes in both.**
-
 ## Transcriptions
 
-Everything read off the film for the orders lives in `transcriptions/`, **one
-file per PDF page**, named for the page. See
+Everything read off the film lives in `transcriptions/`, **one file per PDF
+page**, named for the page — orders and morning-report cards alike. See
 [`transcriptions/README.md`](transcriptions/README.md) for the file format and
 the row conventions.
 
@@ -157,7 +145,7 @@ verified until they have been.
   carry no `generated` flag and the build never touches them.
 - **Generated events** — everything read off the morning reports. These carry
   `"generated": true`. **Do not edit them in `timeline.json`; they are rebuilt and
-  your change will be lost.** Edit `data/morning-reports.jsonl` and rerun:
+  your change will be lost.** Edit the page file in `transcriptions/` and rerun:
 
 ```sh
 npm run build:timeline
@@ -174,26 +162,11 @@ Only days that changed something reach the main timeline. The rest are still
 transcribed and still shipped, in `public/data/morning-reports.json`, and render
 in the *daily record* section.
 
-### The morning-report format
+### The card format
 
-One JSON object per line in `data/morning-reports.jsonl`:
-
-```jsonc
-{
-  "page": 104,                    // microfilm frame
-  "card": "R",                    // L or R — two cards per frame
-  "date": "1944-12-16",
-  "station": "Hurtgen 1/2 Mi W wF0335 Nord de Guerre Zone (Germany)",
-  "org": "Btry C 153rd FA Bn",
-  "personnel": [{ "serial": "31611323", "name": "Thompson, John A.", "grade": "Pvt", "action": "Assigned & joined fr Hq 3d Replacement Depot…" }],
-  "events": "In position firing. (Map Lendersdorf 1:25,000 Sheet 5204.)",
-  "em_duty": 96,
-  "em_total": 107
-}
-```
-
-Duplicate scans and multi-page reports are merged by `date` at build time, so the
-same date may legitimately appear on more than one line.
+One file per frame, one `## <date>` section per card, documented in
+[`transcriptions/README.md`](transcriptions/README.md). Duplicate scans and
+multi-page reports are merged by date at build time.
 
 New places go in `data/gazetteer.json` under `places`. Matching is on whole words,
 longest match first — which is why `"Ger"` (the Manche village) does not swallow
@@ -219,13 +192,21 @@ domain), clipped, simplified, and committed so the site has no runtime
 dependencies — no tiles, no map library, no external requests. Rebuild only when
 changing the map window or the simplification tolerance: `npm run build:geo`.
 
+## Continuous integration
+
+`.github/workflows/ci.yml` rebuilds the roster and the timeline from the
+transcriptions on every pull request, validates `timeline.json`, and fails if the
+committed files under `public/data` no longer match their sources.
+
+It does **not** deploy. Cloudflare's Git integration already deploys `main` on
+push; a second deploy path would race it. The workflow carries a commented
+`deploy` job for the day you'd rather GitHub owned that.
+
 ## Still to do
 
 - Transcribe frames 219–247, 253–264 and 271–284
 - Second-read the morning-report cards; none has been through
   `verify-transcription` yet
-- Fold the morning reports into `transcriptions/` so there is one home for
-  everything read off the film
 - Adjudicate the six `probable` Battery C matches, where the two readings of a
   serial differ by a digit or two: Andrews, Adams, Tierce, Lee, Lyman, Holland
 - The Bronze Star general orders number and award date. **Confirmed absent from

@@ -3,9 +3,8 @@
  *
  *   npm run build:timeline
  *
- * Source of truth is data/morning-reports.jsonl — one object per report card as
- * transcribed from the microfilm. This tool never invents a fact; it maps, merges
- * and counts.
+ * Source of truth is transcriptions/pNNN.md — one file per film frame, the same
+ * home the orders use. This tool never invents a fact; it maps, merges and counts.
  *
  * Two rules make it safe to re-run:
  *
@@ -23,14 +22,35 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readPages, parseCards } from "./lib/pages.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const JSONL = resolve(ROOT, "data/morning-reports.jsonl");
+const SRC = resolve(ROOT, "transcriptions");
 const GAZ = resolve(ROOT, "data/gazetteer.json");
 const TIMELINE = resolve(ROOT, "public/data/timeline.json");
 const FULL = resolve(ROOT, "public/data/morning-reports.json");
 
-const raw = readFileSync(JSONL, "utf8").split("\n").filter((l) => l.trim()).map((l) => JSON.parse(l));
+// Every morning-report card on the film, flattened out of the page files.
+const raw = readPages(SRC)
+  .filter((p) => p.meta.kind === "morning-report")
+  .flatMap((p) =>
+    parseCards(p.body).map((card) => ({
+      page: p.page,
+      card: card.card,
+      date: card.date,
+      station: card.station,
+      org: p.meta.unit ?? null,
+      events: card.events ?? "",
+      personnel: card.personnel,
+      em_duty: card.strength?.presentForDuty ?? null,
+      em_total: card.strength?.assigned ?? null,
+    })),
+  );
+// Counted, never asserted — the number drifts every time a frame is added.
+const FRAMES_TRANSCRIBED = new Set(
+  readPages(SRC).map((p) => p.page),
+).size;
+
 const gaz = JSON.parse(readFileSync(GAZ, "utf8"));
 const timeline = JSON.parse(readFileSync(TIMELINE, "utf8"));
 
@@ -237,12 +257,12 @@ timeline.places = places;
 timeline.meta = {
   ...timeline.meta,
   transcription: {
-    framesTranscribed: 218,
+    framesTranscribed: FRAMES_TRANSCRIBED,
     framesTotal: 284,
     dailyReports: days.length,
     firstDate: days[0].date,
     lastDate: days[days.length - 1].date,
-    note: "Frames 219–284 (mid-July to 10 October 1945: occupation, dissolution of the battery, and the Calas staging area) are not yet transcribed.",
+    note: `${284 - FRAMES_TRANSCRIBED} frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home.`,
   },
 };
 
@@ -256,8 +276,8 @@ writeFileSync(
     {
       meta: {
         title: "Battery C, 153rd Field Artillery Battalion — daily morning reports",
-        note: "Every transcribed card, including the routine days kept off the main timeline. Source of truth is data/morning-reports.jsonl.",
-        framesTranscribed: 218,
+        note: "Every transcribed card, including the routine days kept off the main timeline. Source of truth is transcriptions/pNNN.md.",
+        framesTranscribed: FRAMES_TRANSCRIBED,
         framesTotal: 284,
         count: days.length,
       },
