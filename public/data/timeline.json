@@ -8,7 +8,7 @@
     "transcription": {
       "framesTranscribed": 221,
       "framesTotal": 284,
-      "dailyReports": 397,
+      "dailyReports": 399,
       "firstDate": "1944-05-02",
       "lastDate": "1945-07-12",
       "note": "63 frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home."
@@ -1050,30 +1050,21 @@
       "generated": true
     },
     {
-      "id": "1944-08-09-mr",
-      "date": "1944-08-09",
+      "id": "1944-08-08-mr",
+      "date": "1944-08-08",
       "kind": "movement",
       "title": "Moves to Position near Vire",
       "place": "position-near-vire-calvados",
-      "summary": "1 personnel action recorded on the card.",
-      "verbatim": "1010 hrs left Moyon 1 Mi S bivouac area. 1420 hrs arrived at position area. (Map Vire Sheet 6F/6.) Occupying firing position. (Map Vire Sheet 6F/6.)",
+      "verbatim": "1010 hrs left Moyon 1 Mi S bivouac area. 1420 hrs arrived at position area. (Map Vire Sheet 6F/6.)",
       "strength": {
-        "presentForDuty": 112,
-        "absent": 2,
+        "presentForDuty": 113,
+        "absent": 1,
         "assigned": 114
       },
       "source": {
         "id": "morning-reports",
         "page": 36
       },
-      "personnel": [
-        {
-          "name": "Brown",
-          "grade": "Pfc",
-          "serial": "33474410",
-          "action": "Fr dy to sk in hosp LD 104th Med Bn Clearing Station"
-        }
-      ],
       "generated": true
     },
     {

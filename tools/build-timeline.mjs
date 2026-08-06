@@ -74,6 +74,27 @@ for (const r of raw) {
 }
 const days = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
 
+// One card, one day — unless a report genuinely spans frames, which happens with
+// continuation sheets and the multi-page corrections. Those declare `covers` in
+// their front matter. An undeclared collision means a misread day glyph, which
+// also hides a day that then goes missing entirely. Review caught p30 and p36
+// that way; the build catches the next one.
+const continuations = new Set(
+  readPages(SRC).filter((p) => p.meta.covers).map((p) => p.page),
+);
+const dupes = [...byDate.values()]
+  .filter((d) => new Set(d.pages).size > 1)
+  .filter((d) => ![...new Set(d.pages)].some((page) => continuations.has(page)))
+  .map((d) => `${d.date} appears on frames ${[...new Set(d.pages)].sort((a, b) => a - b).join(", ")}`);
+if (dupes.length) {
+  for (const d of dupes) console.error(`error ${d}`);
+  console.error(
+    "Each date must come from one frame. Re-read the day glyph on the frames above.",
+  );
+  process.exit(1);
+}
+
+
 /* -------------------------------------------------------------------- places */
 const slug = (s) =>
   s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
@@ -240,7 +261,14 @@ for (const e of handAuthored) {
 
 const kept = generated.filter((e) => !handDates.has(e.date));
 const events = [...handAuthored, ...kept].sort(
-  (a, b) => a.date.localeCompare(b.date) || (a.generated ? 1 : -1),
+  // A total order, and it has to be: `a.generated ? 1 : -1` answered -1 in both
+  // directions for two hand-authored events sharing a date, which is not a valid
+  // comparator. V8 then sorted the same input differently between runs and the
+  // committed timeline.json drifted against its own sources.
+  (a, b) =>
+    a.date.localeCompare(b.date) ||
+    Number(Boolean(a.generated)) - Number(Boolean(b.generated)) ||
+    String(a.id).localeCompare(String(b.id)),
 );
 
 // Only add place keys the merged events actually reference, and never clobber a
