@@ -120,9 +120,28 @@ strength: 96 present for duty, 11 absent, 107 assigned
 - Same row conventions as the orders: `asn` is the identity key, `?` for a
   character that cannot be read, field names in `flags` when a reading is shaky.
 
+### The station line and the map citation
+
+Two parts of a card carry the battery's position, and both are read by
+`build-map-sheets.mjs`. Transcribe them exactly as typed.
+
+- The **station line** gives a place, an offset, a grid reference, and the grid
+  system: `Schmidthof 1 Mi N wF8935 Nord de Guerre Zone (Germany)`. Keep the
+  case of the reference — `wF` and `WF` are not the same square, and a lower-case
+  letter that becomes upper-case moves the position 500 km.
+- The **map citation** closes the record of events in brackets:
+  `(Map Bonn 1:100,000 Sheet S-1.)`. Keep the sheet designation as written,
+  including the punctuation: `S-1`, `10F/5`, `80 SW`.
+
+Do not correct either against the other, or against the previous day. The clerk
+copied the station line forward by hand for weeks at a time and it drifts; those
+drifts are findings, and `npm run derive:grids` reports every reference whose
+square disagrees with the village beside it.
+
 ```sh
 npm run build:timeline   # morning-report pages -> timeline.json
 npm run build:roster     # order pages          -> roster.json
+npm run build:maps       # morning-report pages -> map-sheets.json
 ```
 
 Both builders parse through `tools/lib/pages.mjs`, so the format has one

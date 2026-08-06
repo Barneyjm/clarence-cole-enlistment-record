@@ -1,0 +1,400 @@
+{
+  "_note": "Hand-authored. The film records which sheet the battery was working from; this file says what that sheet was and where a copy can be seen today. tools/build-map-sheets.mjs joins the two and fails on a sheet the film names that is not listed here, so the catalogue cannot quietly fall behind the transcription.",
+  "_basis": "Only GSGS 4040 is named outright on a card — the correction of 20 January 1945. Every other series here is inferred from the scale and the country, and says so. An inferred series is a good guess, not a citation.",
+  "series": [
+    {
+      "id": "GSGS 4040",
+      "title": "N.E. France and Belgium 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4040-series-ne-france-and-belgium-150000.asp"
+    },
+    {
+      "id": "GSGS 4041",
+      "title": "N.E. France and Belgium 1:25,000",
+      "scale": "1:25,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp"
+    },
+    {
+      "id": "GSGS 4336",
+      "title": "N.E. France and Belgium 1:100,000",
+      "scale": "1:100,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4336-series-ne-france-and-belgium-1100000.asp"
+    },
+    {
+      "id": "GSGS 4414",
+      "title": "Germany 1:25,000",
+      "scale": "1:25,000",
+      "producer": "Geographical Section, General Staff, War Office; issued in the US as AMS M841",
+      "note": "Reproduced from the German Topographische Karte 1:25,000, which is why the sheet numbers are the four-figure German ones.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4414-series-germany-125000.asp"
+    },
+    {
+      "id": "GSGS 4416",
+      "title": "Germany (Central Europe) 1:100,000",
+      "scale": "1:100,000",
+      "producer": "Geographical Section, General Staff, War Office; issued in the US as AMS M641",
+      "note": "134 sheets, designated by a letter and a number — R 3 is Marburg, S 1 is Bonn. This is the series the battery used for most of the war.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp"
+    },
+    {
+      "id": "GSGS 4507",
+      "title": "Germany 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4507-series-germany-150000.asp"
+    },
+    {
+      "id": "GSGS 4250",
+      "title": "France 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office; Ordnance Survey",
+      "note": "The Normandy and Northern France series, and the one the battery used from the beachhead to the Belgian border. Its sheets are designated by a grid square and a number — 6F/2 is St Lô, 10F/5 is Paris (West) — which is how the sheets named on the cards from July to September 1944 are identified as belonging to it.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp"
+    }
+  ],
+  "_designations": "The France sheets carry no series number on the cards, only a designation like 6F/2. They are assigned to GSGS 4250 because that series numbers its sheets exactly that way, and because one of them can be checked outright: the catalogued GSGS 4250 sheet 10F/5 is Paris (West), which is what the cards of 26 August to 12 September 1944 call it.",
+  "sheets": {
+    "pariswest-10f5": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "note": "The sheet the battery was on for the pursuit across the Seine, from the week Paris fell.",
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4250 Paris West, Sheet 10F/5",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4250-150000-paris-west-sheet-10f5-bhc-00748.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4250 Paris (West), Sheet 10F/5",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/pariswest-10f5-preview.webp",
+        "full": "/images/maps/pariswest-10f5.webp",
+        "fullSize": "3000 px wide",
+        "credit": "WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/",
+        "note": "Reduced here from the 12424 × 8635 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/GSGS_4250_FRANCE_50K_10F-5_PARIS_%28WEST%29_1st_ed_7.1944.jpg"
+      }
+    },
+    "stlo-6e2": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [],
+      "designationNote": "St Lô is sheet 6F/2 in the GSGS 4250 index; there is no 6E/2 St Lô. Almost certainly the same sheet as stlo-6f2, misread once. Kept separate until the frame is read again."
+    },
+    "stlo-6f2": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "note": "The cards name two different sheets St Lô, 6E/2 and 6F/2, a fortnight apart. Only one of them can carry that name; which is not settled here.",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 St Lô, Sheet 6F/2",
+          "url": "https://www.normandywarguide.com/archives/map-6f2",
+          "terms": "free"
+        }
+      ]
+    },
+    "torignisurvire-6f4": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Torigni-sur-Vire, Sheet 6F/4",
+          "url": "https://www.normandywarguide.com/archives/map-6f4",
+          "terms": "free"
+        }
+      ]
+    },
+    "vire-6f6": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Vire, Sheet 6F/6",
+          "url": "https://www.normandywarguide.com/archives/map-6f6",
+          "terms": "free"
+        }
+      ]
+    },
+    "mortain-6g2": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Mortain, Sheet 6G/2",
+          "url": "https://www.normandywarguide.com/archives/map-6g2",
+          "terms": "free"
+        }
+      ]
+    },
+    "domfront-2g1": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Domfront, Sheet 7G/1",
+          "url": "https://www.normandywarguide.com/archives/map-7g1",
+          "terms": "free"
+        }
+      ],
+      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame."
+    },
+    "ambrieres-2g3": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Collectie Gelderland, Vrijheidsmuseum — GSGS 4250 Ambrières, Sheet 7G/3",
+          "url": "https://www.collectiegelderland.nl/vrijheidsmuseum/object/79d56709-314b-6221-b804-352e1bffc43b",
+          "terms": "free"
+        }
+      ],
+      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame."
+    },
+    "verneuil-8g2": {
+      "series": "GSGS 4250",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Verneuil, Sheet 8G/2",
+          "url": "https://www.normandywarguide.com/archives/map-8g2",
+          "terms": "free"
+        }
+      ]
+    },
+    "nefrance-3416": {
+      "series": "GSGS 4041",
+      "basis": "inferred",
+      "note": "The one card that names no place, only \"sheet 34/16 N.E. France 1:25,000\" — which is the title of the series itself.",
+      "sources": []
+    },
+    "chimay-103": {
+      "series": "GSGS 4040",
+      "basis": "inferred",
+      "note": "Numbered in the same sheet line as Vielsalm 93, the one sheet the film assigns to a series outright.",
+      "sources": []
+    },
+    "liege-9": {
+      "series": "GSGS 4336",
+      "basis": "uncertain",
+      "note": "The card gives no scale, and sheet 9 does not sit clearly in any of the Belgian sheet lines the battery used elsewhere. Placed in the 1:100,000 series as the least bad fit.",
+      "sources": []
+    },
+    "bonn-s1": {
+      "series": "GSGS 4416",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4416 Bonn, Sheet S1",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4416-1100000-bonn-sheet-s1-bhc-00965.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4416 Bonn, Sheet S.1",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/bonn-s1-preview.webp",
+        "full": "/images/maps/bonn-s1.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 25349 × 16933 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_S.1_BONN_Ed1-%28gsgs%29_1944_600dpi_McM21603.jpg"
+      }
+    },
+    "cologne-r1": {
+      "series": "GSGS 4416",
+      "basis": "inferred",
+      "note": "Catalogued under the German spelling, Köln.",
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4416 Köln, Sheet R1",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4416-1100000-koln-sheet-r1-bhc-00964.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4416 Köln, Sheet R.1",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/cologne-r1-preview.webp",
+        "full": "/images/maps/cologne-r1.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 25366 × 17654 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.1_KOELN_Ed1-%28gsgs%29_%281943%29-1944_600dpi_McM21577.jpg"
+      }
+    },
+    "siegen-r2": {
+      "series": "GSGS 4416",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Siegen, Sheet R.2",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/siegen-r2-preview.webp",
+        "full": "/images/maps/siegen-r2.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21475 × 15790 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.2_SIEGEN_Ed1-%28gsgs%29_1944_600dpi_McM21578.jpg"
+      }
+    },
+    "marburg-r3": {
+      "series": "GSGS 4416",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Marburg, Sheet R.3",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/marburg-r3-preview.webp",
+        "full": "/images/maps/marburg-r3.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21537 × 15873 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.3_MARBURG_Ed1-%28gsgs%29_1944_600dpi_McM21580.jpg"
+      }
+    },
+    "koblenz-s2": {
+      "series": "GSGS 4416",
+      "basis": "inferred",
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Koblenz, Sheet S.2",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "image": {
+        "file": "/images/maps/koblenz-s2-preview.webp",
+        "full": "/images/maps/koblenz-s2.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21393 × 15752 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_S.2_KOBLENZ_Ed1-%28gsgs%29_1944_600dpi_McM21604.jpg"
+      }
+    },
+    "lendersdorf-5204": {
+      "series": "GSGS 4414",
+      "basis": "inferred",
+      "note": "The four-figure sheet number is the German 1:25,000 sheet line, carried over unchanged.",
+      "sources": []
+    },
+    "vielsalm-93": {
+      "series": "GSGS 4040",
+      "basis": "named on the card",
+      "note": "The one sheet the film identifies by series number, in the correction of 20 January 1945.",
+      "sources": []
+    },
+    "vielsalm-93n": {
+      "series": "GSGS 4041",
+      "basis": "inferred",
+      "note": "The battery reported on this sheet for four days in January 1945 and then corrected itself: the position was on the 1:50,000 Vielsalm 93, not the 1:25,000 93 N.",
+      "sources": []
+    },
+    "aywaille-80sw": {
+      "series": "GSGS 4041",
+      "basis": "inferred",
+      "sources": []
+    },
+    "aywaille-80se": {
+      "series": "GSGS 4041",
+      "basis": "inferred",
+      "note": "Cards give this sheet at both 1:25,000 and 1:100,000. The Belgian sheet 80 SE is a 1:25,000 sheet, so the 1:100,000 readings are most likely the clerk carrying the wrong scale forward.",
+      "sources": []
+    },
+    "marche-13": {
+      "series": "GSGS 4336",
+      "basis": "inferred",
+      "sources": []
+    },
+    "hagen-78": {
+      "series": "GSGS 4507",
+      "basis": "inferred",
+      "sources": []
+    },
+    "wuppertal-58": {
+      "series": "GSGS 4507",
+      "basis": "inferred",
+      "sources": []
+    }
+  },
+  "_repositories": "Where these sheets can be seen. Checked 6 August 2026 from this machine; the status field records what answered and what did not, so the next person does not repeat the dead ends. A repository listed here is not a claim that it holds a particular sheet — per-sheet links live on the sheet itself, in sheets[].sources.",
+  "repositories": [
+    {
+      "id": "battlefield-historian",
+      "name": "Battlefield Historian",
+      "url": "https://www.battlefieldhistorian.com/",
+      "holdings": "Per-sheet catalogue pages for the GSGS series, with a scan preview. Its GSGS 4416 holding is 10 sheets of 134, and its GSGS 4250 holding does not include the Normandy sheets named on these cards.",
+      "terms": "purchase",
+      "status": "reachable"
+    },
+    {
+      "id": "wig-mapywig",
+      "name": "WIG Map Archive (mapywig.org)",
+      "url": "http://maps.mapywig.org/m/ALLIED_maps/series/",
+      "holdings": "An open directory of Allied wartime series at full scanning resolution, including 762 sheets of GSGS 4416 / AMS M641 at 600 dpi. Many are McMaster University Library scans, mirrored here — which is how the sheets this project wanted were found while McMaster itself was down.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "mapster",
+      "name": "MAPSTER — Archiwum Map Wojskowego Instytutu Geograficznego",
+      "url": "http://igrek.amzp.pl/mapindex.php?cat=ALLIED100CE&listtype=standard&listsort=sortoption1",
+      "holdings": "Scans of GSGS 4416 / AMS M641 at 300 dpi, largely digitised from the University of Texas collection. Its sheet index independently confirms the designations used here — R2 Siegen, R3 Marburg, S2 Koblenz.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "herder-institut",
+      "name": "Herder-Institut, Marburg — map catalogue",
+      "url": "https://dbs.herder-institut.de/maps/list/id/492145725",
+      "holdings": "Catalogue of Central Europe 1:100,000, GSGS 4416 / AMS M641, M651 and M671, 1943-1949. Coverage runs heavily to the eastern sheets.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "utexas-pcl",
+      "name": "University of Texas Libraries — Perry-Castañeda Map Collection",
+      "url": "https://collections.lib.utexas.edu/",
+      "holdings": "The AMS sets, including Central Europe 1:100,000 (M641 / GSGS 4416). The originating collection for the MAPSTER scans of this series, whose file records name it outright.",
+      "terms": "free",
+      "status": "blocked from this machine (HTTP 403); reachable from an ordinary browser"
+    },
+    {
+      "id": "mcmaster",
+      "name": "Digital Archive @ McMaster University Library",
+      "url": "https://digitalarchive.mcmaster.ca/islandora/object/macrepo:18811",
+      "holdings": "WWII topographic maps of Europe, catalogued as AMS M641 / GSGS 4416.",
+      "terms": "free",
+      "status": "did not answer when checked (HTTP 503); try again"
+    }
+  ],
+  "_rights": "The Army Map Service editions are works of the US federal government and were never in copyright. Crown copyright on the War Office editions ran fifty years and has expired.",
+  "_images": "Derived files are not committed as source: tools/fetch-maps.mjs rebuilds them from image.sourceFile on each sheet. Set imageBase to serve them from R2 or any other origin instead of from this repository.",
+  "imageBase": ""
+}

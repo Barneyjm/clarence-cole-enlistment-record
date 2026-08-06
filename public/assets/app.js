@@ -1,6 +1,7 @@
 import { drawMap } from "/assets/map.js";
 import { renderRosterGraph, wireGraphSearch, wireGraphDocFilter } from "/assets/graph.js";
 import { renderDailyRecord } from "/assets/record.js";
+import { renderMapSheets, trackFrom } from "/assets/sheets.js";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -28,6 +29,40 @@ async function main() {
   renderMaps(data);
   renderBattalionGraph(data);
   renderFullRecord();
+  renderSheets();
+}
+
+/**
+ * The map sheets and the positions decoded off them. Self-contained, like the
+ * roster network: it loads its own data and keeps its failures to itself.
+ */
+async function renderSheets() {
+  const host = document.getElementById("sheet-list");
+  if (!host) return;
+  try {
+    const { sheets } = await renderMapSheets(host, {
+      note: document.getElementById("sheet-note"),
+      credits: document.getElementById("sheet-credits"),
+    });
+
+    const map = document.getElementById("map-positions");
+    if (!map) return;
+    const track = trackFrom(sheets);
+    drawMap(map, {
+      points: track.map((p) => ({
+        lat: p.lat,
+        lon: p.lon,
+        name: p.ref,
+        // Label the positions held longest; the rest would fill the map with type.
+        ...(p.days >= 14 ? { label: p.ref } : {}),
+      })),
+      routes: track.length > 1 ? [track.map((p) => [p.lon, p.lat])] : [],
+      emptyMessage: "No grid references decoded yet.",
+    });
+  } catch (err) {
+    console.error(err);
+    host.innerHTML = `<li class="map-empty">The map sheets could not be loaded.</li>`;
+  }
 }
 
 /**
@@ -79,9 +114,9 @@ async function renderBattalionGraph(data) {
         (checked.length ? `Pages ${checked.join(", ")} have been read twice and agree. ` : "") +
         (unchecked.length
           ? `Pages ${unchecked.join(", ")} — the whole September order — are a first pass. ` +
-            "It is long, and damaged at the edge of several frames; characters that cannot be " +
-            "read are left as question marks rather than guessed, and twenty-four men here have " +
-            "a serial number that is still incomplete."
+            "Several of those frames are damaged at the edge. Characters that cannot be read " +
+            "are left as question marks, and twenty-four men here have an incomplete serial " +
+            "number."
           : "");
       prov.replaceChildren(h, p);
     }
@@ -94,11 +129,10 @@ async function renderBattalionGraph(data) {
       const onList = svg.querySelector(`.net-man[data-asn="${cole}"]`);
       note.textContent = onList
         ? `Sergeant Cole, ${cole}, is on this list.`
-        : `Sergeant Cole is on neither order. His ${cole} appears nowhere in the ${count} ` +
-          `names, though at 80 points he was inside the band of men being sent home in ` +
-          `August. He stayed with Battery C and sailed six weeks later. Neither order ` +
-          `carries a battery column, so which batteries these men served in cannot be told ` +
-          `from these documents alone.`;
+        : `Sergeant Cole is on neither order. His ${cole} does not appear in the ${count} ` +
+          "names. He had 80 points, which was within the range of men sent home in August, " +
+          "but he stayed with Battery C and sailed six weeks later. Neither order lists a " +
+          "battery, so these men cannot be assigned to Battery C from these documents alone.";
     }
   } catch (err) {
     console.error(err);

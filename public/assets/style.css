@@ -1157,6 +1157,8 @@ section {
 .record-more:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 2px;
+}
+
 /* Rows not yet checked by a second reader are drawn dashed, so an unverified
    reading can never pass for a confirmed one. */
 .net-man.is-unverified {
@@ -1170,4 +1172,244 @@ section {
 
 .filters--tight {
   margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- map sheets */
+
+.mapfigure--wide {
+  max-width: 62rem;
+  margin: 0 auto 2.5rem;
+}
+
+.sheets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.15rem;
+  background: var(--paper);
+}
+
+.sheet__name {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.sheet__number {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--stamp);
+}
+
+.sheet__series,
+.sheet__when {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+.sheet__note {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.sheet__positions {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.position {
+  padding: 0.4rem 0 0.35rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.position:last-child {
+  border-bottom: 0;
+}
+
+.position code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.position__coord {
+  color: var(--ink-soft);
+}
+
+.position__gloss {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+/* A reference that decodes cleanly to the wrong place. Shown, never plotted. */
+.position--disputed code {
+  color: var(--stamp);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.position__why {
+  margin: 0.2rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.sheet__links {
+  margin: 0.6rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+}
+
+.sheet__source {
+  color: var(--stamp);
+}
+
+.sheet__missing {
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------ map credits ----- */
+/* The sheets are out of copyright, but the institutions that scanned and
+   catalogued them are why any of this is checkable. Credit them plainly. */
+
+.credits {
+  max-width: var(--measure);
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.credits h3 {
+  margin: 1.75rem 0 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.credits h3:first-child {
+  margin-top: 0;
+}
+
+.credits__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credits__list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.credits__list li:last-child {
+  border-bottom: 0;
+}
+
+.credits__list a {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.credits__by {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+
+.credits__note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.credits__status {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--stamp-soft);
+}
+
+.credits__rights {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+/* A sheet designation the published index contradicts. */
+.sheet__flag {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--stamp-soft);
+  background: color-mix(in srgb, var(--stamp) 5%, transparent);
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.sheet__figure {
+  margin: 0.9rem 0 0;
+}
+
+.sheet__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.sheet__figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.sheet__zoom {
+  display: block;
+  cursor: zoom-in;
+}
+
+.sheet__zoom:hover img {
+  border-color: var(--stamp-soft);
+}
+
+.sheet__full {
+  font-family: var(--sans);
+  font-weight: 600;
 }

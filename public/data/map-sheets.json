@@ -1,0 +1,1793 @@
+{
+  "meta": {
+    "title": "The map sheets Battery C worked from",
+    "note": "Built from the record of events on each morning report, which names the sheet in use, and from the station line, which gives the position on it. Series identifications come from data/map-series.json and are marked as inferred unless the card names the series.",
+    "grid": "Positions are Nord de Guerre grid references decoded to WGS 84. A four-figure reference names a one-kilometre square; the point given is its centre.",
+    "sheets": 25,
+    "citations": 351,
+    "positions": 48,
+    "located": 13,
+    "rights": "The Army Map Service editions are works of the US federal government and were never in copyright. Crown copyright on the War Office editions ran fifty years and has expired."
+  },
+  "series": [
+    {
+      "id": "GSGS 4040",
+      "title": "N.E. France and Belgium 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4040-series-ne-france-and-belgium-150000.asp"
+    },
+    {
+      "id": "GSGS 4041",
+      "title": "N.E. France and Belgium 1:25,000",
+      "scale": "1:25,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp"
+    },
+    {
+      "id": "GSGS 4336",
+      "title": "N.E. France and Belgium 1:100,000",
+      "scale": "1:100,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4336-series-ne-france-and-belgium-1100000.asp"
+    },
+    {
+      "id": "GSGS 4414",
+      "title": "Germany 1:25,000",
+      "scale": "1:25,000",
+      "producer": "Geographical Section, General Staff, War Office; issued in the US as AMS M841",
+      "note": "Reproduced from the German Topographische Karte 1:25,000, which is why the sheet numbers are the four-figure German ones.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4414-series-germany-125000.asp"
+    },
+    {
+      "id": "GSGS 4416",
+      "title": "Germany (Central Europe) 1:100,000",
+      "scale": "1:100,000",
+      "producer": "Geographical Section, General Staff, War Office; issued in the US as AMS M641",
+      "note": "134 sheets, designated by a letter and a number — R 3 is Marburg, S 1 is Bonn. This is the series the battery used for most of the war.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp"
+    },
+    {
+      "id": "GSGS 4507",
+      "title": "Germany 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4507-series-germany-150000.asp"
+    },
+    {
+      "id": "GSGS 4250",
+      "title": "France 1:50,000",
+      "scale": "1:50,000",
+      "producer": "Geographical Section, General Staff, War Office; Ordnance Survey",
+      "note": "The Normandy and Northern France series, and the one the battery used from the beachhead to the Belgian border. Its sheets are designated by a grid square and a number — 6F/2 is St Lô, 10F/5 is Paris (West) — which is how the sheets named on the cards from July to September 1944 are identified as belonging to it.",
+      "index": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp"
+    }
+  ],
+  "repositories": [
+    {
+      "id": "battlefield-historian",
+      "name": "Battlefield Historian",
+      "url": "https://www.battlefieldhistorian.com/",
+      "holdings": "Per-sheet catalogue pages for the GSGS series, with a scan preview. Its GSGS 4416 holding is 10 sheets of 134, and its GSGS 4250 holding does not include the Normandy sheets named on these cards.",
+      "terms": "purchase",
+      "status": "reachable"
+    },
+    {
+      "id": "wig-mapywig",
+      "name": "WIG Map Archive (mapywig.org)",
+      "url": "http://maps.mapywig.org/m/ALLIED_maps/series/",
+      "holdings": "An open directory of Allied wartime series at full scanning resolution, including 762 sheets of GSGS 4416 / AMS M641 at 600 dpi. Many are McMaster University Library scans, mirrored here — which is how the sheets this project wanted were found while McMaster itself was down.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "mapster",
+      "name": "MAPSTER — Archiwum Map Wojskowego Instytutu Geograficznego",
+      "url": "http://igrek.amzp.pl/mapindex.php?cat=ALLIED100CE&listtype=standard&listsort=sortoption1",
+      "holdings": "Scans of GSGS 4416 / AMS M641 at 300 dpi, largely digitised from the University of Texas collection. Its sheet index independently confirms the designations used here — R2 Siegen, R3 Marburg, S2 Koblenz.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "herder-institut",
+      "name": "Herder-Institut, Marburg — map catalogue",
+      "url": "https://dbs.herder-institut.de/maps/list/id/492145725",
+      "holdings": "Catalogue of Central Europe 1:100,000, GSGS 4416 / AMS M641, M651 and M671, 1943-1949. Coverage runs heavily to the eastern sheets.",
+      "terms": "free",
+      "status": "reachable"
+    },
+    {
+      "id": "utexas-pcl",
+      "name": "University of Texas Libraries — Perry-Castañeda Map Collection",
+      "url": "https://collections.lib.utexas.edu/",
+      "holdings": "The AMS sets, including Central Europe 1:100,000 (M641 / GSGS 4416). The originating collection for the MAPSTER scans of this series, whose file records name it outright.",
+      "terms": "free",
+      "status": "blocked from this machine (HTTP 403); reachable from an ordinary browser"
+    },
+    {
+      "id": "mcmaster",
+      "name": "Digital Archive @ McMaster University Library",
+      "url": "https://digitalarchive.mcmaster.ca/islandora/object/macrepo:18811",
+      "holdings": "WWII topographic maps of Europe, catalogued as AMS M641 / GSGS 4416.",
+      "terms": "free",
+      "status": "did not answer when checked (HTTP 503); try again"
+    }
+  ],
+  "sheets": [
+    {
+      "key": "stlo-6e2",
+      "name": "St Lo",
+      "sheet": "6E/2",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "designationNote": "St Lô is sheet 6F/2 in the GSGS 4250 index; there is no 6E/2 St Lô. Almost certainly the same sheet as stlo-6f2, misread once. Kept separate until the frame is read again.",
+      "days": 9,
+      "first": "1944-07-17",
+      "last": "1944-07-27",
+      "frames": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "T5670",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-07-17",
+          "last": "1944-07-27",
+          "days": 9,
+          "station": "St Clair 2 Mi E T5670 Lambert Zone I",
+          "lat": 49.186065,
+          "lon": -1.005177,
+          "precision": 1000,
+          "check": {
+            "place": "Saint-Clair-sur-l'Elle, Manche",
+            "km": 4.6,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "nefrance-3416",
+      "name": "N.E. France",
+      "sheet": "34/16",
+      "scale": "1:25,000",
+      "series": "GSGS 4041",
+      "seriesTitle": "N.E. France and Belgium 1:25,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp",
+      "basis": "inferred",
+      "note": "The one card that names no place, only \"sheet 34/16 N.E. France 1:25,000\" — which is the title of the series itself.",
+      "days": 1,
+      "first": "1944-07-18",
+      "last": "1944-07-18",
+      "frames": [
+        26
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "T5670",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-07-18",
+          "last": "1944-07-18",
+          "days": 1,
+          "station": "St Clair 2 Mi E T5670 Lambert Zone I",
+          "lat": 49.186065,
+          "lon": -1.005177,
+          "precision": 1000,
+          "check": {
+            "place": "Saint-Clair-sur-l'Elle, Manche",
+            "km": 4.6,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "stlo-6f2",
+      "name": "St Lo",
+      "sheet": "6F/2",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "note": "The cards name two different sheets St Lô, 6E/2 and 6F/2, a fortnight apart. Only one of them can carry that name; which is not settled here.",
+      "days": 6,
+      "first": "1944-07-28",
+      "last": "1944-08-02",
+      "frames": [
+        31,
+        32,
+        33
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 St Lô, Sheet 6F/2",
+          "url": "https://www.normandywarguide.com/archives/map-6f2",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "T5670",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-07-28",
+          "last": "1944-08-02",
+          "days": 6,
+          "station": "St Clair 2 Mi E T5670 Lambert Zone I",
+          "lat": 49.186065,
+          "lon": -1.005177,
+          "precision": 1000,
+          "check": {
+            "place": "Saint-Clair-sur-l'Elle, Manche",
+            "km": 4.6,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "torignisurvire-6f4",
+      "name": "Torigni Sur Vire",
+      "sheet": "6F/4",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "days": 5,
+      "first": "1944-08-03",
+      "last": "1944-08-07",
+      "frames": [
+        34,
+        35,
+        36
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Torigni-sur-Vire, Sheet 6F/4",
+          "url": "https://www.normandywarguide.com/archives/map-6f4",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "T4748",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-08-03",
+          "last": "1944-08-07",
+          "days": 5,
+          "station": "Moyon 1 Mi S T4748 Lambert Zone I",
+          "lat": 48.984779,
+          "lon": -1.114697,
+          "precision": 1000,
+          "check": {
+            "place": "Moyon, Manche",
+            "km": 4.7,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "vire-6f6",
+      "name": "Vire",
+      "sheet": "6F/6",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "days": 6,
+      "first": "1944-08-08",
+      "last": "1944-08-13",
+      "frames": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Vire, Sheet 6F/6",
+          "url": "https://www.normandywarguide.com/archives/map-6f6",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "T5935",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-08-08",
+          "last": "1944-08-13",
+          "days": 6,
+          "station": "Chaisel 1/2 Mi NW T5935 Lambert Zone I",
+          "lat": 48.87281,
+          "lon": -0.943161,
+          "precision": 1000,
+          "check": {
+            "place": "Position near Vire, Calvados",
+            "km": 5.4,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "mortain-6g2",
+      "name": "Mortain",
+      "sheet": "6G/2",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "days": 2,
+      "first": "1944-08-14",
+      "last": "1944-08-15",
+      "frames": [
+        39,
+        40
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Mortain, Sheet 6G/2",
+          "url": "https://www.normandywarguide.com/archives/map-6g2",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "T5819",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-08-14",
+          "last": "1944-08-14",
+          "days": 1,
+          "station": "Sourdeval 1 Mi W T5819 Lambert Zone I",
+          "lat": 48.728671,
+          "lon": -0.947276,
+          "precision": 1000,
+          "check": {
+            "place": "Sourdeval, Manche",
+            "km": 2,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "T7012",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-08-15",
+          "last": "1944-08-15",
+          "days": 1,
+          "station": "Ger 1/2 Mi S T7012 Lambert Zone I",
+          "lat": 48.670363,
+          "lon": -0.780362,
+          "precision": 1000,
+          "check": {
+            "place": "Ger, Manche",
+            "km": 4.8,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "domfront-2g1",
+      "name": "Domfront",
+      "sheet": "2G/1",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame.",
+      "days": 1,
+      "first": "1944-08-16",
+      "last": "1944-08-16",
+      "frames": [
+        40
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Domfront, Sheet 7G/1",
+          "url": "https://www.normandywarguide.com/archives/map-7g1",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "T8102",
+          "zone": "lambert-1",
+          "square": "T",
+          "squareInferred": false,
+          "first": "1944-08-16",
+          "last": "1944-08-16",
+          "days": 1,
+          "station": "Domfront 1/2 Mi SE T8102 Lambert Zone I",
+          "lat": 48.5845,
+          "lon": -0.62579,
+          "precision": 1000,
+          "check": {
+            "place": "Domfront, Orne",
+            "km": 1.9,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "Y0692",
+          "zone": "lambert-1",
+          "square": "Y",
+          "squareInferred": false,
+          "first": "1944-08-17",
+          "last": "1944-08-17",
+          "days": 1,
+          "station": "La Pallu 1/2 Mi E Y0692 Lambert Zone I",
+          "lat": 48.463645,
+          "lon": -1.633814,
+          "precision": 1000,
+          "check": {
+            "place": "La Pallu, Mayenne",
+            "km": 82.5,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 83 km from La Pallu, Mayenne, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        }
+      ]
+    },
+    {
+      "key": "ambrieres-2g3",
+      "name": "Ambrieres",
+      "sheet": "2G/3",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame.",
+      "days": 4,
+      "first": "1944-08-18",
+      "last": "1944-08-21",
+      "frames": [
+        41,
+        42,
+        43
+      ],
+      "sources": [
+        {
+          "label": "Collectie Gelderland, Vrijheidsmuseum — GSGS 4250 Ambrières, Sheet 7G/3",
+          "url": "https://www.collectiegelderland.nl/vrijheidsmuseum/object/79d56709-314b-6221-b804-352e1bffc43b",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "Y0692",
+          "zone": "lambert-1",
+          "square": "Y",
+          "squareInferred": false,
+          "first": "1944-08-18",
+          "last": "1944-08-21",
+          "days": 4,
+          "station": "La Pallu 1/2 Mi E Y0692 Lambert Zone I",
+          "lat": 48.463645,
+          "lon": -1.633814,
+          "precision": 1000,
+          "check": {
+            "place": "La Pallu, Mayenne",
+            "km": 82.5,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 83 km from La Pallu, Mayenne, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        }
+      ]
+    },
+    {
+      "key": "verneuil-8g2",
+      "name": "Verneuil",
+      "sheet": "8G/2",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "days": 9,
+      "first": "1944-08-22",
+      "last": "1944-08-30",
+      "frames": [
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 Verneuil, Sheet 8G/2",
+          "url": "https://www.normandywarguide.com/archives/map-8g2",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "ZR0622",
+          "zone": "nord-de-guerre",
+          "square": null,
+          "squareInferred": false,
+          "first": "1944-08-22",
+          "last": "1944-08-30",
+          "days": 9,
+          "station": "Les Brosses 1/2 Mi E ZR0622 Nord de Guerre Zone"
+        }
+      ]
+    },
+    {
+      "key": "pariswest-10f5",
+      "name": "Paris (West)",
+      "sheet": "10F/5",
+      "scale": "1:50,000",
+      "series": "GSGS 4250",
+      "seriesTitle": "France 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4250-series-france-150000.asp",
+      "basis": "inferred",
+      "note": "The sheet the battery was on for the pursuit across the Seine, from the week Paris fell.",
+      "image": {
+        "file": "/images/maps/pariswest-10f5-preview.webp",
+        "full": "/images/maps/pariswest-10f5.webp",
+        "fullSize": "3000 px wide",
+        "credit": "WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/",
+        "note": "Reduced here from the 12424 × 8635 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/GSGS_4250_FRANCE_50K_10F-5_PARIS_%28WEST%29_1st_ed_7.1944.jpg"
+      },
+      "days": 18,
+      "first": "1944-08-31",
+      "last": "1944-09-17",
+      "frames": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        57,
+        58
+      ],
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4250 Paris West, Sheet 10F/5",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4250-150000-paris-west-sheet-10f5-bhc-00748.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4250 Paris (West), Sheet 10F/5",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/GSGS_4250_FRANCE_50K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "R8632",
+          "zone": "nord-de-guerre",
+          "square": "vR",
+          "squareInferred": true,
+          "first": "1944-08-31",
+          "last": "1944-09-04",
+          "days": 5,
+          "station": "Versailles 1 Mi W R8632 Nord de Guerre Zone",
+          "lat": 48.752931,
+          "lon": 2.10434,
+          "precision": 1000,
+          "check": {
+            "place": "Versailles, Seine-et-Oise",
+            "km": 5.7,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "R8637",
+          "zone": "nord-de-guerre",
+          "square": "vR",
+          "squareInferred": true,
+          "first": "1944-09-05",
+          "last": "1944-09-17",
+          "days": 16,
+          "station": "Versailles 1 Mi W R8637 Nord de Guerre Zone",
+          "lat": 48.797786,
+          "lon": 2.099255,
+          "precision": 1000,
+          "check": {
+            "place": "Versailles, Seine-et-Oise",
+            "km": 2.3,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "chimay-103",
+      "name": "Chimay",
+      "sheet": "103",
+      "scale": "1:50,000",
+      "series": "GSGS 4040",
+      "seriesTitle": "N.E. France and Belgium 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4040-series-ne-france-and-belgium-150000.asp",
+      "basis": "inferred",
+      "note": "Numbered in the same sheet line as Vielsalm 93, the one sheet the film assigns to a series outright.",
+      "days": 2,
+      "first": "1944-09-18",
+      "last": "1944-09-19",
+      "frames": [
+        59
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vQ4964",
+          "zone": "nord-de-guerre",
+          "square": "vQ",
+          "squareInferred": false,
+          "first": "1944-09-18",
+          "last": "1944-09-19",
+          "days": 2,
+          "station": "Monceau-Imbrechies 1 Mi S vQ4964 Nord de Guerre Zone (Belgium)",
+          "lat": 48.9322,
+          "lon": 0.206135,
+          "precision": 1000,
+          "check": {
+            "place": "Monceau-Imbrechies, Hainaut",
+            "km": 317,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 317 km from Monceau-Imbrechies, Hainaut, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        }
+      ]
+    },
+    {
+      "key": "liege-9",
+      "name": "Liege",
+      "sheet": "9",
+      "scale": "1:100,000",
+      "series": "GSGS 4336",
+      "seriesTitle": "N.E. France and Belgium 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4336-series-ne-france-and-belgium-1100000.asp",
+      "basis": "uncertain",
+      "note": "The card gives no scale, and sheet 9 does not sit clearly in any of the Belgian sheet lines the battery used elsewhere. Placed in the 1:100,000 series as the least bad fit.",
+      "days": 2,
+      "first": "1944-09-20",
+      "last": "1944-09-21",
+      "frames": [
+        60
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vK7231",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1944-09-20",
+          "last": "1944-09-21",
+          "days": 2,
+          "station": "Henri-Chapelle 1 Mi S vK7231 Nord de Guerre Zone (Belgium)",
+          "lat": 50.668282,
+          "lon": 5.930963,
+          "precision": 1000,
+          "check": {
+            "place": "Henri-Chapelle, Liège",
+            "km": 2.5,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "bonn-s1",
+      "name": "Bonn",
+      "sheet": "S-1",
+      "scale": "1:100,000",
+      "series": "GSGS 4416",
+      "seriesTitle": "Germany (Central Europe) 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp",
+      "basis": "inferred",
+      "image": {
+        "file": "/images/maps/bonn-s1-preview.webp",
+        "full": "/images/maps/bonn-s1.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 25349 × 16933 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_S.1_BONN_Ed1-%28gsgs%29_1944_600dpi_McM21603.jpg"
+      },
+      "days": 107,
+      "first": "1944-09-22",
+      "last": "1945-03-26",
+      "frames": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        109,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156
+      ],
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4416 Bonn, Sheet S1",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4416-1100000-bonn-sheet-s1-bhc-00965.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4416 Bonn, Sheet S.1",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "wL8935",
+          "zone": "nord-de-guerre",
+          "square": "wL",
+          "squareInferred": false,
+          "first": "1944-09-22",
+          "last": "1944-10-02",
+          "days": 11,
+          "station": "Schmidthof 1 Mi N wL8935 Nord de Guerre Zone (Germany)",
+          "lat": 49.818558,
+          "lon": 7.589179,
+          "precision": 1000,
+          "check": {
+            "place": "Schmidthof, near Aachen",
+            "km": 143.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 144 km from Schmidthof, near Aachen, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wF8935",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1944-10-03",
+          "last": "1944-11-18",
+          "days": 47,
+          "station": "Schmidthof 1 Mi N wF8935 Nord de Guerre Zone (Germany)",
+          "lat": 50.717912,
+          "lon": 7.586396,
+          "precision": 1000,
+          "check": {
+            "place": "Schmidthof, near Aachen",
+            "km": 102.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 103 km from Schmidthof, near Aachen, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wK8935",
+          "zone": "nord-de-guerre",
+          "square": "wK",
+          "squareInferred": false,
+          "first": "1944-11-19",
+          "last": "1944-12-13",
+          "days": 25,
+          "station": "Schmidthof 1 Mi N wK8935 Nord de Guerre Zone (Germany)",
+          "lat": 50.590064,
+          "lon": 13.242015,
+          "precision": 1000,
+          "check": {
+            "place": "Schmidthof, near Aachen",
+            "km": 502.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 503 km from Schmidthof, near Aachen, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wK9022",
+          "zone": "nord-de-guerre",
+          "square": "wK",
+          "squareInferred": false,
+          "first": "1944-12-26",
+          "last": "1944-12-26",
+          "days": 1,
+          "station": "Schmidthof 1 Mi SE wK9022 Nord de Guerre Zone (Germany)",
+          "lat": 50.472815,
+          "lon": 13.242697,
+          "precision": 1000,
+          "check": {
+            "place": "Schmidthof, near Aachen",
+            "km": 503.8,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 504 km from Schmidthof, near Aachen, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "vK8709",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1945-01-26",
+          "last": "1945-02-01",
+          "days": 7,
+          "station": "Sourbrodt vK8709 Nord de Guerre Zone (Belgium)",
+          "lat": 50.473536,
+          "lon": 6.149707,
+          "precision": 1000,
+          "check": {
+            "place": "Sourbrodt, Liège",
+            "km": 3.9,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "vK9208",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1945-02-02",
+          "last": "1945-02-06",
+          "days": 5,
+          "station": "Elsenborn vK9208 Nord de Guerre Zone (Belgium)",
+          "lat": 50.465472,
+          "lon": 6.220434,
+          "precision": 1000,
+          "check": {
+            "place": "Elsenborn, Liège",
+            "km": 1.2,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "wF5237",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-03-15",
+          "last": "1945-03-26",
+          "days": 12,
+          "station": "Ohrensdorf wF5237 Nord de Guerre Zone (Germany, Remagen bridgehead)",
+          "lat": 50.734071,
+          "lon": 7.062108,
+          "precision": 1000,
+          "check": {
+            "place": "Remagen bridgehead, east bank of the Rhine",
+            "km": 21.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 22 km from Remagen bridgehead, east bank of the Rhine, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        }
+      ]
+    },
+    {
+      "key": "lendersdorf-5204",
+      "name": "Lendersdorf",
+      "sheet": "5204",
+      "scale": "1:25,000",
+      "series": "GSGS 4414",
+      "seriesTitle": "Germany 1:25,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4414-series-germany-125000.asp",
+      "basis": "inferred",
+      "note": "The four-figure sheet number is the German 1:25,000 sheet line, carried over unchanged.",
+      "days": 12,
+      "first": "1944-12-14",
+      "last": "1944-12-25",
+      "frames": [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "wF0334",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1944-12-14",
+          "last": "1944-12-25",
+          "days": 11,
+          "station": "Hurtgen 1 1/2 Mi W wF0334 Nord de Guerre Zone (Germany)",
+          "lat": 50.701124,
+          "lon": 6.368737,
+          "precision": 1000,
+          "check": {
+            "place": "Hürtgen, Hürtgen Forest",
+            "km": 1,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "wF0335",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1944-12-16",
+          "last": "1944-12-16",
+          "days": 1,
+          "station": "Hurtgen 1/2 Mi W wF0335 Nord de Guerre Zone (Germany)",
+          "lat": 50.710114,
+          "lon": 6.36848,
+          "precision": 1000,
+          "check": {
+            "place": "Hürtgen, Hürtgen Forest",
+            "km": 0.7,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "aywaille-80sw",
+      "name": "Aywaille",
+      "sheet": "80SW",
+      "scale": "1:25,000",
+      "series": "GSGS 4041",
+      "seriesTitle": "N.E. France and Belgium 1:25,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp",
+      "basis": "inferred",
+      "days": 4,
+      "first": "1944-12-27",
+      "last": "1944-12-30",
+      "frames": [
+        110,
+        111
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vK3900",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1944-12-27",
+          "last": "1944-12-30",
+          "days": 4,
+          "station": "Tohogne vK3900 Nord de Guerre Zone (Belgium)",
+          "lat": 50.381605,
+          "lon": 5.477411,
+          "precision": 1000,
+          "check": {
+            "place": "Tohogne, Luxembourg Province",
+            "km": 2.5,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "marche-13",
+      "name": "Marche",
+      "sheet": "13",
+      "scale": "1:100,000",
+      "series": "GSGS 4336",
+      "seriesTitle": "N.E. France and Belgium 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4336-series-ne-france-and-belgium-1100000.asp",
+      "basis": "inferred",
+      "days": 1,
+      "first": "1944-12-31",
+      "last": "1944-12-31",
+      "frames": [
+        112
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vK3900",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1944-12-31",
+          "last": "1944-12-31",
+          "days": 1,
+          "station": "Tohogne vK3900 Nord de Guerre Zone (Belgium)",
+          "lat": 50.381605,
+          "lon": 5.477411,
+          "precision": 1000,
+          "check": {
+            "place": "Tohogne, Luxembourg Province",
+            "km": 2.5,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "aywaille-80se",
+      "name": "Aywaille",
+      "sheet": "80SE",
+      "scale": "1:100,000",
+      "series": "GSGS 4041",
+      "seriesTitle": "N.E. France and Belgium 1:25,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp",
+      "basis": "inferred",
+      "note": "Cards give this sheet at both 1:25,000 and 1:100,000. The Belgian sheet 80 SE is a 1:25,000 sheet, so the 1:100,000 readings are most likely the clerk carrying the wrong scale forward.",
+      "days": 10,
+      "first": "1945-01-01",
+      "last": "1945-01-10",
+      "frames": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "wK5400",
+          "zone": "nord-de-guerre",
+          "square": "wK",
+          "squareInferred": false,
+          "first": "1945-01-01",
+          "last": "1945-01-02",
+          "days": 2,
+          "station": "Werbomont wK5400 Nord de Guerre Zone (Belgium)",
+          "lat": 50.297948,
+          "lon": 12.716041,
+          "precision": 1000,
+          "check": {
+            "place": "Werbomont, Liège",
+            "km": 500,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 500 km from Werbomont, Liège, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "vK5400",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1945-01-03",
+          "last": "1945-01-10",
+          "days": 8,
+          "station": "Werbomont vK5400 Nord de Guerre Zone (Belgium)",
+          "lat": 50.385462,
+          "lon": 5.688303,
+          "precision": 1000,
+          "check": {
+            "place": "Werbomont, Liège",
+            "km": 0.4,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "vielsalm-93n",
+      "name": "Vielsalm",
+      "sheet": "93N",
+      "scale": "1:25,000",
+      "series": "GSGS 4041",
+      "seriesTitle": "N.E. France and Belgium 1:25,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4041-series-ne-france-and-belgium-125000.asp",
+      "basis": "inferred",
+      "note": "The battery reported on this sheet for four days in January 1945 and then corrected itself: the position was on the 1:50,000 Vielsalm 93, not the 1:25,000 93 N.",
+      "days": 4,
+      "first": "1945-01-11",
+      "last": "1945-01-14",
+      "frames": [
+        118,
+        119,
+        120
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vK6597",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1945-01-11",
+          "last": "1945-01-14",
+          "days": 4,
+          "station": "Basse-Bodeux vK6597 Nord de Guerre Zone (Belgium)",
+          "lat": 51.259905,
+          "lon": 5.808047,
+          "precision": 1000,
+          "check": {
+            "place": "Basse-Bodeux, Liège",
+            "km": 102.4,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 102 km from Basse-Bodeux, Liège, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "vP6597",
+          "zone": "nord-de-guerre",
+          "square": "vP",
+          "squareInferred": false,
+          "first": "1945-01-15",
+          "last": "1945-01-15",
+          "days": 1,
+          "station": "Basse-Bodeux vP6597 Nord de Guerre Zone (Belgium)",
+          "lat": 50.361079,
+          "lon": 5.844038,
+          "precision": 1000,
+          "check": {
+            "place": "Basse-Bodeux, Liège",
+            "km": 2.7,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "vielsalm-93",
+      "name": "Vielsalm",
+      "sheet": "93",
+      "scale": "1:50,000",
+      "series": "GSGS 4040",
+      "seriesTitle": "N.E. France and Belgium 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4040-series-ne-france-and-belgium-150000.asp",
+      "basis": "named on the card",
+      "note": "The one sheet the film identifies by series number, in the correction of 20 January 1945.",
+      "days": 10,
+      "first": "1945-01-16",
+      "last": "1945-01-25",
+      "frames": [
+        121,
+        122,
+        123,
+        124,
+        125
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "vP6597",
+          "zone": "nord-de-guerre",
+          "square": "vP",
+          "squareInferred": false,
+          "first": "1945-01-16",
+          "last": "1945-01-25",
+          "days": 10,
+          "station": "Basse-Bodeux vP6597 Nord de Guerre Zone (Belgium)",
+          "lat": 50.361079,
+          "lon": 5.844038,
+          "precision": 1000,
+          "check": {
+            "place": "Basse-Bodeux, Liège",
+            "km": 2.7,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "cologne-r1",
+      "name": "Cologne",
+      "sheet": "R-1",
+      "scale": "1:100,000",
+      "series": "GSGS 4416",
+      "seriesTitle": "Germany (Central Europe) 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp",
+      "basis": "inferred",
+      "note": "Catalogued under the German spelling, Köln.",
+      "image": {
+        "file": "/images/maps/cologne-r1-preview.webp",
+        "full": "/images/maps/cologne-r1.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 25366 × 17654 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.1_KOELN_Ed1-%28gsgs%29_%281943%29-1944_600dpi_McM21577.jpg"
+      },
+      "days": 35,
+      "first": "1945-02-07",
+      "last": "1945-03-14",
+      "frames": [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sources": [
+        {
+          "label": "Battlefield Historian — GSGS 4416 Köln, Sheet R1",
+          "url": "https://www.battlefieldhistorian.com/gsgs-4416-1100000-koln-sheet-r1-bhc-00964.asp",
+          "terms": "purchase"
+        },
+        {
+          "label": "WIG Map Archive — GSGS 4416 Köln, Sheet R.1",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "vK9846",
+          "zone": "nord-de-guerre",
+          "square": "vK",
+          "squareInferred": false,
+          "first": "1945-02-07",
+          "last": "1945-02-24",
+          "days": 17,
+          "station": "Nothberg vK9846 Nord de Guerre Zone (Germany)",
+          "lat": 50.808165,
+          "lon": 6.294704,
+          "precision": 1000,
+          "check": {
+            "place": "Nothberg, Eschweiler",
+            "km": 2.4,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "wF0744",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-02-25",
+          "last": "1945-03-01",
+          "days": 5,
+          "station": "Derichsweiler wF0744 Nord de Guerre Zone (Germany)",
+          "lat": 50.791665,
+          "lon": 6.422893,
+          "precision": 1000,
+          "check": {
+            "place": "Derichsweiler, Düren",
+            "km": 2.3,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "wF1855",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-03-03",
+          "last": "1945-03-07",
+          "days": 4,
+          "station": "wF1855 Nord de Guerre Zone (Germany)",
+          "lat": 50.892178,
+          "lon": 6.57651,
+          "precision": 1000,
+          "check": {
+            "place": "Bivouac west of the Rhine",
+            "km": 2.1,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "koblenz-s2",
+      "name": "Koblenz",
+      "sheet": "S-2",
+      "scale": "1:100,000",
+      "series": "GSGS 4416",
+      "seriesTitle": "Germany (Central Europe) 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp",
+      "basis": "inferred",
+      "image": {
+        "file": "/images/maps/koblenz-s2-preview.webp",
+        "full": "/images/maps/koblenz-s2.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21393 × 15752 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_S.2_KOBLENZ_Ed1-%28gsgs%29_1944_600dpi_McM21604.jpg"
+      },
+      "days": 8,
+      "first": "1945-03-27",
+      "last": "1945-04-03",
+      "frames": [
+        157,
+        159,
+        160,
+        161,
+        162
+      ],
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Koblenz, Sheet S.2",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "wF7274",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-03-27",
+          "last": "1945-03-27",
+          "days": 1,
+          "station": "wF7274 Nord de Guerre Zone (Germany)",
+          "lat": 51.067998,
+          "lon": 7.342727,
+          "precision": 1000,
+          "check": {
+            "place": "Position east of the Rhine",
+            "km": 46.7,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 47 km from Position east of the Rhine, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wF7234",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-03-28",
+          "last": "1945-04-02",
+          "days": 5,
+          "station": "Hanf wF7234 Nord de Guerre Zone (Germany)",
+          "lat": 50.70837,
+          "lon": 7.345692,
+          "precision": 1000,
+          "check": {
+            "place": "Hanf, Westerwald",
+            "km": 8.2,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "wF7237",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-04-01",
+          "last": "1945-04-01",
+          "days": 1,
+          "station": "Hanf wF7237 Nord de Guerre Zone (Germany)",
+          "lat": 50.735345,
+          "lon": 7.345471,
+          "precision": 1000,
+          "check": {
+            "place": "Hanf, Westerwald",
+            "km": 9.7,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G2946",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-04-03",
+          "last": "1945-04-03",
+          "days": 1,
+          "station": "Wilgersdorf G2946 Nord de Guerre Zone (Germany)",
+          "lat": 50.816184,
+          "lon": 8.153796,
+          "precision": 1000,
+          "check": {
+            "place": "Wilgersdorf, Siegerland",
+            "km": 4,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "siegen-r2",
+      "name": "Siegen",
+      "sheet": "R-2",
+      "scale": "1:100,000",
+      "series": "GSGS 4416",
+      "seriesTitle": "Germany (Central Europe) 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp",
+      "basis": "inferred",
+      "image": {
+        "file": "/images/maps/siegen-r2-preview.webp",
+        "full": "/images/maps/siegen-r2.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21475 × 15790 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.2_SIEGEN_Ed1-%28gsgs%29_1944_600dpi_McM21578.jpg"
+      },
+      "days": 9,
+      "first": "1945-04-04",
+      "last": "1945-04-12",
+      "frames": [
+        162,
+        163,
+        164,
+        165,
+        166,
+        167
+      ],
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Siegen, Sheet R.2",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "wG2148",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": false,
+          "first": "1945-04-04",
+          "last": "1945-04-09",
+          "days": 6,
+          "station": "Eisern 1/2 Mi NW wG2148 Nord de Guerre Zone (Germany)",
+          "lat": 50.83451,
+          "lon": 8.040369,
+          "precision": 1000,
+          "check": {
+            "place": "Eisern, near Siegen",
+            "km": 2.5,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G1450",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-04-10",
+          "last": "1945-04-10",
+          "days": 1,
+          "station": "Meiswinkel G1450 Nord de Guerre Zone (Germany)",
+          "lat": 50.852704,
+          "lon": 7.941059,
+          "precision": 1000,
+          "check": {
+            "place": "Meiswinkel, Siegerland",
+            "km": 6.6,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G0269",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-04-11",
+          "last": "1945-04-12",
+          "days": 2,
+          "station": "Drolshagen G0269 Nord de Guerre Zone (Germany)",
+          "lat": 51.023694,
+          "lon": 7.770736,
+          "precision": 1000,
+          "check": {
+            "place": "Drolshagen, Sauerland",
+            "km": 0.3,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "hagen-78",
+      "name": "Hagen",
+      "sheet": "78",
+      "scale": "1:50,000",
+      "series": "GSGS 4507",
+      "seriesTitle": "Germany 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4507-series-germany-150000.asp",
+      "basis": "inferred",
+      "days": 3,
+      "first": "1945-04-13",
+      "last": "1945-04-15",
+      "frames": [
+        167,
+        168
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "wF8088",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-04-13",
+          "last": "1945-04-15",
+          "days": 3,
+          "station": "Nieder Ennepe wF8088 Nord de Guerre Zone (Germany)",
+          "lat": 51.194171,
+          "lon": 7.456124,
+          "precision": 1000,
+          "check": {
+            "place": "Nieder Ennepe, Ruhr",
+            "km": 9.2,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "wuppertal-58",
+      "name": "Wuppertal",
+      "sheet": "58",
+      "scale": "1:50,000",
+      "series": "GSGS 4507",
+      "seriesTitle": "Germany 1:50,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4507-series-germany-150000.asp",
+      "basis": "inferred",
+      "days": 3,
+      "first": "1945-04-16",
+      "last": "1945-04-18",
+      "frames": [
+        169,
+        170
+      ],
+      "sources": [],
+      "positions": [
+        {
+          "ref": "wF6490",
+          "zone": "nord-de-guerre",
+          "square": "wF",
+          "squareInferred": false,
+          "first": "1945-04-16",
+          "last": "1945-04-18",
+          "days": 3,
+          "station": "Latringhausen wF6490 Nord de Guerre Zone (Germany)",
+          "lat": 51.211394,
+          "lon": 7.22704,
+          "precision": 1000,
+          "check": {
+            "place": "Near Wuppertal, Ruhr",
+            "km": 5.3,
+            "agrees": true
+          }
+        }
+      ]
+    },
+    {
+      "key": "marburg-r3",
+      "name": "Marburg",
+      "sheet": "R-3",
+      "scale": "1:100,000",
+      "series": "GSGS 4416",
+      "seriesTitle": "Germany (Central Europe) 1:100,000",
+      "seriesIndex": "https://www.battlefieldhistorian.com/gsgs-4416-series-germany-1100000.asp",
+      "basis": "inferred",
+      "image": {
+        "file": "/images/maps/marburg-r3-preview.webp",
+        "full": "/images/maps/marburg-r3.webp",
+        "fullSize": "3000 px wide",
+        "credit": "Scanned by McMaster University Library; mirrored by the WIG Map Archive",
+        "creditUrl": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+        "note": "Reduced here from the 600 dpi, 21537 × 15873 scan.",
+        "sourceFile": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/AMS_M641_GSGS_4416_CENTRAL_EUROPE_100K_R.3_MARBURG_Ed1-%28gsgs%29_1944_600dpi_McM21580.jpg"
+      },
+      "days": 80,
+      "first": "1945-04-19",
+      "last": "1945-07-12",
+      "frames": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        208,
+        210,
+        212,
+        214,
+        216,
+        218
+      ],
+      "sources": [
+        {
+          "label": "WIG Map Archive — GSGS 4416 Marburg, Sheet R.3",
+          "url": "http://maps.mapywig.org/m/ALLIED_maps/series/AMS_M641A_GSGS4416_CENTRAL_EUROPE_100K/",
+          "terms": "free"
+        }
+      ],
+      "positions": [
+        {
+          "ref": "G7192",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-04-19",
+          "last": "1945-04-19",
+          "days": 1,
+          "station": "Radevormwald G7192 Nord de Guerre Zone (Germany)",
+          "lat": 51.22611,
+          "lon": 8.758691,
+          "precision": 1000,
+          "check": {
+            "place": "Radevormwald, Bergisches Land",
+            "km": 97.7,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 98 km from Radevormwald, Bergisches Land, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "G7172",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-04-20",
+          "last": "1945-05-18",
+          "days": 29,
+          "station": "Roddenau G7172 Nord de Guerre Zone (Germany)",
+          "lat": 51.046338,
+          "lon": 8.754824,
+          "precision": 1000,
+          "check": {
+            "place": "Roddenau, Hesse",
+            "km": 5.1,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G7975",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-05-19",
+          "last": "1945-06-04",
+          "days": 17,
+          "station": "Geismar G7975 Nord de Guerre Zone (Germany)",
+          "lat": 51.072279,
+          "lon": 8.869546,
+          "precision": 1000,
+          "check": {
+            "place": "Geismar, Hesse",
+            "km": 9.2,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G7875",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-06-05",
+          "last": "1945-07-05",
+          "days": 28,
+          "station": "Geismar G7875 Nord de Guerre Zone (Germany)",
+          "lat": 51.072413,
+          "lon": 8.855279,
+          "precision": 1000,
+          "check": {
+            "place": "Geismar, Hesse",
+            "km": 8.8,
+            "agrees": true
+          }
+        },
+        {
+          "ref": "G8188",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": true,
+          "first": "1945-07-06",
+          "last": "1945-07-12",
+          "days": 5,
+          "station": "Herzhausen G8188 Nord de Guerre Zone (Germany)",
+          "lat": 51.188854,
+          "lon": 8.900946,
+          "precision": 1000,
+          "check": {
+            "place": "Herzhausen, Hesse",
+            "km": 14.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 15 km from Herzhausen, Hesse, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        }
+      ]
+    }
+  ]
+}

@@ -149,7 +149,7 @@
           "551st Field Artillery Battalion",
           "552nd Field Artillery Battalion"
         ],
-        "note": "A single-date snapshot. Non-divisional artillery battalions were reassigned between groups and corps constantly, so this is where the battalion sat on 1 January 1945, not where it sat for the whole war.",
+        "note": "This is where the battalion stood on 1 January 1945. Non-divisional artillery battalions moved between groups and corps often, so it does not describe the whole war.",
         "source": {
           "id": "bulge-oob"
         }
@@ -160,7 +160,7 @@
         "chain": [
           "32nd Field Artillery Brigade"
         ],
-        "note": "Inferred rather than stated: the battery's leave and furlough orders that month are issued by Headquarters, 32nd Field Artillery Brigade, which puts Battery C under that brigade for administration.",
+        "note": "The battery's leave and furlough orders that month were issued by Headquarters, 32nd Field Artillery Brigade, which places Battery C under that brigade for administration. No order on file states the attachment directly.",
         "source": {
           "id": "morning-report-1945-08-20"
         }
@@ -239,7 +239,7 @@
       "thumb": "/images/award-ceremony-thumb.jpg",
       "width": 1181,
       "height": 1450,
-      "caption": "A general officer pins the Bronze Star, the battalion drawn up in formation behind him and the colours uncased. Identified by the family as Sergeant Cole. Neither the date nor the place is written on the print.",
+      "caption": "A general officer pins the Bronze Star. The battalion stands in formation behind him, in a damaged town. The family identifies the soldier as Sergeant Cole. Neither the date nor the place is written on the print.",
       "alt": "A general officer in a steel helmet pins a medal to the field jacket of a soldier standing at attention, with ranks of helmeted soldiers and an American flag behind them in a damaged European town."
     },
     {
@@ -249,7 +249,7 @@
       "thumb": "/images/citation-thumb.jpg",
       "width": 1600,
       "height": 2121,
-      "caption": "The typed citation, folded in thirds for eighty years, with the War Department seal embossed at the foot.",
+      "caption": "The typed citation, with the War Department seal embossed at the foot.",
       "alt": "A typed citation on aged paper headed CITATION, AWARD OF BRONZE STAR MEDAL, with an embossed War Department seal near the bottom."
     },
     {
@@ -259,7 +259,7 @@
       "thumb": "/images/morning-report-1945-08-20-thumb.jpg",
       "width": 1050,
       "height": 2086,
-      "caption": "The first card found that names him. Line one: Cole Clarence J, 36106875, Sgt — from duty to temporary duty at Treebeek, Holland. Five days' leave, four months after the war ended.",
+      "caption": "The first card found that names him. The first entry reads: Cole Clarence J, 36106875, Sgt, from duty to temporary duty at Treebeek, Holland. Five days' leave, four months after the war ended.",
       "alt": "A typed US Army morning report card for Battery C, 153rd FA Bn, dated 20 August 1945, listing Sergeant Clarence J. Cole and three other enlisted men going on temporary duty."
     },
     {
@@ -269,7 +269,7 @@
       "thumb": "/images/morning-report-1945-08-25-thumb.jpg",
       "width": 1290,
       "height": 2796,
-      "caption": "Five days later, three words against his name: \"Fr TD to dy\". Back from leave. The card names the sheet the battery was working from — Marburg 1/100,000, R-3 — and counts three officers and sixty-seven men still on the rolls.",
+      "caption": "Five days later his entry reads “Fr TD to dy” — returned from temporary duty. The card names the map sheet in use, Marburg 1/100,000 Sheet R-3, and counts three officers and sixty-seven men on the rolls.",
       "alt": "A typed US Army morning report card for Battery C dated 25 August 1945, with a single entry for Sergeant Clarence J. Cole returning from temporary duty."
     },
     {
@@ -279,7 +279,7 @@
       "thumb": "/images/separation-record-thumb.jpg",
       "width": 1512,
       "height": 2016,
-      "caption": "WD AGO Form 53-55, 22 October 1945. Fifty-seven numbered boxes summarising three years of a life.",
+      "caption": "WD AGO Form 53-55, 22 October 1945. Fifty-seven numbered boxes covering three years of service.",
       "alt": "A completed United States Army discharge form, Enlisted Record and Report of Separation, densely filled in with typewriting."
     }
   ],
@@ -647,7 +647,7 @@
       "kind": "admin",
       "title": "Born at Caro, Michigan",
       "place": "caro",
-      "summary": "He would be thirty-seven years old when he sailed, and a farmer by trade.",
+      "summary": "He was thirty-seven years old when he sailed, and a farmer by trade.",
       "source": {
         "id": "separation-record"
       }
@@ -2053,7 +2053,7 @@
       "title": "Bronze Star Medal",
       "dateApproximate": true,
       "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
-      "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
+      "summary": "Awarded for meritorious service in support of active combat operations: keeping the battery's ammunition counted, supplied and fit to fire.",
       "source": {
         "id": "bronze-star-citation"
       },
