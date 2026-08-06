@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "clarence-cole-enlistment-record",
+  "compatibility_date": "2026-08-06",
+
+  // Assets-only Worker: static files are served directly and no Worker script
+  // runs. To add server-side routes later, create src/index.ts, point "main" at
+  // it, and add "binding": "ASSETS" here.
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

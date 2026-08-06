@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sergeant Clarence Cole — 153rd Field Artillery Battalion</title>
+    <meta
+      name="description"
+      content="A documentary timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion, in the European Theater of Operations, 1944-1945."
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127894;</text></svg>"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#timeline">Skip to the timeline</a>
+
+    <header class="masthead">
+      <div class="masthead__inner">
+        <p class="eyebrow">A documentary record</p>
+        <h1>Sergeant Clarence Cole</h1>
+        <p class="masthead__sub" data-bind="subtitle"></p>
+        <dl class="masthead__facts">
+          <div><dt>Unit</dt><dd data-bind="unit"></dd></div>
+          <div><dt>Serial</dt><dd data-bind="serial"></dd></div>
+          <div><dt>Overseas</dt><dd>May 1944 – October 1945</dd></div>
+          <div><dt>Campaigns</dt><dd>Five</dd></div>
+          <div><dt>Decoration</dt><dd>Bronze Star Medal</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <nav class="sitenav" aria-label="Sections">
+      <ul>
+        <li><a href="#opening">The record</a></li>
+        <li><a href="#soldier">The soldier</a></li>
+        <li><a href="#crossing">The crossing</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#campaigns">Campaigns</a></li>
+        <li><a href="#theater">The theater</a></li>
+        <li><a href="#battalion">The battalion</a></li>
+        <li><a href="#bronze-star">Bronze Star</a></li>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#method">Sources &amp; method</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="opening" class="prose">
+        <h2>The record</h2>
+        <p class="lede">
+          Every morning of the war, the clerk of Battery C filled out a card. Who was present,
+          who was sick, who had been promoted, and — in four or five handwritten lines under
+          <em>Record of Events</em> — where the battery was and what it had done.
+        </p>
+        <p>
+          Those cards survive: 284 microfilm frames covering the battalion from the pier at
+          Brooklyn to the end of the war in Europe. They are the spine of this site. Where a
+          claim here has a date attached, it comes from a card, and the card is cited.
+        </p>
+        <div class="callout" data-bind="status-note"></div>
+      </section>
+
+      <section id="soldier">
+        <div class="section-head prose">
+          <h2>The soldier</h2>
+          <p>
+            Box by box, as the Army recorded him on the day it let him go. A thirty-seven-year-old
+            farmer from Tuscola County when he sailed, and thirty-nine when he came home.
+          </p>
+        </div>
+        <dl class="record" id="record"></dl>
+      </section>
+
+      <section id="crossing" class="mapsection">
+        <div class="mapsection__text prose">
+          <h2>The crossing</h2>
+          <p>
+            The battery left Fort Slocum by harbor boat on the evening of 2 May 1944, boarded
+            an Army transport at Terminal Pier at 2315, and cleared the New York Port of
+            Embarkation at 0630 the next morning. The morning report does not name the
+            destination — convoy destinations were not written on a form that travelled with
+            the ship.
+          </p>
+          <p>
+            One hundred eighteen men were on the roll. One hundred seventeen were present for
+            duty.
+          </p>
+          <p>
+            The destination is filled in eighteen months later, on his discharge:
+            <strong>England, 15 May 1944</strong>. Twelve days at sea.
+          </p>
+        </div>
+        <figure class="mapfigure">
+          <div
+            class="map"
+            id="map-crossing"
+            data-west="-76"
+            data-east="10"
+            data-south="36"
+            data-north="58"
+            role="img"
+            aria-label="Map of the North Atlantic showing the route from New York toward Europe."
+          ></div>
+          <figcaption>
+            New York to the European Theater. The track is indicative — the transport's actual
+            convoy route is not recorded in the morning reports.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="timeline">
+        <div class="section-head prose">
+          <h2>Timeline</h2>
+          <p>
+            Battalion events in black, the wider war in grey. Each entry links back to the frame
+            it was read from.
+          </p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter the timeline">
+          <button type="button" class="chip is-on" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="movement">Movements</button>
+          <button type="button" class="chip" data-filter="personnel">Personnel</button>
+          <button type="button" class="chip" data-filter="combat">Combat</button>
+          <button type="button" class="chip" data-filter="admin">Service record</button>
+          <button type="button" class="chip" data-filter="award">Awards</button>
+          <button type="button" class="chip" data-filter="context">The wider war</button>
+        </div>
+
+        <ol class="timeline" id="timeline-list"></ol>
+      </section>
+
+      <section id="daily-record">
+        <div class="section-head prose">
+          <h2>The daily record</h2>
+          <p>
+            The timeline above carries the days that changed something. This is every card:
+            the movements and the casualties, but also the long stretches where the entry
+            reads <em>in position firing</em> and nothing else. Those days are most of the
+            war a gun battery actually fought.
+          </p>
+        </div>
+
+        <div class="record-controls">
+          <label class="sr-only" for="record-search">Search the daily record</label>
+          <input
+            type="search"
+            id="record-search"
+            class="record-search"
+            placeholder="Search a name, a place, a date, an event…"
+            autocomplete="off"
+          />
+          <p class="record-status" id="record-status" role="status"></p>
+        </div>
+
+        <ol class="record" id="record-list"></ol>
+        <button type="button" class="record-more" id="record-more" hidden></button>
+      </section>
+
+      <section id="campaigns">
+        <div class="section-head prose">
+          <h2>Campaigns</h2>
+          <p>
+            Five campaign credits, carried as five bronze service stars on the
+            European–African–Middle Eastern ribbon. The bars below are the War Department's
+            official dates for each campaign; the red band marks the period named in his
+            Bronze Star citation.
+          </p>
+        </div>
+        <div class="campaigns" id="campaigns-chart"></div>
+        <p class="legend">
+          <span class="legend__swatch legend__swatch--bar"></span>Campaign
+          <span class="legend__swatch legend__swatch--band"></span>Period cited in the Bronze Star
+          award
+        </p>
+        <ul class="ribbons" id="decorations"></ul>
+      </section>
+
+      <section id="theater" class="mapsection mapsection--reverse">
+        <div class="mapsection__text prose">
+          <h2>The theater</h2>
+          <p>
+            A field artillery battalion moved constantly and rarely far — a few miles forward to
+            a new firing position, then a few miles more. Plotted against the campaign as a
+            whole, those small displacements trace the shape of the advance.
+          </p>
+          <p>
+            Every position below is a village the battery named in its own station entry,
+            joined in the order it reached them: Omaha Beach to the Cotentin, across France in
+            the pursuit, into Belgium, and over the German frontier. The battery logged 979
+            road miles for itself in the process.
+          </p>
+          <div class="chain" id="attachment"></div>
+        </div>
+        <figure class="mapfigure">
+          <div
+            class="map"
+            id="map-theater"
+            data-west="-6"
+            data-east="16"
+            data-south="43"
+            data-north="55"
+            role="img"
+            aria-label="Map of Western Europe showing the battalion's recorded positions."
+          ></div>
+          <figcaption>Western Europe, 1944–1945.</figcaption>
+        </figure>
+      </section>
+
+      <section id="battalion">
+        <div class="section-head prose">
+          <h2>The battalion, by the numbers</h2>
+          <p>
+            On 24 August 1945 the battalion adjutant typed out Special Orders 66: one hundred
+            forty-two men, by name and serial number, transferred to the 70th Infantry Division
+            to go home. It is the closest thing in the film to a roster.
+          </p>
+          <p>
+            Each dot below is one man, keyed to his Army serial number. The document records
+            only one relationship between any two of them — that they held the same military
+            occupational specialty, and so did the same job — so that is what the lines mean.
+            Men who worked alongside each other cluster together. Colour is the Adjusted Service
+            Rating, the points score that decided who went home first.
+          </p>
+        </div>
+
+        <div class="graph-controls">
+          <label class="graph-search">
+            <span>Find a man</span>
+            <input type="search" id="graph-search" placeholder="serial number or name"
+                   autocomplete="off" spellcheck="false" />
+          </label>
+          <p class="graph-status" id="graph-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="graphframe" id="roster-graph"></div>
+
+        <p class="legend">
+          <span class="legend__dot band-1"></span>under 80
+          <span class="legend__dot band-2"></span>80–89
+          <span class="legend__dot band-3"></span>90–99
+          <span class="legend__dot band-4"></span>100+
+          <span class="legend__sep"></span>points. Officers are open rings — their rating was
+          scored on a different scale.
+        </p>
+
+        <div class="callout" id="graph-note"></div>
+      </section>
+
+      <section id="bronze-star">
+        <div class="section-head prose">
+          <h2>The Bronze Star</h2>
+        </div>
+
+        <div class="award">
+          <figure class="award__photo">
+            <img
+              src="/images/award-ceremony.jpg"
+              alt="A general officer in a steel helmet pins a medal to the field jacket of a soldier standing at attention, with ranks of helmeted soldiers and an American flag behind them in a damaged European town."
+              width="1181"
+              height="1450"
+              loading="lazy"
+            />
+            <figcaption>
+              A general officer — one star on the helmet — pins the medal. The battalion is drawn
+              up behind, the colours are up, and the town is broken. Identified by the family as
+              Sergeant Cole; neither date nor place is written on the print.
+            </figcaption>
+          </figure>
+
+          <div class="award__text">
+            <div class="prose">
+              <p>
+                The Bronze Star was established in 1944 for heroic <em>or meritorious</em>
+                achievement in ground combat. The second half of that phrase is the point. It was
+                made for the soldier who did necessary, unglamorous, dangerous work well, for
+                months on end.
+              </p>
+              <p>
+                Cole's citation is a good example of what that meant in a firing battery. On a
+                busy day a battery could send hundreds of rounds downrange. Someone had to know,
+                at every hour, exactly how many rounds of each type were on hand, get more
+                forward over roads under fire, and be certain that what arrived was still safe to
+                put down a tube. That was his section.
+              </p>
+            </div>
+
+            <blockquote class="citation" id="citation-text">
+              <p class="citation__head">Citation — Award of Bronze Star Medal</p>
+              <p>
+                <strong>Sergeant Clarence J. Cole, 36106875</strong>, Field Artillery, Battery C
+                153d Field Artillery Battalion, United States Army, for meritorious service in
+                support of active combat operations from 30 June 1944 to 15 March 1945 in France,
+                Germany and Belgium. Sergeant Cole supplied the battery with its ammunition supply
+                records, maintained the basic load at all times and also made continuous checks to
+                ascertain that the ammunition was in no way damaged in transit. Showing marked
+                qualities of leadership, Sergeant Cole has managed his section expertly and has
+                performed his duties in an exemplary manner. Entered military service from
+                Michigan.
+              </p>
+              <footer>
+                Transcribed from the original in the family papers.
+                <a href="/images/citation.jpg">See the document</a>.
+              </footer>
+            </blockquote>
+
+            <div class="callout callout--open">
+              <h3>Still open</h3>
+              <p>
+                The general orders number and the date of the award are on neither the citation
+                nor the discharge. Awards are normally announced in the morning reports, so both
+                may be in the frames still to be read.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="documents">
+        <div class="section-head prose">
+          <h2>Documents</h2>
+          <p>The originals, as photographed. Select any to see it full size.</p>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </section>
+
+      <section id="method" class="prose">
+        <h2>Sources &amp; method</h2>
+        <div id="sources"></div>
+        <h3>How to read a morning report</h3>
+        <p>
+          The upper table lists changes in status — a man moving from duty to hospital, a
+          promotion, a transfer — each with a serial number, name, grade, and a code. The block
+          below it records the unit's strength that day. The handwritten paragraph in the middle,
+          <em>Record of Events</em>, is the only free text on the form, and it is where the war
+          shows up.
+        </p>
+        <h3>On uncertainty</h3>
+        <p>
+          These are carbon copies of pencil, photographed onto microfilm eighty years ago.
+          Where a reading is uncertain it is marked as such rather than smoothed over.
+        </p>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <p>
+        Built from the 153rd Field Artillery Battalion morning reports.
+        <span data-bind="updated"></span>
+      </p>
+    </footer>
+
+    <script type="module" src="/assets/app.js"></script>
+  </body>
+</html>

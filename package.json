@@ -1,22 +1,18 @@
 {
   "name": "clarence-cole-enlistment-record",
+  "version": "0.1.0",
   "private": true,
+  "description": "A documentary timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion, in the European Theater.",
   "type": "module",
   "scripts": {
-    "data": "node scripts/build-data.mjs",
-    "dev": "bun run data && nuxt dev",
-    "build": "bun run data && nuxt build",
-    "generate": "bun run data && nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "nuxt": "^4.0.0",
-    "vue": "^3.5.0",
-    "vue-router": "^4.5.0"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build:geo": "node tools/build-geo.mjs",
+    "build:roster": "node tools/build-roster.mjs",
+    "build:timeline": "node tools/build-timeline.mjs",
+    "check:data": "node tools/check-data.mjs"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.0",
-    "tailwindcss": "^4.0.0"
+    "wrangler": "^4.42.0"
   }
 }
