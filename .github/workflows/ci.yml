@@ -56,8 +56,24 @@ jobs:
       - name: Rebuild the timeline from the transcriptions
         run: npm run build:timeline
 
+      - name: Rebuild the map-sheet register from the transcriptions
+        run: npm run build:maps
+
       - name: Validate timeline.json
         run: npm run check:data
+
+      # The lettered squares in tools/lib/grids.mjs are derived from the reports.
+      # If a newly transcribed frame moves a square, the committed anchors are
+      # wrong and every decoded position moves with them, so re-derive and fail
+      # on any disagreement rather than let it pass silently.
+      - name: Re-derive the grid squares from the reports
+        run: |
+          out=$(npm run --silent derive:grids)
+          echo "$out"
+          if echo "$out" | grep -q "differs from tools/lib/grids.mjs"; then
+            echo "::error::A lettered square derived from the reports no longer matches tools/lib/grids.mjs."
+            exit 1
+          fi
 
       # The generated files are committed so the Worker can serve them without a
       # build step. That only works if they match their sources — if a rebuild
@@ -65,7 +81,7 @@ jobs:
       - name: Fail if generated files are stale
         run: |
           if ! git diff --quiet -- public/data; then
-            echo "::error::public/data is out of date. Run 'npm run build:roster && npm run build:timeline' and commit the result."
+            echo "::error::public/data is out of date. Run 'npm run build:roster && npm run build:timeline && npm run build:maps' and commit the result."
             git diff --stat -- public/data
             exit 1
           fi

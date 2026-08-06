@@ -10,7 +10,11 @@
     "build:geo": "node tools/build-geo.mjs",
     "build:roster": "node tools/build-roster.mjs",
     "build:timeline": "node tools/build-timeline.mjs",
-    "check:data": "node tools/check-data.mjs"
+    "build:maps": "node tools/build-map-sheets.mjs",
+    "derive:grids": "node tools/derive-grid-squares.mjs",
+    "check:data": "node tools/check-data.mjs",
+    "maps:fetch": "node tools/fetch-maps.mjs",
+    "maps:upload": "node tools/upload-maps-r2.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.42.0"

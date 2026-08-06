@@ -4,8 +4,8 @@ A timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion
 in the European Theater of Operations, built from his discharge papers, his
 Bronze Star citation, and the battalion's own paperwork.
 
-Deployed as a Cloudflare Worker serving static assets:
-**https://clarence-cole-enlistment-record.james-e09.workers.dev**
+Served as static assets by a Cloudflare Worker. Nothing about an account is
+committed, so each clone deploys to its own — see [Running it](#running-it).
 
 ## Status
 
@@ -80,20 +80,26 @@ transcriptions/           EVERYTHING read off the film, one file per PDF page
                           kind: order          -> roster.json
                           kind: morning-report -> timeline.json
 data/gazetteer.json       place name to coordinate, phase bands, station overrides
+data/map-series.json      GSGS series catalogue, and where each sheet can be found
 public/                   everything served
   assets/app.js           renders the timeline from JSON
   assets/map.js           SVG maps, no tiles and no external libraries
   assets/graph.js         the roster network: force layout, no libraries
   assets/record.js        the full day-by-day record, loaded on demand
+  assets/sheets.js        the map sheets and the decoded firing positions
   data/timeline.json      curated events + events built from the film
   data/morning-reports.json  generated — the complete daily record
   data/roster.json        generated from transcriptions/ — do not edit
+  data/map-sheets.json    generated — sheets named, positions decoded
   data/geo/theater.json   generated coastline, committed
   images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from Natural Earth data
 tools/lib/pages.mjs       the page format, parsed in one place
+tools/lib/grids.mjs       Lambert Zone I and Nord de Guerre -> WGS 84
 tools/build-roster.mjs    order pages -> roster.json, + Battery C match
 tools/build-timeline.mjs  morning-report pages -> timeline.json
+tools/build-map-sheets.mjs  map citations + grid refs -> map-sheets.json
+tools/derive-grid-squares.mjs  recovers the lettered squares from the reports
 tools/compare-transcription.mjs  second-reader diff for a page
 tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
@@ -173,6 +179,53 @@ longest match first — which is why `"Ger"` (the Manche village) does not swall
 every station string ending `(Germany)`. That bug relocated three months of the
 war to Normandy before it was caught; the ordering is load-bearing.
 
+## Map images
+
+The sheet images under `public/images/maps/` are derived, not source. Each sheet
+in `data/map-series.json` that has an image records `sourceFile` — the URL of the
+full archive scan — and the derivation runs from that:
+
+```sh
+npm run maps:fetch              # only what is missing
+npm run maps:fetch -- --force   # re-derive everything
+```
+
+That downloads each original (600 dpi, 100 MB and up), writes a 3000 px plate and
+a 1400 px preview as WebP, and deletes the original. 3000 px was chosen against
+the 600 dpi scan: every village name and spot height on a 1:100,000 sheet is still
+legible, at roughly half the bytes of 4000 px. Needs Python 3 with Pillow, the
+same requirement as `tools/deskew-page.mjs`.
+
+The derived files are committed, so a fresh clone serves the maps without running
+anything. The page loads previews and links through to the full plate — under a
+megabyte of imagery for the section, rather than twelve.
+
+### Serving them from R2 instead
+
+Optional, and account-specific — a fork runs this against its own Cloudflare
+account, since nothing about an account is baked into this repository:
+
+```sh
+npx wrangler login                                     # or CLOUDFLARE_API_TOKEN
+npm run maps:upload -- --bucket <name> --dry-run       # see what would go
+npm run maps:upload -- --bucket <name> --create        # create it and upload
+```
+
+Then turn on public access for the bucket (Cloudflare dashboard → R2 → the bucket
+→ Settings → Public access, or attach a custom domain), put that base URL into
+`imageBase` in `data/map-series.json`, and rebuild:
+
+```jsonc
+{ "imageBase": "https://pub-xxxxxxxx.r2.dev" }
+```
+
+```sh
+npm run build:maps
+```
+
+Leaving `imageBase` empty keeps the copies in this repository, which is the
+default and works fine. Nothing breaks by never touching R2.
+
 ## Conventions
 
 - **Cite everything.** Every dated claim carries the microfilm frame it came from.
@@ -192,11 +245,68 @@ domain), clipped, simplified, and committed so the site has no runtime
 dependencies — no tiles, no map library, no external requests. Rebuild only when
 changing the map window or the simplification tolerance: `npm run build:geo`.
 
+### The sheets the battery worked from
+
+Almost every card closes its record of events by naming the map in use, and opens
+its station line with a position on that map:
+
+```
+station: Schmidthof 1 Mi N wF8935 Nord de Guerre Zone (Germany)
+> In position firing. (Map Bonn 1:100,000 Sheet S-1.)
+```
+
+`npm run build:maps` collects both into `public/data/map-sheets.json`: 25 sheets
+across 351 cards, and the 47 distinct grid references given on them.
+
+Two grid systems appear, and the station line says which — Lambert Zone I through
+Normandy, the Nord de Guerre zone from the Seine onward. `tools/lib/grids.mjs`
+converts either to WGS 84. Both are Lambert conformal conics on nineteenth-century
+French ellipsoids, and both need a geocentric datum shift at the end; skipping it
+puts a Nord de Guerre position about a kilometre and a half out, which looks right
+on a map of Europe and is wrong on a map of a village.
+
+The **lettered squares are derived, not looked up**. A station line that names a
+village and gives a reference fixes the corner of the square that reference sits
+in; every village the film puts in the same square has to agree. Seven villages
+between Tohogne and Aachen fix one, six between Saint-Clair-sur-l'Elle and
+Domfront fix another, and the corners come out on exact 100 km multiples, which
+nothing in the arithmetic forced them to do.
+
+```sh
+npm run build:maps      # transcriptions/*.md -> public/data/map-sheets.json
+npm run derive:grids    # re-derive the squares, and check every reference
+```
+
+That derivation is also the error check, and the battalion ran it first: on
+20 January 1945 it corrected a position it had been reporting for four days,
+`vK6597` to `vP6597`, and `derive:grids` finds the same disagreement on its own.
+Thirteen references decode cleanly to a place that contradicts the village
+written beside them — `wK8935` is a perfectly good reference to a point in Saxony,
+four hundred kilometres from the Schmidthof it is written next to. Those are
+carried as `disputed`, listed on the site and deliberately **not plotted**. Which
+half of each is wrong is a question for a second reading of the film.
+
+### Including the maps themselves
+
+`data/map-series.json` is the hand-authored half: which GSGS series each sheet
+belongs to, on what basis, and where a copy can be found. Only one series is
+named outright on the film — GSGS 4040, in that same January correction — so
+every other identification is marked `inferred` and the site says so.
+
+The maps are out of copyright; Crown copyright on wartime GSGS sheets has long
+expired. What is *not* free is any particular scan, so no sheet image is
+reproduced here that has not been traced to a source we can use. Add sources to a
+sheet's `sources` array as they are found. `build-map-sheets.mjs` fails on a sheet
+the film names that the catalogue does not list, so the catalogue cannot quietly
+fall behind the transcription.
+
 ## Continuous integration
 
-`.github/workflows/ci.yml` rebuilds the roster and the timeline from the
-transcriptions on every pull request, validates `timeline.json`, and fails if the
-committed files under `public/data` no longer match their sources.
+`.github/workflows/ci.yml` rebuilds the roster, the timeline and the map-sheet
+register from the transcriptions on every pull request, validates
+`timeline.json`, re-derives the grid squares and fails if any has moved against
+`tools/lib/grids.mjs`, and fails if the committed files under `public/data` no
+longer match their sources.
 
 It does **not** deploy. Cloudflare's Git integration already deploys `main` on
 push; a second deploy path would race it. The workflow carries a commented
@@ -215,6 +325,13 @@ push; a second deploy path would race it. The workflow carries a commented
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
   is an inference
+- Re-read the 13 disputed grid references on the film. Each decodes cleanly to a
+  place the same line contradicts, and a second reading would settle whether the
+  letters or the place name is the error
+- Trace a usable scan for the remaining 22 map sheets, and record it in
+  `data/map-series.json`
+- `data/gazetteer.json` has "Herzhausen, Hesse" at the wrong Herzhausen: the
+  reference `G8188` puts the battery 14 km away, at the one on the Edersee
 
 ## History
 
