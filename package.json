@@ -8,6 +8,7 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "build:geo": "node tools/build-geo.mjs",
+    "build:roster": "node tools/build-roster.mjs",
     "check:data": "node tools/check-data.mjs"
   },
   "devDependencies": {

@@ -40,6 +40,7 @@
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#campaigns">Campaigns</a></li>
         <li><a href="#theater">The theater</a></li>
+        <li><a href="#battalion">The battalion</a></li>
         <li><a href="#bronze-star">Bronze Star</a></li>
         <li><a href="#documents">Documents</a></li>
         <li><a href="#method">Sources &amp; method</a></li>
@@ -177,6 +178,46 @@
           ></div>
           <figcaption>Western Europe, 1944–1945.</figcaption>
         </figure>
+      </section>
+
+      <section id="battalion">
+        <div class="section-head prose">
+          <h2>The battalion, by the numbers</h2>
+          <p>
+            On 24 August 1945 the battalion adjutant typed out Special Orders 66: one hundred
+            forty-two men, by name and serial number, transferred to the 70th Infantry Division
+            to go home. It is the closest thing in the film to a roster.
+          </p>
+          <p>
+            Each dot below is one man, keyed to his Army serial number. The document records
+            only one relationship between any two of them — that they held the same military
+            occupational specialty, and so did the same job — so that is what the lines mean.
+            Men who worked alongside each other cluster together. Colour is the Adjusted Service
+            Rating, the points score that decided who went home first.
+          </p>
+        </div>
+
+        <div class="graph-controls">
+          <label class="graph-search">
+            <span>Find a man</span>
+            <input type="search" id="graph-search" placeholder="serial number or name"
+                   autocomplete="off" spellcheck="false" />
+          </label>
+          <p class="graph-status" id="graph-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="graphframe" id="roster-graph"></div>
+
+        <p class="legend">
+          <span class="legend__dot band-1"></span>under 80
+          <span class="legend__dot band-2"></span>80–89
+          <span class="legend__dot band-3"></span>90–99
+          <span class="legend__dot band-4"></span>100+
+          <span class="legend__sep"></span>points. Officers are open rings — their rating was
+          scored on a different scale.
+        </p>
+
+        <div class="callout" id="graph-note"></div>
       </section>
 
       <section id="bronze-star">

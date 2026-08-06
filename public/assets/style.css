@@ -674,6 +674,134 @@ section {
   color: var(--ink-faint);
 }
 
+/* ------------------------------------------------------ roster network -- */
+
+#battalion {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.graph-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.graph-search {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.graph-search span {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.graph-search input {
+  min-width: 15rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.graph-status {
+  margin: 0 0 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.graphframe {
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.netgraph {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+}
+
+.net-links line {
+  stroke: color-mix(in srgb, var(--ink) 16%, transparent);
+  stroke-width: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.net-hub circle {
+  fill: var(--paper);
+  stroke: var(--ink-faint);
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.net-hub text {
+  font-family: var(--mono);
+  font-size: 7px;
+  text-anchor: middle;
+  fill: var(--ink-soft);
+}
+
+.net-man {
+  stroke: var(--paper-warm);
+  stroke-width: 0.9;
+  vector-effect: non-scaling-stroke;
+  cursor: help;
+  transition: opacity 120ms ease;
+}
+
+.net-man.band-0 { fill: color-mix(in srgb, var(--olive) 40%, transparent); }
+.net-man.band-1 { fill: color-mix(in srgb, var(--olive) 62%, transparent); }
+.net-man.band-2 { fill: var(--olive); }
+.net-man.band-3 { fill: var(--stamp-soft); }
+.net-man.band-4 { fill: var(--stamp); }
+
+/* Officers carry a different rating scale, so they are shown as open rings
+   rather than being coloured on the enlisted points bands. */
+.net-man.is-officer {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+.net-man.is-dim { opacity: 0.12; }
+
+.net-man.is-hit {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+
+.legend__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.legend__dot.band-1 { background: color-mix(in srgb, var(--olive) 62%, transparent); }
+.legend__dot.band-2 { background: var(--olive); }
+.legend__dot.band-3 { background: var(--stamp-soft); }
+.legend__dot.band-4 { background: var(--stamp); }
+
+.legend__sep {
+  width: 1px;
+  height: 0.9rem;
+  margin: 0 0.35rem;
+  background: var(--rule);
+}
+
 /* -------------------------------------------------- chain of command ---- */
 
 .chain {

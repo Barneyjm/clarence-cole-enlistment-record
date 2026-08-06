@@ -133,6 +133,19 @@
       "document": "morning-report-1945-08-20"
     },
     {
+      "id": "morning-report-1945-08-25",
+      "title": "Morning report, Battery C, 25 August 1945",
+      "citation": "WD AGO Form No. 1, Battery C, 153rd FA Bn, period ending 2400 hours, 25 August 1945. Signed Gordon F. Kerkhoff, Captain, FA.",
+      "note": "Supplied as a single image. Names the map the battery was working from: Marburg 1/100,000, Sheet R-3.",
+      "document": "morning-report-1945-08-25"
+    },
+    {
+      "id": "special-orders-66",
+      "title": "Special Orders 66, Hq 153rd Field Artillery Battalion",
+      "citation": "Headquarters, 153rd Field Artillery Battalion, APO 758, 24 August 1945. Microfilm frames 248–252. By order of the Commanding Officer; Donald Kerr, Major, F.A., Adjutant.",
+      "note": "Transfers 142 named officers and enlisted men to the 70th Infantry Division. The nearest thing in the film to a battalion roster, and the source of the network diagram."
+    },
+    {
       "id": "bulge-oob",
       "title": "Allied Army order of battle, Battle of the Bulge, 1 January 1945",
       "citation": "Combined Arms Research Library digital collections, US Army Command and General Staff College, item p15040coll6/4713.",
@@ -171,6 +184,16 @@
       "height": 2086,
       "caption": "The first card found that names him. Line one: Cole Clarence J, 36106875, Sgt — from duty to temporary duty at Treebeek, Holland. Five days' leave, four months after the war ended.",
       "alt": "A typed US Army morning report card for Battery C, 153rd FA Bn, dated 20 August 1945, listing Sergeant Clarence J. Cole and three other enlisted men going on temporary duty."
+    },
+    {
+      "id": "morning-report-1945-08-25",
+      "title": "Morning report, 25 August 1945",
+      "image": "/images/morning-report-1945-08-25.jpg",
+      "thumb": "/images/morning-report-1945-08-25-thumb.jpg",
+      "width": 1290,
+      "height": 2796,
+      "caption": "Five days later, three words against his name: \"Fr TD to dy\". Back from leave. The card names the sheet the battery was working from — Marburg 1/100,000, R-3 — and counts three officers and sixty-seven men still on the rolls.",
+      "alt": "A typed US Army morning report card for Battery C dated 25 August 1945, with a single entry for Sergeant Clarence J. Cole returning from temporary duty."
     },
     {
       "id": "separation-record",
@@ -351,6 +374,25 @@
       "summary": "The first morning report found that names him. The battery is in occupied Germany; Cole leaves on 19 August for five days at Treebeek, in Dutch Limburg, on a leave order from the 32nd Field Artillery Brigade. Three of his battery mates go to Lyons the same day, one of them Chmielewski, who had been carried to the ship's hospital crossing the Atlantic fifteen months before.",
       "verbatim": "Cole Clarence J 36106875 Sgt — Fr dy to TD Treebek, Holland per ltr Hq 32nd FA Brig (Lv Fur & Passes) dtd 16 Aug 45. Departed. Approx duration 5 days, as of 19 Aug 45.",
       "source": { "id": "morning-report-1945-08-20" }
+    },
+    {
+      "id": "1945-08-24-so66",
+      "date": "1945-08-24",
+      "kind": "admin",
+      "title": "Special Orders 66 — a hundred and forty-two men sent home",
+      "summary": "The battalion adjutant lists 142 officers and men by name, serial number, specialty and points, and transfers them to the 70th Infantry Division for return to the United States. Cole is not among them.",
+      "verbatim": "The following-named O & EM, this headquarters, are trfd in gr to the 70th Inf Div, APO 70, U.S. Army. Auth: VOCG XXIII Corps & 32d F.A. Brigade. EDCMR 26 August 1945.",
+      "source": { "id": "special-orders-66" }
+    },
+    {
+      "id": "1945-08-25-return",
+      "date": "1945-08-25",
+      "kind": "personnel",
+      "title": "Back from leave",
+      "locationText": "Herzhausen, Germany — Marburg 1/100,000, Sheet R-3",
+      "summary": "Three words against his name. The battery is down to three officers and sixty-seven men, from the hundred and eighteen who sailed.",
+      "verbatim": "Cole, Clarence J 36106875 Sgt — Fr TD to dy. Record of events: usual bivouac area duties.",
+      "source": { "id": "morning-report-1945-08-25" }
     },
     {
       "id": "1945-10-07-home",

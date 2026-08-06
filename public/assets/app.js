@@ -1,4 +1,5 @@
 import { drawMap } from "/assets/map.js";
+import { renderRosterGraph, wireGraphSearch } from "/assets/graph.js";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -24,6 +25,42 @@ async function main() {
   renderSources(data);
   wireFilters();
   renderMaps(data);
+  renderBattalionGraph(data);
+}
+
+/**
+ * The roster network is a nice-to-have: if it fails, the rest of the page must
+ * still stand, so it is fired separately and its errors stay local.
+ */
+async function renderBattalionGraph(data) {
+  const host = document.getElementById("roster-graph");
+  if (!host) return;
+  try {
+    const { svg, count, order } = await renderRosterGraph(host);
+    wireGraphSearch(
+      document.getElementById("graph-search"),
+      svg,
+      document.getElementById("graph-status"),
+    );
+
+    const note = document.getElementById("graph-note");
+    if (note) {
+      // Whether Cole is on the transfer list is the first thing to check, and
+      // the answer is worth stating explicitly either way.
+      const cole = data.subject.serial;
+      const onList = svg.querySelector(`.net-man[data-asn="${cole}"]`);
+      note.textContent = onList
+        ? `Sergeant Cole, ${cole}, is on this list.`
+        : `Sergeant Cole is not on this list. His ${cole} appears nowhere in the ` +
+          `${count} names, though at 80 points he was within the range of men being sent ` +
+          `home. He stayed with Battery C and sailed six weeks later. The order carries no ` +
+          `battery column, so it cannot be said from this document alone which batteries ` +
+          `these men came from.`;
+    }
+  } catch (err) {
+    console.error(err);
+    host.innerHTML = `<p class="map-empty">The roster network could not be loaded.</p>`;
+  }
 }
 
 function bindHeader({ meta, unit, subject }) {

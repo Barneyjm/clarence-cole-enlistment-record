@@ -48,9 +48,12 @@ public/                   everything served
   assets/app.js           renders the timeline from JSON
   assets/map.js           SVG maps, no tiles and no external libraries
   data/timeline.json      the record — the only file that needs editing
+  data/roster.json        generated from tools/build-roster.mjs — do not edit
   data/geo/theater.json   generated coastline, committed
+  assets/graph.js         the roster network: force layout, no libraries
   images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from Natural Earth data (CDN, cached)
+tools/build-roster.mjs    the Special Orders 66 transcription, and its build
 tools/check-data.mjs      validates timeline.json
 ```
 
@@ -87,6 +90,25 @@ npm run check:data
 It fails on structural errors (bad dates, unknown place keys, duplicate ids,
 uncited events) and warns on things worth a second look, such as strength
 figures that do not balance.
+
+## The roster network
+
+`public/data/roster.json` is generated — edit the transcription inside
+`tools/build-roster.mjs` and rerun `npm run build:roster`. The build refuses to
+emit if two men share a serial number.
+
+It holds Special Orders 66 (Hq 153rd FA Bn, 24 August 1945): 142 officers and
+men transferred to the 70th Infantry Division, with grade, name, serial number,
+MOS, ASR points, and physical profile. Serial numbers are the identity key.
+
+The network on the site joins each man to a hub for his MOS, because a shared
+specialty is the *only* relationship between two men the document actually
+records. Anything stronger — who served in which section, who crewed which gun —
+is not in this source and should not be inferred from it. Fields whose reading
+is uncertain carry an `uncertain` array naming them.
+
+A caveat that matters: the order has no battery column, so it cannot place any
+of these men in Battery C.
 
 ## Conventions
 
