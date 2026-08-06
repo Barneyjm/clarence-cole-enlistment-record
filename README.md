@@ -17,12 +17,14 @@ Transcribed from the film so far:
 
 | Frames | What | State |
 | --- | --- | --- |
-| 1–218 | Battery C morning reports — 397 daily cards, 2 May 1944 to 12 July 1945 | first pass, not second-read |
+| 1–218 | Battery C morning reports — 397 daily cards, 2 May 1944 to 12 July 1945 | first pass, not second-read; 8 frames missed inside the range |
 | 248–252 | Special Orders 66 — 142 men out, to the 70th Inf Div | verified |
 | 265–270 | Special Orders 226 — 241 men in, from the 29th Inf Div | first pass |
 
-Frames 219–247, 253–264 and 271–284 are still to do. They cover the occupation
-from mid-July 1945, the dissolution of the battery, and the sailing home.
+74 frames are still to do: **12, 158, 207, 209, 211, 213, 215, 217** — missed
+inside the morning-report range during a fast pass — and **219–247, 253–264,
+271–284**, which cover the occupation from mid-July 1945, the dissolution of the
+battery, and the sailing home.
 
 Four primary sources, all agreeing where they overlap:
 
