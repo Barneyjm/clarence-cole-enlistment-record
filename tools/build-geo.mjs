@@ -2,17 +2,20 @@
  * Builds public/data/geo/theater.json — a compact GeoJSON-ish coastline/border
  * file clipped to the North Atlantic + Western Europe box the site maps use.
  *
- * Source: world-atlas countries-50m (Natural Earth, public domain), vendored at
- * tools/countries-50m.src.json so the build stays offline.
+ * Source: world-atlas countries-50m (Natural Earth, public domain), fetched
+ * from the CDN on first run and cached under tools/.cache/ so repeat builds
+ * stay offline. The generated theater.json is committed, so the site itself
+ * never needs this script or the network.
  *
  *   node tools/build-geo.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = resolve(ROOT, "tools/countries-50m.src.json");
+const SRC_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
+const CACHE = resolve(ROOT, "tools/.cache/countries-50m.json");
 const OUT = resolve(ROOT, "public/data/geo/theater.json");
 
 // Wide enough to hold the New York -> Britain crossing and the drive into
@@ -112,8 +115,28 @@ function simplify(ring, tolerance) {
   return ring.filter((_, i) => keep[i]);
 }
 
-function main() {
-  const topo = JSON.parse(readFileSync(SRC, "utf8"));
+/** Read the cached source, downloading it once if it is not there yet. */
+async function loadSource() {
+  if (existsSync(CACHE)) return JSON.parse(readFileSync(CACHE, "utf8"));
+
+  console.log(`fetching ${SRC_URL}`);
+  const res = await fetch(SRC_URL);
+  if (!res.ok) {
+    throw new Error(
+      `could not fetch the basemap source (HTTP ${res.status}). ` +
+        `This script needs network access on first run; theater.json is committed, ` +
+        `so you only need it when changing the map window or tolerance.`,
+    );
+  }
+  const text = await res.text();
+  const topo = JSON.parse(text);
+  mkdirSync(dirname(CACHE), { recursive: true });
+  writeFileSync(CACHE, text);
+  return topo;
+}
+
+async function main() {
+  const topo = await loadSource();
   const { transform, arcs: rawArcs } = topo;
   const arcs = rawArcs.map((a) => decodeArc(a, transform));
 
@@ -149,4 +172,7 @@ function main() {
   );
 }
 
-main();
+main().catch((err) => {
+  console.error(err.message);
+  process.exit(1);
+});

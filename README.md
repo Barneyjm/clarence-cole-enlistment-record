@@ -50,7 +50,7 @@ public/                   everything served
   data/timeline.json      the record — the only file that needs editing
   data/geo/theater.json   generated coastline, committed
   images/                 scanned documents, web-sized plus thumbnails
-tools/build-geo.mjs       rebuilds theater.json from vendored Natural Earth data
+tools/build-geo.mjs       rebuilds theater.json from Natural Earth data (CDN, cached)
 tools/check-data.mjs      validates timeline.json
 ```
 
@@ -100,11 +100,20 @@ figures that do not balance.
 
 `theater.json` is derived from Natural Earth 1:50m country boundaries (public
 domain) via `world-atlas`, clipped to the North Atlantic and Western Europe,
-simplified, and committed so the site has no runtime dependencies. Rebuild with:
+simplified, and committed so the site has no runtime dependencies — no tiles,
+no map library, no external requests.
+
+You only need to rebuild it when changing the map window or the simplification
+tolerance:
 
 ```sh
 npm run build:geo
 ```
+
+The first run downloads the source from the jsDelivr CDN and caches it in
+`tools/.cache/` (gitignored); later runs are offline. The build is
+deterministic — the same source and settings reproduce the committed file
+byte for byte.
 
 ## Still to do
 
