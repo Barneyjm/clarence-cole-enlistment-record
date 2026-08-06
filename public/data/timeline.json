@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "title": "Sergeant Clarence Cole",
+    "subtitle": "Battery C, 153rd Field Artillery Battalion — European Theater of Operations, 1944–1945",
+    "status": "stub",
+    "note": "Seeded from the first pages of the battalion morning reports. The full transcription is in progress; events carrying \"pending\": true are placeholders for structure only and have not been verified against a source document.",
+    "updated": "2026-08-06"
+  },
+
+  "subject": {
+    "name": "Clarence Cole",
+    "rank": "Sergeant",
+    "unit": "Battery C, 153rd Field Artillery Battalion",
+    "serial": null,
+    "award": {
+      "name": "Bronze Star Medal",
+      "date": null,
+      "citation": null,
+      "note": "Award confirmed by the family. General Orders number and citation text still to be located."
+    },
+    "pending": ["serial", "date of induction", "date of separation", "hometown"]
+  },
+
+  "unit": {
+    "designation": "153rd Field Artillery Battalion",
+    "battery": "Battery C",
+    "branch": "Field Artillery",
+    "commander": {
+      "name": "Robert B. Ford",
+      "rank": "Captain",
+      "note": "Signs the Battery C morning reports from the May 1944 embarkation onward.",
+      "source": { "id": "morning-reports", "page": 1 }
+    },
+    "strengthAtEmbarkation": { "officers": 4, "enlisted": 118 },
+    "pending": ["parent division or corps artillery group", "weapon (105mm vs 155mm)", "campaign credits"]
+  },
+
+  "sources": [
+    {
+      "id": "morning-reports",
+      "title": "153rd Field Artillery Battalion — Company Morning Reports",
+      "citation": "WD AGO Form No. 1, Battery C, 153rd FA Bn. 284 microfilm frames, two report cards per frame.",
+      "note": "Primary source for every dated movement and personnel action on this site."
+    },
+    {
+      "id": "enlistment-record",
+      "title": "Enlistment record — Clarence Cole",
+      "citation": "To be added.",
+      "pending": true
+    }
+  ],
+
+  "places": {
+    "fort-slocum": {
+      "name": "Fort Slocum, New Rochelle",
+      "region": "New York",
+      "lat": 40.888,
+      "lon": -73.78
+    },
+    "nype": {
+      "name": "New York Port of Embarkation",
+      "region": "Brooklyn, New York",
+      "lat": 40.648,
+      "lon": -74.02
+    },
+    "atlantic": {
+      "name": "North Atlantic",
+      "region": "En route",
+      "lat": 45.0,
+      "lon": -35.0,
+      "approximate": true
+    }
+  },
+
+  "events": [
+    {
+      "id": "1944-05-02-embark",
+      "date": "1944-05-02",
+      "kind": "movement",
+      "title": "Boards the transport at the New York Port of Embarkation",
+      "place": "fort-slocum",
+      "summary": "Battery C leaves Fort Slocum by harbor boat and boards an Army transport at Terminal Pier before midnight.",
+      "verbatim": "Boarded harbor boat at Ft Slocum NY at 1930 hrs. Arrived at Terminal Pier NYPE. Boarded Army Transport at 2315 hrs.",
+      "strength": { "presentForDuty": 117, "absent": 1, "assigned": 118 },
+      "source": { "id": "morning-reports", "page": 1 }
+    },
+    {
+      "id": "1944-05-03-sail",
+      "date": "1944-05-03",
+      "kind": "movement",
+      "title": "Sails for Europe",
+      "place": "nype",
+      "summary": "The transport clears the New York Port of Embarkation at 0630. The destination is not named in the report.",
+      "verbatim": "Army Transport left NYPE for destination at 0630 hrs.",
+      "strength": { "presentForDuty": 117, "absent": 1, "assigned": 118 },
+      "source": { "id": "morning-reports", "page": 1 }
+    },
+    {
+      "id": "1944-05-09-hosp",
+      "date": "1944-05-09",
+      "kind": "personnel",
+      "title": "First man to the ship's hospital",
+      "place": "atlantic",
+      "summary": "A private is carried from duty to the ship's hospital mid-ocean — the first personnel change recorded since the battery left New York.",
+      "verbatim": "Fr dy to hosp LD ship hosp.",
+      "strength": { "presentForDuty": 116, "absent": 2, "assigned": 118 },
+      "source": { "id": "morning-reports", "page": 2 }
+    },
+    {
+      "id": "1944-05-10-routine",
+      "date": "1944-05-10",
+      "kind": "admin",
+      "title": "Routine transport duties",
+      "place": "atlantic",
+      "summary": "A second man goes to the ship's hospital. Otherwise the battery is standing watches and drills at sea.",
+      "verbatim": "Organization performing routine transport duties.",
+      "strength": { "presentForDuty": 115, "absent": 3, "assigned": 118 },
+      "source": { "id": "morning-reports", "page": 2 }
+    },
+    {
+      "id": "pending-arrival",
+      "date": "1944-05-15",
+      "kind": "movement",
+      "title": "Arrival in the United Kingdom",
+      "place": null,
+      "summary": "Port and date to be read from the morning reports.",
+      "pending": true
+    },
+    {
+      "id": "pending-continent",
+      "date": "1944-07-01",
+      "kind": "movement",
+      "title": "Crossing to the Continent",
+      "place": null,
+      "summary": "Beach or port of entry and date to be read from the morning reports.",
+      "pending": true
+    },
+    {
+      "id": "pending-bronze-star",
+      "date": "1945-01-01",
+      "kind": "award",
+      "title": "Bronze Star Medal",
+      "place": null,
+      "summary": "Date, general orders number and citation to be located.",
+      "pending": true
+    }
+  ],
+
+  "context": [
+    {
+      "date": "1944-06-06",
+      "title": "D-Day",
+      "summary": "Allied forces land on five Normandy beaches, opening the Western Front that the 153rd would eventually fight along."
+    },
+    {
+      "date": "1944-07-25",
+      "title": "Operation Cobra",
+      "summary": "The breakout from the Normandy hedgerows begins with a saturation bombing west of Saint-Lô."
+    },
+    {
+      "date": "1944-08-25",
+      "title": "Paris is liberated",
+      "summary": "The German garrison surrenders and the pursuit across France accelerates beyond its own supply lines."
+    },
+    {
+      "date": "1944-12-16",
+      "title": "The Ardennes offensive begins",
+      "summary": "Three German armies attack through the Ardennes in winter fog, opening the Battle of the Bulge."
+    },
+    {
+      "date": "1945-03-07",
+      "title": "The Rhine is crossed at Remagen",
+      "summary": "The Ludendorff Bridge is captured intact and the last natural barrier into Germany falls."
+    },
+    {
+      "date": "1945-05-08",
+      "title": "V-E Day",
+      "summary": "Germany's unconditional surrender takes effect and the war in Europe ends."
+    }
+  ]
+}

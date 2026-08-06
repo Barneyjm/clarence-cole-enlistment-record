@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sergeant Clarence Cole — 153rd Field Artillery Battalion</title>
+    <meta
+      name="description"
+      content="A documentary timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion, in the European Theater of Operations, 1944-1945."
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127894;</text></svg>"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#timeline">Skip to the timeline</a>
+
+    <header class="masthead">
+      <div class="masthead__inner">
+        <p class="eyebrow">A documentary record</p>
+        <h1>Sergeant Clarence Cole</h1>
+        <p class="masthead__sub" data-bind="subtitle"></p>
+        <dl class="masthead__facts">
+          <div><dt>Unit</dt><dd data-bind="unit"></dd></div>
+          <div><dt>Sailed</dt><dd>3 May 1944, New York</dd></div>
+          <div><dt>Decoration</dt><dd>Bronze Star Medal</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <nav class="sitenav" aria-label="Sections">
+      <ul>
+        <li><a href="#opening">The record</a></li>
+        <li><a href="#crossing">The crossing</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#theater">The theater</a></li>
+        <li><a href="#bronze-star">Bronze Star</a></li>
+        <li><a href="#method">Sources &amp; method</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="opening" class="prose">
+        <h2>The record</h2>
+        <p class="lede">
+          Every morning of the war, the clerk of Battery C filled out a card. Who was present,
+          who was sick, who had been promoted, and — in four or five handwritten lines under
+          <em>Record of Events</em> — where the battery was and what it had done.
+        </p>
+        <p>
+          Those cards survive: 284 microfilm frames covering the battalion from the pier at
+          Brooklyn to the end of the war in Europe. They are the spine of this site. Where a
+          claim here has a date attached, it comes from a card, and the card is cited.
+        </p>
+        <div class="callout" data-bind="status-note"></div>
+      </section>
+
+      <section id="crossing" class="mapsection">
+        <div class="mapsection__text prose">
+          <h2>The crossing</h2>
+          <p>
+            The battery left Fort Slocum by harbor boat on the evening of 2 May 1944, boarded
+            an Army transport at Terminal Pier at 2315, and cleared the New York Port of
+            Embarkation at 0630 the next morning. The morning report does not name the
+            destination — convoy destinations were not written on a form that travelled with
+            the ship.
+          </p>
+          <p>
+            One hundred eighteen men were on the roll. One hundred seventeen were present for
+            duty.
+          </p>
+        </div>
+        <figure class="mapfigure">
+          <div
+            class="map"
+            id="map-crossing"
+            data-west="-76"
+            data-east="10"
+            data-south="36"
+            data-north="58"
+            role="img"
+            aria-label="Map of the North Atlantic showing the route from New York toward Europe."
+          ></div>
+          <figcaption>
+            New York to the European Theater. The track is indicative — the transport's actual
+            convoy route is not recorded in the morning reports.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="timeline">
+        <div class="section-head prose">
+          <h2>Timeline</h2>
+          <p>
+            Battalion events in black, the wider war in grey. Each entry links back to the frame
+            it was read from.
+          </p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter the timeline">
+          <button type="button" class="chip is-on" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="movement">Movements</button>
+          <button type="button" class="chip" data-filter="personnel">Personnel</button>
+          <button type="button" class="chip" data-filter="combat">Combat</button>
+          <button type="button" class="chip" data-filter="award">Awards</button>
+          <button type="button" class="chip" data-filter="context">The wider war</button>
+        </div>
+
+        <ol class="timeline" id="timeline-list"></ol>
+      </section>
+
+      <section id="theater" class="mapsection mapsection--reverse">
+        <div class="mapsection__text prose">
+          <h2>The theater</h2>
+          <p>
+            A field artillery battalion moved constantly and rarely far — a few miles forward to
+            a new firing position, then a few miles more. Plotted against the campaign as a
+            whole, those small displacements trace the shape of the advance.
+          </p>
+          <p class="pending-note">
+            Positions will appear here as the morning reports are transcribed.
+          </p>
+        </div>
+        <figure class="mapfigure">
+          <div
+            class="map"
+            id="map-theater"
+            data-west="-6"
+            data-east="16"
+            data-south="43"
+            data-north="55"
+            role="img"
+            aria-label="Map of Western Europe showing the battalion's recorded positions."
+          ></div>
+          <figcaption>Western Europe, 1944–1945.</figcaption>
+        </figure>
+      </section>
+
+      <section id="bronze-star" class="prose">
+        <h2>The Bronze Star</h2>
+        <p>
+          Sergeant Cole was awarded the Bronze Star Medal. The medal was established in 1944 for
+          heroic or meritorious achievement in ground combat — it recognised, deliberately, the
+          soldier who did difficult work well under fire rather than the single spectacular act.
+        </p>
+        <div class="callout callout--open">
+          <h3>Open question</h3>
+          <p>
+            The general orders number, the date, and the citation text have not yet been located.
+            Awards are usually announced in the morning reports, so the citation may well be in
+            the frames still to be read.
+          </p>
+        </div>
+      </section>
+
+      <section id="method" class="prose">
+        <h2>Sources &amp; method</h2>
+        <div id="sources"></div>
+        <h3>How to read a morning report</h3>
+        <p>
+          The upper table lists changes in status — a man moving from duty to hospital, a
+          promotion, a transfer — each with a serial number, name, grade, and a code. The block
+          below it records the unit's strength that day. The handwritten paragraph in the middle,
+          <em>Record of Events</em>, is the only free text on the form, and it is where the war
+          shows up.
+        </p>
+        <h3>On uncertainty</h3>
+        <p>
+          These are carbon copies of pencil, photographed onto microfilm eighty years ago.
+          Where a reading is uncertain it is marked as such rather than smoothed over.
+        </p>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <p>
+        Built from the 153rd Field Artillery Battalion morning reports.
+        <span data-bind="updated"></span>
+      </p>
+    </footer>
+
+    <script type="module" src="/assets/app.js"></script>
+  </body>
+</html>
