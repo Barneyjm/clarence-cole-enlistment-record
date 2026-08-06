@@ -6,12 +6,12 @@
     "note": "The service record, the Bronze Star citation, Special Orders 66 and the battalion morning reports agree on every date where they overlap. Frames 1-218 of the morning reports are transcribed day by day; frames 219-284, covering the occupation from mid-July 1945 to the sailing home, are not yet done.",
     "updated": "2026-08-06",
     "transcription": {
-      "framesTranscribed": 246,
+      "framesTranscribed": 284,
       "framesTotal": 284,
-      "dailyReports": 438,
+      "dailyReports": 495,
       "firstDate": "1944-05-02",
-      "lastDate": "1945-08-20",
-      "note": "38 frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home."
+      "lastDate": "1945-10-10",
+      "note": "0 frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home."
     }
   },
   "subject": {
@@ -635,6 +635,14 @@
       "name": "Geismar, Hesse",
       "lat": 51.0006,
       "lon": 8.8036,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "herzhausen-hesse": {
+      "name": "Herzhausen, Hesse",
+      "lat": 51.0803,
+      "lon": 8.7842,
       "country": "Germany",
       "approximate": true,
       "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
@@ -2345,6 +2353,55 @@
       "generated": true
     },
     {
+      "id": "1945-07-06-mr",
+      "date": "1945-07-06",
+      "kind": "movement",
+      "title": "Moves to Herzhausen",
+      "place": "herzhausen-hesse",
+      "summary": "The battery moved 16 miles to a new position.",
+      "verbatim": "Unit at Herzhausen. Usual bivouac duties. (Map Marburg 1:100,000 Sheet R-3.) 2-page report. Unit moved to new bivouac area at Hershausen Distance traveled 16 miles Map: Marburg 1/100,000 Sheet R-3.",
+      "strength": {
+        "presentForDuty": 84,
+        "absent": 1,
+        "assigned": 85
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 214
+      },
+      "personnel": [
+        {
+          "name": "Kerkhoff, Gordon F.",
+          "grade": "Capt",
+          "serial": "0448367",
+          "action": "Assigned & joined fr Hq 153rd FA Bn APO 758 US Army per VOCO. Duty 1193. MCO 010, Race W, Comp AUS, ASR 85, Phy Cl A. New battery commander."
+        },
+        {
+          "name": "Ranalli, Wood, Seep, Shephard, Burkhart, O'Connell, Sebastian, Smolek",
+          "action": "Above 8 EM relieved attached & departed (re M/R 3 July 45)"
+        },
+        {
+          "name": "Wysochansky, Nicholas",
+          "grade": "Tec 4",
+          "serial": "33021630",
+          "action": "Assigned & joined. Race W, MCO 037, ASR 91, Phy Cl B"
+        },
+        {
+          "name": "Mays, Charles I",
+          "grade": "Pfc",
+          "serial": "6943?20",
+          "action": "Asgd & jd fr 893rd TD Bn APO 758 US Army per par 1 SO 85 Hq 893rd TD Bn APO 758 dtd 5 July 45 (EDCMR 6 July 45). Race W, MCO 245, ASR 97, Phy Cl B. MOS 345"
+        },
+        {
+          "name": "?appoccio, Joseph R",
+          "grade": "Pfc",
+          "serial": "32341806",
+          "action": "Asgd & jd fr 893rd TD Bn APO 758 US Army per par 1 SO 85 Hq 893rd TD Bn APO 758 dtd 5 July 45 (EDCMR 6 July 45). Race W, MOO 302, ASR 87, Phy Cl B. MOS 345"
+        }
+      ],
+      "generated": true
+    },
+    {
       "id": "1945-08-20-furlough",
       "date": "1945-08-20",
       "kind": "personnel",
@@ -2366,7 +2423,8 @@
       "verbatim": "The following-named O & EM, this headquarters, are trfd in gr to the 70th Inf Div, APO 70, U.S. Army. Auth: VOCG XXIII Corps & 32d F.A. Brigade. EDCMR 26 August 1945.",
       "source": {
         "id": "special-orders-66"
-      }
+      },
+      "place": "herzhausen-hesse"
     },
     {
       "id": "1945-08-25-return",
@@ -2378,7 +2436,98 @@
       "verbatim": "Cole, Clarence J 36106875 Sgt — Fr TD to dy. Record of events: usual bivouac area duties.",
       "source": {
         "id": "morning-report-1945-08-25"
-      }
+      },
+      "place": "herzhausen-hesse"
+    },
+    {
+      "id": "1945-08-26-mr",
+      "date": "1945-08-26",
+      "kind": "movement",
+      "title": "Moves to Geismar",
+      "place": "geismar-hesse",
+      "summary": "The battery moved 16 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area at Geismar Distance travelled 16 miles. Map: Marburg 1/100,000 Sheet R-3. Candidates 2 O — 2 EM, Essentials — 36 EM, Total Assigned 2 O — 38 EM.",
+      "source": {
+        "id": "morning-reports",
+        "page": 247
+      },
+      "personnel": [
+        {
+          "name": "Nesbitt, Dwain E (FA)",
+          "grade": "2d Lt",
+          "serial": "O2008362",
+          "action": "Trfd to 70th Inf Div APO 70 US Army per par 1 SO 66 Hq 153rd FA Bn APO 758 dtd 24 Aug 45 Departed (EDCMR 26 Aug 45). MOS 0600"
+        },
+        {
+          "name": "Johnstad, Harold S",
+          "grade": "Cpl",
+          "serial": "36250465",
+          "action": "Fr dy to TD Treebek Holland per Ltr Hq 32nd FA Brig (Lv Fur & Passes) dtd 16 Aug 45 Approx duration 5 days Departed as of 25 Aug 45"
+        },
+        {
+          "name": "Breager, Wilfred W",
+          "grade": "Cpl",
+          "serial": "36260397",
+          "action": "Fr dy to TD Treebek Holland per Ltr Hq 32nd FA Brig (Lv Fur & Passes) dtd 16 Aug 45 Approx duration 5 days Departed as of 25 Aug 45"
+        },
+        {
+          "name": "Simonin, Andy M",
+          "grade": "Cpl",
+          "serial": "37723822",
+          "action": "Fr dy to Fur (7 days) Switzerland as of 25 Aug 45"
+        },
+        {
+          "name": "Chavez, Fabian Jr",
+          "grade": "Cpl",
+          "serial": "18016795",
+          "action": "Fr TD to dy"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-09-18-mr",
+      "date": "1945-09-18",
+      "kind": "movement",
+      "title": "Displaces to a new position",
+      "summary": "The battery moved 175 miles to a new position.",
+      "verbatim": "Unit Moved To overnight stop at Kaiserslautern Distance Traveled 175 Mi. Candidates 4 O — 1 EM, Essentials — 106 EM, Total Assigned 4 O — 107 EM.",
+      "source": {
+        "id": "morning-reports",
+        "page": 273
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-09-19-mr",
+      "date": "1945-09-19",
+      "kind": "movement",
+      "title": "Displaces to a new position",
+      "verbatim": "Unit Left Kaiserlautern 1015 hrs Arrived at Metz Transit Camp at 1800 hrs Distanced Traveled 75 Mi. Candidates 4 O — 1 EM, Essentials — 106 EM, Total Assigned 4 O — 107 EM.",
+      "source": {
+        "id": "morning-reports",
+        "page": 273
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-09-20-mr",
+      "date": "1945-09-20",
+      "kind": "movement",
+      "title": "Displaces to a new position",
+      "summary": "The battery moved 90 miles to a new position.",
+      "verbatim": "Unit Left Metz Transit Camp at 0700 hrs Arrived Camp Pittsburg. at 1500 hrs Distance Traveled 90 Mi. Total Assigned 4 O — 107 EM.",
+      "source": {
+        "id": "morning-reports",
+        "page": 274
+      },
+      "personnel": [
+        {
+          "name": "O's & EM, not named",
+          "action": "ASR Changes of O's & EM copy Atchd"
+        }
+      ],
+      "generated": true
     },
     {
       "id": "1945-10-07-home",
@@ -2388,7 +2537,20 @@
       "summary": "Departs the theater after seventeen months overseas.",
       "source": {
         "id": "separation-record"
-      }
+      },
+      "verbatim": "Usual Assembly Area Duties. Candidates 4 O — 109 EM, Essentials —, Tot Asgd 4 O — 109 EM."
+    },
+    {
+      "id": "1945-10-10-mr",
+      "date": "1945-10-10",
+      "kind": "movement",
+      "title": "Displaces to a new position",
+      "verbatim": "Unit Arrived at Calas Staging Area at 1700hrs. Candidates 4 O — 109 EM, Essentials —, Tot Asgd 4 O — 109 EM.",
+      "source": {
+        "id": "morning-reports",
+        "page": 284
+      },
+      "generated": true
     },
     {
       "id": "1945-10-16-usa",
