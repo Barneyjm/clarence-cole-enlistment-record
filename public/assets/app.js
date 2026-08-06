@@ -1,5 +1,5 @@
 import { drawMap } from "/assets/map.js";
-import { renderRosterGraph, wireGraphSearch } from "/assets/graph.js";
+import { renderRosterGraph, wireGraphSearch, wireGraphDocFilter } from "/assets/graph.js";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -36,12 +36,34 @@ async function renderBattalionGraph(data) {
   const host = document.getElementById("roster-graph");
   if (!host) return;
   try {
-    const { svg, count, order } = await renderRosterGraph(host);
+    const { svg, count, pages } = await renderRosterGraph(host);
     wireGraphSearch(
       document.getElementById("graph-search"),
       svg,
       document.getElementById("graph-status"),
     );
+    wireGraphDocFilter([...document.querySelectorAll("[data-doc]")], svg);
+
+    // Say plainly which pages have been checked and which have not.
+    const prov = document.getElementById("graph-provenance");
+    if (prov) {
+      const real = pages.filter((p) => !p.duplicateOf);
+      const checked = real.filter((p) => p.verified).map((p) => p.page);
+      const unchecked = real.filter((p) => !p.verified).map((p) => p.page);
+      const h = document.createElement("h3");
+      h.textContent = "Provenance";
+      const p = document.createElement("p");
+      p.textContent =
+        "Every name here comes from a numbered page of the film, one file per page. " +
+        (checked.length ? `Pages ${checked.join(", ")} have been read twice and agree. ` : "") +
+        (unchecked.length
+          ? `Pages ${unchecked.join(", ")} — the whole September order — are a first pass. ` +
+            "It is long, and damaged at the edge of several frames; characters that cannot be " +
+            "read are left as question marks rather than guessed, and twenty-four men here have " +
+            "a serial number that is still incomplete."
+          : "");
+      prov.replaceChildren(h, p);
+    }
 
     const note = document.getElementById("graph-note");
     if (note) {
@@ -51,11 +73,11 @@ async function renderBattalionGraph(data) {
       const onList = svg.querySelector(`.net-man[data-asn="${cole}"]`);
       note.textContent = onList
         ? `Sergeant Cole, ${cole}, is on this list.`
-        : `Sergeant Cole is not on this list. His ${cole} appears nowhere in the ` +
-          `${count} names, though at 80 points he was within the range of men being sent ` +
-          `home. He stayed with Battery C and sailed six weeks later. The order carries no ` +
-          `battery column, so it cannot be said from this document alone which batteries ` +
-          `these men came from.`;
+        : `Sergeant Cole is on neither order. His ${cole} appears nowhere in the ${count} ` +
+          `names, though at 80 points he was inside the band of men being sent home in ` +
+          `August. He stayed with Battery C and sailed six weeks later. Neither order ` +
+          `carries a battery column, so which batteries these men served in cannot be told ` +
+          `from these documents alone.`;
     }
   } catch (err) {
     console.error(err);
