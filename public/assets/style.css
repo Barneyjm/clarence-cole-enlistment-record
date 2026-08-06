@@ -1,0 +1,1008 @@
+/* Sergeant Clarence Cole — a documentary record.
+   Palette borrowed from the source material: microfilm greys, manila, and the
+   dull red of an archival stamp. */
+
+:root {
+  --ink: #1b1815;
+  --ink-soft: #4a443d;
+  --ink-faint: #7c7469;
+  --paper: #f3efe6;
+  --paper-warm: #e8e1d3;
+  --rule: #d3cabb;
+  --stamp: #8c2f22;
+  --stamp-soft: #b8563f;
+  --olive: #4a5240;
+  --shadow: 0 1px 2px rgb(27 24 21 / 6%), 0 8px 24px rgb(27 24 21 / 6%);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --measure: 34rem;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece6da;
+    --ink-soft: #b4aa9a;
+    --ink-faint: #8a8073;
+    --paper: #16151300;
+    --paper: #171614;
+    --paper-warm: #201e1a;
+    --rule: #35322c;
+    --stamp: #c96a52;
+    --stamp-soft: #a4503c;
+    --olive: #9aa48c;
+    --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 8px 24px rgb(0 0 0 / 30%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.075rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--sans);
+  font-weight: 620;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: var(--stamp);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  background: var(--paper);
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  background:
+    linear-gradient(180deg, transparent 60%, rgb(140 47 34 / 3%) 100%),
+    var(--paper-warm);
+  padding: clamp(3.5rem, 11vh, 7rem) var(--gutter) clamp(2.5rem, 6vh, 4rem);
+}
+
+.masthead__inner {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 1.6rem + 4vw, 4.6rem);
+  letter-spacing: -0.03em;
+}
+
+.masthead__sub {
+  margin: 1rem 0 0;
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.masthead__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(1.5rem, 5vw, 3.5rem);
+  margin: clamp(2rem, 5vh, 3rem) 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.masthead__facts div {
+  margin: 0 0 0.75rem;
+}
+
+.masthead__facts dt {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.masthead__facts dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.98rem;
+}
+
+/* -------------------------------------------------------------------- nav */
+
+.sitenav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.sitenav ul {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0.85rem var(--gutter);
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.sitenav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.sitenav a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.sitenav a:hover {
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ prose */
+
+main {
+  display: block;
+}
+
+section {
+  padding: clamp(3rem, 9vh, 6rem) var(--gutter);
+  border-bottom: 1px solid var(--rule);
+}
+
+.prose {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.prose > * {
+  max-width: var(--measure);
+}
+
+.prose h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem);
+}
+
+.prose h3 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.prose p {
+  margin: 0 0 1.15rem;
+}
+
+.lede {
+  font-size: clamp(1.1rem, 1.02rem + 0.5vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.pending-note {
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+.callout {
+  max-width: var(--measure);
+  margin-top: 2rem;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--stamp-soft);
+  background: var(--paper-warm);
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+}
+
+.callout h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.callout p {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------- map layout */
+
+.mapsection {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  max-width: 78rem;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 60rem) {
+  .mapsection {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  }
+
+  /* Text on the right, map on the left — the map keeps the wide column. */
+  .mapsection--reverse {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  }
+
+  .mapsection--reverse .mapsection__text {
+    order: 2;
+  }
+}
+
+.mapsection__text {
+  max-width: var(--measure);
+}
+
+.mapfigure {
+  margin: 0;
+  min-width: 0;
+}
+
+.map {
+  position: relative;
+  /* Replaced at runtime with the projected window's true ratio. */
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  box-shadow: var(--shadow);
+}
+
+.map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mapfigure figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.land {
+  fill: color-mix(in srgb, var(--olive) 34%, transparent);
+  stroke: color-mix(in srgb, var(--ink) 22%, transparent);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.route {
+  fill: none;
+  stroke: var(--stamp);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.pin {
+  fill: var(--stamp);
+  stroke: var(--paper);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+/* font-size and stroke-width are set as attributes in map.js, in viewBox units. */
+.pin-label {
+  font-family: var(--sans);
+  fill: var(--ink-soft);
+  paint-order: stroke;
+  stroke: var(--paper-warm);
+  stroke-linejoin: round;
+}
+
+.map-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end center;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-family: var(--sans);
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------- timeline */
+
+#timeline {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.section-head {
+  margin-bottom: 2rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.chip {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+
+.chip.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0 0 0 clamp(1.25rem, 4vw, 2.5rem);
+  list-style: none;
+  border-left: 1px solid var(--rule);
+}
+
+.entry {
+  position: relative;
+  padding: 0 0 2.5rem;
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(1.25rem, 4vw, 2.5rem) - 4.5px);
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--stamp);
+}
+
+.entry--context::before {
+  background: var(--paper);
+  border: 1px solid var(--ink-faint);
+}
+
+.entry--pending::before {
+  background: var(--paper);
+  border: 1px dashed var(--ink-faint);
+}
+
+.entry__date {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.entry--context .entry__date,
+.entry--pending .entry__date {
+  color: var(--ink-faint);
+}
+
+.entry__title {
+  margin: 0.35rem 0 0.5rem;
+  font-family: var(--sans);
+  font-size: 1.12rem;
+  font-weight: 620;
+}
+
+.entry--context .entry__title {
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.entry__body {
+  max-width: var(--measure);
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.entry__note {
+  max-width: var(--measure);
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+.entry__verbatim {
+  max-width: var(--measure);
+  margin: 0.9rem 0 0;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--rule);
+  background: var(--paper-warm);
+  font-family: var(--mono);
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.entry__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+
+.tag {
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+}
+
+.tag--pending {
+  border-style: dashed;
+  color: var(--stamp-soft);
+}
+
+/* ---------------------------------------------------- the service record */
+
+#soldier,
+#campaigns,
+#bronze-star,
+#documents {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.record {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.record > div {
+  padding: 0.85rem 1rem 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.record dt {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.record dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.98rem;
+}
+
+/* ------------------------------------------------------------- campaigns */
+
+.campaigns {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1.25rem 0;
+}
+
+.campaigns__band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--stamp) 9%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+  pointer-events: none;
+}
+
+/* Label and dates sit above a full-width track, so the track shares its
+   coordinate space with the citation band overlaid on the whole chart. */
+.campaign {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.3rem 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0 0.9rem;
+}
+
+.campaign__name {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.campaign__track {
+  position: relative;
+  display: block;
+  grid-column: 1 / -1;
+  height: 0.7rem;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  border-radius: 2px;
+}
+
+.campaign__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--olive);
+  border-radius: 2px;
+}
+
+.campaign__dates {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: 0 0 2rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+.legend__swatch {
+  width: 1.6rem;
+  height: 0.7rem;
+  border-radius: 2px;
+}
+
+.legend__swatch--bar {
+  background: var(--olive);
+}
+
+.legend__swatch--band {
+  margin-left: 0.8rem;
+  background: color-mix(in srgb, var(--stamp) 9%, transparent);
+  border-inline: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+}
+
+.ribbons {
+  margin: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.ribbons li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.ribbons span {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------ roster network -- */
+
+#battalion {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.graph-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.graph-search {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.graph-search span {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.graph-search input {
+  min-width: 15rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.graph-status {
+  margin: 0 0 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.graphframe {
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.netgraph {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+}
+
+.net-links line {
+  stroke: color-mix(in srgb, var(--ink) 16%, transparent);
+  stroke-width: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.net-hub circle {
+  fill: var(--paper);
+  stroke: var(--ink-faint);
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.net-hub text {
+  font-family: var(--mono);
+  font-size: 7px;
+  text-anchor: middle;
+  fill: var(--ink-soft);
+}
+
+.net-man {
+  stroke: var(--paper-warm);
+  stroke-width: 0.9;
+  vector-effect: non-scaling-stroke;
+  cursor: help;
+  transition: opacity 120ms ease;
+}
+
+.net-man.band-0 { fill: color-mix(in srgb, var(--olive) 40%, transparent); }
+.net-man.band-1 { fill: color-mix(in srgb, var(--olive) 62%, transparent); }
+.net-man.band-2 { fill: var(--olive); }
+.net-man.band-3 { fill: var(--stamp-soft); }
+.net-man.band-4 { fill: var(--stamp); }
+
+/* Officers carry a different rating scale, so they are shown as open rings
+   rather than being coloured on the enlisted points bands. */
+.net-man.is-officer {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+.net-man.is-dim { opacity: 0.12; }
+
+.net-man.is-hit {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+
+.legend__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.legend__dot.band-1 { background: color-mix(in srgb, var(--olive) 62%, transparent); }
+.legend__dot.band-2 { background: var(--olive); }
+.legend__dot.band-3 { background: var(--stamp-soft); }
+.legend__dot.band-4 { background: var(--stamp); }
+
+.legend__sep {
+  width: 1px;
+  height: 0.9rem;
+  margin: 0 0.35rem;
+  background: var(--rule);
+}
+
+/* -------------------------------------------------- chain of command ---- */
+
+.chain {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.chain__head {
+  margin: 0 0 0.9rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.chain__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+
+.chain__list li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+}
+
+/* Each rung is indented one step further than the last. */
+.chain__list li + li {
+  margin-left: 0.85rem;
+}
+
+.chain__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+.chain__list li:last-child {
+  font-weight: 620;
+  color: var(--stamp);
+}
+
+.chain__note {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+/* ----------------------------------------------------------- bronze star */
+
+.award {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 58rem) {
+  .award {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  /* Only pin the photo where there is a second column for the text to scroll
+     past. In one column it would sit under the text instead of beside it. */
+  .award__photo {
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+.award__photo {
+  margin: 0;
+}
+
+.award__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  filter: sepia(6%);
+}
+
+.award__photo figcaption,
+.plate figcaption {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.award__text > .prose > * {
+  max-width: var(--measure);
+}
+
+.citation {
+  max-width: var(--measure);
+  margin: 2rem 0;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.citation__head {
+  margin: 0 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.citation p {
+  margin: 0;
+}
+
+.citation footer {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+/* -------------------------------------------------------------- gallery */
+
+.gallery {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.plate {
+  margin: 0;
+}
+
+.plate__link {
+  display: block;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  box-shadow: var(--shadow);
+}
+
+.plate__link:hover {
+  border-color: var(--stamp-soft);
+}
+
+.plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.plate figcaption strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- sources */
+
+.source {
+  max-width: var(--measure);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.source h4 {
+  margin: 0 0 0.3rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 620;
+}
+
+.source p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.colophon {
+  padding: 2.5rem var(--gutter) 4rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.colophon p {
+  max-width: 62rem;
+  margin: 0 auto;
+}
