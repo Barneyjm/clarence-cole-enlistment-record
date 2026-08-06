@@ -64,24 +64,44 @@
     "designation": "153rd Field Artillery Battalion",
     "battery": "Battery C",
     "branch": "Field Artillery",
-    "commander": {
-      "name": "Robert B. Ford",
-      "rank": "Captain",
-      "note": "Signs the Battery C morning reports from the May 1944 embarkation onward.",
-      "source": { "id": "morning-reports", "page": 1 }
-    },
+    "commanders": [
+      {
+        "name": "Robert B. Ford",
+        "rank": "Captain",
+        "note": "Signs the Battery C morning reports from the May 1944 embarkation onward.",
+        "source": { "id": "morning-reports", "page": 1 }
+      },
+      {
+        "name": "Gordon F. Kerkhoff",
+        "rank": "Captain",
+        "note": "Signing the battery's morning reports by August 1945. When command changed is not yet known.",
+        "source": { "id": "morning-report-1945-08-20" }
+      }
+    ],
     "strengthAtEmbarkation": { "officers": 4, "enlisted": 118 },
-    "attachment": {
-      "asOf": "1945-01-01",
-      "group": "79th Field Artillery Group",
-      "corps": "XVIII Airborne Corps",
-      "army": "First US Army",
-      "armyGroup": "12th US Army Group",
-      "sisterBattalions": ["551st Field Artillery Battalion", "552nd Field Artillery Battalion"],
-      "note": "A single-date snapshot. Non-divisional artillery battalions were reassigned between groups and corps constantly, so this is where the battalion sat on 1 January 1945, not where it sat for the whole war.",
-      "source": { "id": "bulge-oob" }
-    },
-    "pending": ["weapon (105mm vs 155mm)", "attachments on dates other than 1 January 1945"]
+    "attachments": [
+      {
+        "asOf": "1945-01-01",
+        "label": "In combat, the Ardennes",
+        "chain": [
+          "12th US Army Group",
+          "First US Army",
+          "XVIII Airborne Corps",
+          "79th Field Artillery Group"
+        ],
+        "sisterBattalions": ["551st Field Artillery Battalion", "552nd Field Artillery Battalion"],
+        "note": "A single-date snapshot. Non-divisional artillery battalions were reassigned between groups and corps constantly, so this is where the battalion sat on 1 January 1945, not where it sat for the whole war.",
+        "source": { "id": "bulge-oob" }
+      },
+      {
+        "asOf": "1945-08-20",
+        "label": "In occupation, Germany",
+        "chain": ["32nd Field Artillery Brigade"],
+        "note": "Inferred rather than stated: the battery's leave and furlough orders that month are issued by Headquarters, 32nd Field Artillery Brigade, which puts Battery C under that brigade for administration.",
+        "source": { "id": "morning-report-1945-08-20" }
+      }
+    ],
+    "pending": ["weapon (105mm vs 155mm)", "attachments on dates other than these two"]
   },
 
   "sources": [
@@ -104,6 +124,13 @@
       "citation": "War Department citation, Sergeant Clarence J. Cole, 36106875, Battery C, 153d Field Artillery Battalion.",
       "note": "Family papers. An embossed War Department seal is struck at the foot; the headquarters named around its ring is only partly legible.",
       "document": "citation"
+    },
+    {
+      "id": "morning-report-1945-08-20",
+      "title": "Morning report, Battery C, 20 August 1945",
+      "citation": "WD AGO Form No. 1, Battery C, 153rd FA Bn, period ending 2400 hours, 20 August 1945. Signed Gordon F. Kerkhoff, Captain, FA.",
+      "note": "Supplied as a single image. Its frame number within the microfilm run has not been identified. This is the first card found that names Sergeant Cole.",
+      "document": "morning-report-1945-08-20"
     },
     {
       "id": "bulge-oob",
@@ -134,6 +161,16 @@
       "height": 2121,
       "caption": "The typed citation, folded in thirds for eighty years, with the War Department seal embossed at the foot.",
       "alt": "A typed citation on aged paper headed CITATION, AWARD OF BRONZE STAR MEDAL, with an embossed War Department seal near the bottom."
+    },
+    {
+      "id": "morning-report-1945-08-20",
+      "title": "Morning report, 20 August 1945",
+      "image": "/images/morning-report-1945-08-20.jpg",
+      "thumb": "/images/morning-report-1945-08-20-thumb.jpg",
+      "width": 1050,
+      "height": 2086,
+      "caption": "The first card found that names him. Line one: Cole Clarence J, 36106875, Sgt — from duty to temporary duty at Treebeek, Holland. Five days' leave, four months after the war ended.",
+      "alt": "A typed US Army morning report card for Battery C, 153rd FA Bn, dated 20 August 1945, listing Sergeant Clarence J. Cole and three other enlisted men going on temporary duty."
     },
     {
       "id": "separation-record",
@@ -181,6 +218,13 @@
       "region": "Pennsylvania",
       "lat": 40.435,
       "lon": -76.585
+    },
+    "treebeek": {
+      "name": "Treebeek, Brunssum",
+      "region": "Limburg, Netherlands",
+      "lat": 50.94,
+      "lon": 5.97,
+      "approximate": true
     }
   },
 
@@ -231,12 +275,16 @@
       "id": "1944-05-09-hosp",
       "date": "1944-05-09",
       "kind": "personnel",
-      "title": "First man to the ship's hospital",
+      "title": "Private Chmielewski to the ship's hospital",
       "place": "atlantic",
-      "summary": "A private is carried from duty to the ship's hospital mid-ocean — the first personnel change recorded since the battery left New York.",
-      "verbatim": "Fr dy to hosp LD ship hosp.",
+      "summary": "Chester S. Chmielewski, 35761991, is carried from duty to the ship's hospital mid-ocean — the first personnel change recorded since the battery left New York. He was still with Battery C fifteen months later, a Pfc by then, leaving on furlough for Lyons the same week Cole went to Holland.",
+      "verbatim": "Chmielewski, Pvt — Fr dy to hosp LD ship hosp.",
       "strength": { "presentForDuty": 116, "absent": 2, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 2 }
+      "source": { "id": "morning-reports", "page": 2 },
+      "corroboration": {
+        "id": "morning-report-1945-08-20",
+        "note": "Full name and serial number read from the August 1945 card, which lists him again."
+      }
     },
     {
       "id": "1944-05-10-routine",
@@ -292,6 +340,17 @@
       "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
       "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
       "source": { "id": "bronze-star-citation" }
+    },
+    {
+      "id": "1945-08-20-furlough",
+      "date": "1945-08-20",
+      "kind": "personnel",
+      "title": "Five days' leave in Holland",
+      "place": "treebeek",
+      "locationText": "Herzhausen, Germany — map reference wG8188, Nord de Guerre grid",
+      "summary": "The first morning report found that names him. The battery is in occupied Germany; Cole leaves on 19 August for five days at Treebeek, in Dutch Limburg, on a leave order from the 32nd Field Artillery Brigade. Three of his battery mates go to Lyons the same day, one of them Chmielewski, who had been carried to the ship's hospital crossing the Atlantic fifteen months before.",
+      "verbatim": "Cole Clarence J 36106875 Sgt — Fr dy to TD Treebek, Holland per ltr Hq 32nd FA Brig (Lv Fur & Passes) dtd 16 Aug 45. Departed. Approx duration 5 days, as of 19 Aug 45.",
+      "source": { "id": "morning-report-1945-08-20" }
     },
     {
       "id": "1945-10-07-home",

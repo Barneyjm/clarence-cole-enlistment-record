@@ -138,30 +138,32 @@ function renderCampaigns({ campaigns, events }) {
   host.replaceChildren(frag);
 }
 
-/** Chain of command on the one date we can source it for. */
+/** Chain of command on each date we can source one for. */
 function renderAttachment({ unit }) {
   const host = document.getElementById("attachment");
-  const a = unit.attachment;
-  if (!host || !a) return;
+  if (!host || !unit.attachments?.length) return;
 
-  const head = document.createElement("p");
-  head.className = "chain__head";
-  head.textContent = `Chain of command, ${formatDate(a.asOf)}`;
+  const frag = document.createDocumentFragment();
+  for (const a of unit.attachments) {
+    const head = document.createElement("p");
+    head.className = "chain__head";
+    head.textContent = `${a.label} — ${formatDate(a.asOf)}`;
 
-  const list = document.createElement("ol");
-  list.className = "chain__list";
-  for (const step of [a.armyGroup, a.army, a.corps, a.group, `${unit.battery}, ${unit.designation}`]) {
-    if (!step) continue;
-    const li = document.createElement("li");
-    li.textContent = step;
-    list.append(li);
+    const list = document.createElement("ol");
+    list.className = "chain__list";
+    for (const step of [...a.chain, `${unit.battery}, ${unit.designation}`]) {
+      const li = document.createElement("li");
+      li.textContent = step;
+      list.append(li);
+    }
+
+    const note = document.createElement("p");
+    note.className = "chain__note";
+    note.textContent = a.note;
+
+    frag.append(head, list, note);
   }
-
-  const note = document.createElement("p");
-  note.className = "chain__note";
-  note.textContent = a.note;
-
-  host.replaceChildren(head, list, note);
+  host.replaceChildren(frag);
 }
 
 function renderDecorations({ decorations }) {
@@ -288,6 +290,8 @@ function metaNode(entry) {
   const bits = [];
   if (entry.pending) bits.push(tag("not yet verified", "tag--pending"));
   if (entry.dateNote) bits.push(tag("date inferred", "tag--pending"));
+  // Where the battery was, when that differs from where the event happened.
+  if (entry.locationText) bits.push(text(entry.locationText));
   if (entry.place) bits.push(text(entry.place.name));
   if (entry.strength) {
     bits.push(
@@ -387,8 +391,11 @@ function renderMaps(data) {
 
   const theater = document.getElementById("map-theater");
   if (theater) {
+    // Only where the battery itself was. A man's leave destination is not a
+    // unit position and would read as one on a map.
+    const POSITION_KINDS = new Set(["movement", "combat"]);
     const plotted = data.events
-      .filter((e) => e.place && places[e.place] && !e.pending)
+      .filter((e) => POSITION_KINDS.has(e.kind) && e.place && places[e.place] && !e.pending)
       .map((e) => places[e.place])
       .filter((p) => p.lon > -6 && p.lon < 16 && p.lat > 43 && p.lat < 55);
 

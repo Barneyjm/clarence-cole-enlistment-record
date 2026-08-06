@@ -54,8 +54,9 @@ for (const event of data.events ?? []) {
 
   if (event.source) {
     if (!sourceIds.has(event.source.id)) fail(`${at}: source "${event.source.id}" is not defined`);
-    // Morning reports are cited by microfilm frame. Single-sheet documents
-    // (the discharge, the citation) have no frame and omit the field.
+    // Citations into the microfilm run are by frame. Single-sheet documents —
+    // the discharge, the citation, loose cards supplied as images — have no
+    // frame and are cited by their own source id instead.
     if (event.source.id === "morning-reports" && !Number.isInteger(event.source.page)) {
       fail(`${at}: morning-reports citations need an integer frame number`);
     }
