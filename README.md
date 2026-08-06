@@ -91,24 +91,40 @@ It fails on structural errors (bad dates, unknown place keys, duplicate ids,
 uncited events) and warns on things worth a second look, such as strength
 figures that do not balance.
 
-## The roster network
+## Transcriptions
 
-`public/data/roster.json` is generated — edit the transcription inside
-`tools/build-roster.mjs` and rerun `npm run build:roster`. The build refuses to
-emit if two men share a serial number.
+Everything read off the film lives in `transcriptions/`, **one file per PDF
+page**, named for the page: `p248.md` is page 248. See
+[`transcriptions/README.md`](transcriptions/README.md) for the file format and
+the row conventions.
 
-It holds Special Orders 66 (Hq 153rd FA Bn, 24 August 1945): 142 officers and
-men transferred to the 70th Infantry Division, with grade, name, serial number,
-MOS, ASR points, and physical profile. Serial numbers are the identity key.
+```sh
+node tools/deskew-page.mjs 248   # straightened, banded images to read from
+npm run build:roster             # transcriptions/*.md -> public/data/roster.json
+```
+
+`public/data/roster.json` is generated. Never edit it by hand.
+
+The build fails on a filename that disagrees with its `page`, a row with no
+serial number, or two pages recording the same serial differently — that last
+one is the point of splitting by page, since the film photographs some pages
+twice and the copies can then be checked against each other.
+
+Two documents are transcribed so far:
+
+| Document | Date | Men | Direction | Verified |
+| --- | --- | --- | --- | --- |
+| SO 66, Hq 153rd FA Bn | 24 Aug 1945 | 142 | out, to the 70th Inf Div | yes |
+| SO 226, Hq 29th Inf Div | 11 Sept 1945 | 241 | in, from the 29th Inf Div | first pass |
 
 The network on the site joins each man to a hub for his MOS, because a shared
-specialty is the *only* relationship between two men the document actually
-records. Anything stronger — who served in which section, who crewed which gun —
-is not in this source and should not be inferred from it. Fields whose reading
-is uncertain carry an `uncertain` array naming them.
+specialty is the *only* relationship between two men these documents actually
+record. Anything stronger — who served in which section, who crewed which gun —
+is not in the source and must not be inferred from it.
 
-A caveat that matters: the order has no battery column, so it cannot place any
-of these men in Battery C.
+Two caveats that matter: neither order has a battery column, so no man on either
+can be placed in Battery C from these documents alone; and 24 men on SO 226 have
+serial numbers that are not fully legible, carried as `?` characters.
 
 ## Conventions
 
