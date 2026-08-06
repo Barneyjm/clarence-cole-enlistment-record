@@ -744,12 +744,17 @@ section {
     grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
     align-items: start;
   }
+
+  /* Only pin the photo where there is a second column for the text to scroll
+     past. In one column it would sit under the text instead of beside it. */
+  .award__photo {
+    position: sticky;
+    top: 5rem;
+  }
 }
 
 .award__photo {
   margin: 0;
-  position: sticky;
-  top: 5rem;
 }
 
 .award__photo img {
