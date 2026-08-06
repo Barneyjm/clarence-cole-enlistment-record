@@ -15,15 +15,20 @@ async function main() {
   const data = await res.json();
 
   bindHeader(data);
+  renderRecord(data);
   renderTimeline(data);
+  renderCampaigns(data);
+  renderDecorations(data);
+  renderGallery(data);
   renderSources(data);
   wireFilters();
   renderMaps(data);
 }
 
-function bindHeader({ meta, unit }) {
+function bindHeader({ meta, unit, subject }) {
   set("subtitle", meta.subtitle);
   set("unit", `${unit.battery}, ${unit.designation}`);
+  set("serial", subject.serial ?? "—");
   set("updated", meta.updated ? `Last updated ${formatDate(meta.updated)}.` : "");
   const note = document.querySelector('[data-bind="status-note"]');
   if (note && meta.note) note.textContent = meta.note;
@@ -34,12 +39,169 @@ function set(name, value) {
   if (node) node.textContent = value ?? "";
 }
 
+/** The discharge form, rendered as the definition list it basically is. */
+function renderRecord({ subject }) {
+  const host = document.getElementById("record");
+  if (!host) return;
+
+  const d = subject.description ?? {};
+  const rows = [
+    ["Name", subject.name],
+    ["Serial number", subject.serial],
+    ["Grade", `${subject.rank}, ${subject.branch}`],
+    ["Organization", subject.unit],
+    ["Military occupation", subject.mos],
+    ["Born", `${formatDate(subject.born)}, ${subject.birthplace}`],
+    ["Civilian occupation", subject.civilianOccupation],
+    ["Home", subject.homeAddress],
+    [
+      "Entered active service",
+      `${formatDate(subject.enteredActiveService.date)}, ${subject.enteredActiveService.place}`,
+    ],
+    ["Foreign service", subject.lengthOfService?.foreign],
+    ["Continental service", subject.lengthOfService?.continental],
+    ["Weapons qualification", subject.weaponsQualification],
+    ["Wounds received in action", subject.woundsReceived],
+    ["Separated", `${formatDate(subject.separated.date)}, ${subject.separated.place}`],
+    ["Description", [d.height, d.weight, `${d.eyes} eyes`, `${d.hair} hair`].filter(Boolean).join(" · ")],
+  ].filter(([, value]) => value);
+
+  host.replaceChildren(
+    ...rows.map(([label, value]) => {
+      const wrap = document.createElement("div");
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      wrap.append(dt, dd);
+      return wrap;
+    }),
+  );
+}
+
+/**
+ * Campaign bars on a shared time axis, with the Bronze Star citation period
+ * drawn behind them so the two can be read against each other.
+ */
+function renderCampaigns({ campaigns, events }) {
+  const host = document.getElementById("campaigns-chart");
+  if (!host || !campaigns?.length) return;
+
+  const toTime = (iso) => Date.parse(`${iso}T00:00:00Z`);
+  const starts = campaigns.map((c) => toTime(c.start));
+  const ends = campaigns.map((c) => toTime(c.end));
+  const min = Math.min(...starts);
+  const max = Math.max(...ends);
+  const span = max - min;
+  const pct = (t) => ((t - min) / span) * 100;
+
+  // The cited period comes from the citation event pair in the timeline.
+  const cited = events.find((e) => e.id === "1944-06-30-combat");
+  const citedEnd = events.find((e) => e.id === "1945-03-15-cited-end");
+
+  const frag = document.createDocumentFragment();
+
+  if (cited && citedEnd) {
+    const band = document.createElement("div");
+    band.className = "campaigns__band";
+    band.style.left = `${pct(toTime(cited.date))}%`;
+    band.style.width = `${pct(toTime(citedEnd.date)) - pct(toTime(cited.date))}%`;
+    band.title = "Period named in the Bronze Star citation";
+    frag.append(band);
+  }
+
+  for (const campaign of campaigns) {
+    const row = document.createElement("div");
+    row.className = "campaign";
+
+    const name = document.createElement("span");
+    name.className = "campaign__name";
+    name.textContent = campaign.name;
+
+    const track = document.createElement("span");
+    track.className = "campaign__track";
+    const bar = document.createElement("span");
+    bar.className = "campaign__bar";
+    bar.style.left = `${pct(toTime(campaign.start))}%`;
+    bar.style.width = `${Math.max(1.2, pct(toTime(campaign.end)) - pct(toTime(campaign.start)))}%`;
+    track.append(bar);
+
+    const dates = document.createElement("span");
+    dates.className = "campaign__dates";
+    dates.textContent = `${formatDate(campaign.start)} – ${formatDate(campaign.end)}`;
+
+    row.append(name, track, dates);
+    frag.append(row);
+  }
+
+  host.replaceChildren(frag);
+}
+
+function renderDecorations({ decorations }) {
+  const host = document.getElementById("decorations");
+  if (!host || !decorations?.length) return;
+  host.replaceChildren(
+    ...decorations.map((dec) => {
+      const li = document.createElement("li");
+      const name = document.createElement("strong");
+      name.textContent = dec.name;
+      li.append(name);
+      if (dec.note) {
+        const note = document.createElement("span");
+        note.textContent = dec.note;
+        li.append(note);
+      }
+      return li;
+    }),
+  );
+}
+
+function renderGallery({ documents }) {
+  const host = document.getElementById("gallery");
+  if (!host || !documents?.length) return;
+  host.replaceChildren(
+    ...documents.map((doc) => {
+      const fig = document.createElement("figure");
+      fig.className = "plate";
+
+      const link = document.createElement("a");
+      link.href = doc.image;
+      link.className = "plate__link";
+
+      const img = document.createElement("img");
+      img.src = doc.thumb ?? doc.image;
+      img.alt = doc.alt ?? doc.title;
+      img.loading = "lazy";
+      if (doc.width && doc.height) {
+        img.width = doc.width;
+        img.height = doc.height;
+      }
+      link.append(img);
+
+      const cap = document.createElement("figcaption");
+      const title = document.createElement("strong");
+      title.textContent = doc.title;
+      cap.append(title);
+      if (doc.caption) {
+        const p = document.createElement("span");
+        p.textContent = doc.caption;
+        cap.append(p);
+      }
+
+      fig.append(link, cap);
+      return fig;
+    }),
+  );
+}
+
 /** Merge unit events and wider-war context into one date-sorted list. */
 function mergedEntries({ events, context, places, sources }) {
+  const titleOf = (id) => sources.find((s) => s.id === id)?.title ?? null;
   const unitEntries = events.map((e) => ({
     ...e,
     place: e.place ? places[e.place] : null,
-    sourceTitle: e.source ? sources.find((s) => s.id === e.source.id)?.title : null,
+    sourceTitle: e.source ? titleOf(e.source.id) : null,
+    corroborationTitle: e.corroboration ? titleOf(e.corroboration.id) : null,
   }));
   const contextEntries = context.map((c) => ({ ...c, kind: "context" }));
   return [...unitEntries, ...contextEntries].sort((a, b) => a.date.localeCompare(b.date));
@@ -59,7 +221,9 @@ function entryNode(entry) {
 
   const date = document.createElement("p");
   date.className = "entry__date";
-  date.textContent = formatDate(entry.date);
+  date.textContent = entry.dateApproximate
+    ? `about ${formatDate(entry.date)}`
+    : formatDate(entry.date);
   li.append(date);
 
   const title = document.createElement("h3");
@@ -72,6 +236,13 @@ function entryNode(entry) {
     body.className = "entry__body";
     body.textContent = entry.summary;
     li.append(body);
+  }
+
+  if (entry.dateNote) {
+    const note = document.createElement("p");
+    note.className = "entry__note";
+    note.textContent = entry.dateNote;
+    li.append(note);
   }
 
   if (entry.verbatim) {
@@ -89,6 +260,7 @@ function entryNode(entry) {
 function metaNode(entry) {
   const bits = [];
   if (entry.pending) bits.push(tag("not yet verified", "tag--pending"));
+  if (entry.dateNote) bits.push(tag("date inferred", "tag--pending"));
   if (entry.place) bits.push(text(entry.place.name));
   if (entry.strength) {
     bits.push(
@@ -97,13 +269,22 @@ function metaNode(entry) {
       ),
     );
   }
-  if (entry.source) bits.push(text(`${entry.sourceTitle ?? "Source"}, frame ${entry.source.page}`));
+  if (entry.source) bits.push(text(citeText(entry.sourceTitle, entry.source)));
+  if (entry.corroboration) {
+    bits.push(text(`Corroborated by the ${entry.corroborationTitle ?? "record"}`));
+  }
   if (!bits.length) return null;
 
   const wrap = document.createElement("p");
   wrap.className = "entry__meta";
   wrap.append(...bits);
   return wrap;
+}
+
+/** Morning reports are cited by microfilm frame; everything else by title alone. */
+function citeText(title, source) {
+  const name = title ?? "Source";
+  return source.page ? `${name}, frame ${source.page}` : name;
 }
 
 function tag(label, extra) {

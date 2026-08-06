@@ -4,7 +4,7 @@
  *
  *   npm run check:data
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -54,9 +54,21 @@ for (const event of data.events ?? []) {
 
   if (event.source) {
     if (!sourceIds.has(event.source.id)) fail(`${at}: source "${event.source.id}" is not defined`);
-    if (!Number.isInteger(event.source.page)) fail(`${at}: source.page must be an integer frame number`);
+    // Morning reports are cited by microfilm frame. Single-sheet documents
+    // (the discharge, the citation) have no frame and omit the field.
+    if (event.source.id === "morning-reports" && !Number.isInteger(event.source.page)) {
+      fail(`${at}: morning-reports citations need an integer frame number`);
+    }
   } else if (!event.pending) {
     warn(`${at}: no source cited`);
+  }
+
+  if (event.corroboration && !sourceIds.has(event.corroboration.id)) {
+    fail(`${at}: corroboration source "${event.corroboration.id}" is not defined`);
+  }
+
+  if (event.dateApproximate && !event.dateNote) {
+    warn(`${at}: dateApproximate is set without a dateNote explaining the placement`);
   }
 
   if (event.strength) {
@@ -72,6 +84,33 @@ for (const event of data.events ?? []) {
 const dates = (data.events ?? []).map((e) => e.date);
 if (dates.some((d, i) => i && d < dates[i - 1])) {
   warn("events are not stored in date order (the site sorts them, but keep the file tidy)");
+}
+
+// Every document referenced by a source, and every image a document points at,
+// must actually be on disk — a broken plate is worse than no plate.
+const docIds = new Set((data.documents ?? []).map((d) => d.id));
+for (const source of data.sources ?? []) {
+  if (source.document && !docIds.has(source.document)) {
+    fail(`source "${source.id}": document "${source.document}" is not defined`);
+  }
+}
+for (const doc of data.documents ?? []) {
+  for (const key of ["image", "thumb"]) {
+    const rel = doc[key];
+    if (!rel) continue;
+    if (!existsSync(resolve(ROOT, "public", rel.replace(/^\//, "")))) {
+      fail(`document "${doc.id}": ${key} "${rel}" is missing from public/`);
+    }
+  }
+  if (!doc.alt) warn(`document "${doc.id}": no alt text`);
+}
+
+for (const campaign of data.campaigns ?? []) {
+  if (!ISO_DATE.test(campaign.start ?? "") || !ISO_DATE.test(campaign.end ?? "")) {
+    fail(`campaign "${campaign.name}": start and end must be YYYY-MM-DD`);
+  } else if (campaign.end < campaign.start) {
+    fail(`campaign "${campaign.name}": ends before it starts`);
+  }
 }
 
 for (const w of warnings) console.warn(`warn  ${w}`);

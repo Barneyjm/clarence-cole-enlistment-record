@@ -485,6 +485,14 @@ section {
   color: var(--ink-soft);
 }
 
+.entry__note {
+  max-width: var(--measure);
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
 .entry__verbatim {
   max-width: var(--measure);
   margin: 0.9rem 0 0;
@@ -519,6 +527,261 @@ section {
 .tag--pending {
   border-style: dashed;
   color: var(--stamp-soft);
+}
+
+/* ---------------------------------------------------- the service record */
+
+#soldier,
+#campaigns,
+#bronze-star,
+#documents {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.record {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.record > div {
+  padding: 0.85rem 1rem 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.record dt {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.record dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.98rem;
+}
+
+/* ------------------------------------------------------------- campaigns */
+
+.campaigns {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1.25rem 0;
+}
+
+.campaigns__band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--stamp) 9%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+  pointer-events: none;
+}
+
+/* Label and dates sit above a full-width track, so the track shares its
+   coordinate space with the citation band overlaid on the whole chart. */
+.campaign {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.3rem 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0 0.9rem;
+}
+
+.campaign__name {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.campaign__track {
+  position: relative;
+  display: block;
+  grid-column: 1 / -1;
+  height: 0.7rem;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  border-radius: 2px;
+}
+
+.campaign__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--olive);
+  border-radius: 2px;
+}
+
+.campaign__dates {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: 0 0 2rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+.legend__swatch {
+  width: 1.6rem;
+  height: 0.7rem;
+  border-radius: 2px;
+}
+
+.legend__swatch--bar {
+  background: var(--olive);
+}
+
+.legend__swatch--band {
+  margin-left: 0.8rem;
+  background: color-mix(in srgb, var(--stamp) 9%, transparent);
+  border-inline: 1px solid color-mix(in srgb, var(--stamp) 45%, transparent);
+}
+
+.ribbons {
+  margin: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.ribbons li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.ribbons span {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+/* ----------------------------------------------------------- bronze star */
+
+.award {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 58rem) {
+  .award {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.award__photo {
+  margin: 0;
+  position: sticky;
+  top: 5rem;
+}
+
+.award__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  filter: sepia(6%);
+}
+
+.award__photo figcaption,
+.plate figcaption {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.award__text > .prose > * {
+  max-width: var(--measure);
+}
+
+.citation {
+  max-width: var(--measure);
+  margin: 2rem 0;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.citation__head {
+  margin: 0 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+
+.citation p {
+  margin: 0;
+}
+
+.citation footer {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+/* -------------------------------------------------------------- gallery */
+
+.gallery {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.plate {
+  margin: 0;
+}
+
+.plate__link {
+  display: block;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  box-shadow: var(--shadow);
+}
+
+.plate__link:hover {
+  border-color: var(--stamp-soft);
+}
+
+.plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.plate figcaption strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink);
 }
 
 /* --------------------------------------------------------------- sources */

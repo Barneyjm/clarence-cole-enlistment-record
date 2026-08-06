@@ -8,12 +8,22 @@ Deployed as a Cloudflare Worker serving static assets:
 
 ## Status
 
-**Stub.** The site scaffold, data model, maps, and validation are in place. The
-morning-report transcription is in progress and is being loaded into
+The frame of the service is complete and sourced end to end: induction,
+sailing, arrival in England, the Bronze Star citation period, the five campaign
+credits, the return, and the discharge. The day-by-day transcription of the
+morning reports is still in progress and is loaded into
 `public/data/timeline.json` as it lands.
 
-Seeded so far: the embarkation at New York (2–3 May 1944) and the first days of
-the Atlantic crossing, read from frames 1–2 of the microfilm.
+Three primary sources, all agreeing where they overlap:
+
+| Source | What it gives |
+| --- | --- |
+| Enlisted Record and Report of Separation (WD AGO 53-55) | Serial number, dates, campaigns, decorations, service abroad |
+| Bronze Star citation | The cited period, the countries, and what he actually did |
+| Battalion morning reports (284 frames) | Day-by-day movement and personnel actions |
+
+The discharge and the morning reports were produced eighteen months apart by
+different clerks and give the same sailing date, 3 May 1944.
 
 ## Running it
 
@@ -39,6 +49,7 @@ public/                   everything served
   assets/map.js           SVG maps, no tiles and no external libraries
   data/timeline.json      the record — the only file that needs editing
   data/geo/theater.json   generated coastline, committed
+  images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from vendored Natural Earth data
 tools/check-data.mjs      validates timeline.json
 ```
@@ -98,7 +109,8 @@ npm run build:geo
 ## Still to do
 
 - Transcribe the remaining morning-report frames
-- Cole's serial number, rank history, induction and separation dates
-- The Bronze Star general orders number and citation text
-- The battalion's parent formation and campaign credits
-- Continental positions for the theater map
+- The Bronze Star general orders number and award date — on neither the
+  citation nor the discharge, so most likely announced in the morning reports
+- The battalion's parent group or corps artillery assignment, and its weapon
+- Continental positions for the theater map, which currently plots England only
+- The date and place of the award ceremony photograph

@@ -2,24 +2,63 @@
   "meta": {
     "title": "Sergeant Clarence Cole",
     "subtitle": "Battery C, 153rd Field Artillery Battalion — European Theater of Operations, 1944–1945",
-    "status": "stub",
-    "note": "Seeded from the first pages of the battalion morning reports. The full transcription is in progress; events carrying \"pending\": true are placeholders for structure only and have not been verified against a source document.",
+    "status": "in-progress",
+    "note": "The service record, the Bronze Star citation, and the battalion morning reports agree on every date where they overlap. The day-by-day transcription of the morning reports is still in progress; entries marked as not yet verified are placeholders for structure only.",
     "updated": "2026-08-06"
   },
 
   "subject": {
-    "name": "Clarence Cole",
+    "name": "Clarence J. Cole",
     "rank": "Sergeant",
+    "serial": "36106875",
     "unit": "Battery C, 153rd Field Artillery Battalion",
-    "serial": null,
-    "award": {
-      "name": "Bronze Star Medal",
-      "date": null,
-      "citation": null,
-      "note": "Award confirmed by the family. General Orders number and citation text still to be located."
+    "branch": "Field Artillery",
+    "mos": "Squad Leader (653)",
+    "born": "1906-09-22",
+    "birthplace": "Caro, Michigan",
+    "homeAddress": "RFD 2, Caro, Michigan",
+    "civilianOccupation": "Farmer",
+    "description": {
+      "height": "5 ft 10 in",
+      "weight": "190 lb",
+      "eyes": "Blue",
+      "hair": "Brown"
     },
-    "pending": ["serial", "date of induction", "date of separation", "hometown"]
+    "enteredActiveService": {
+      "date": "1942-11-27",
+      "place": "Fort Sheridan, Illinois"
+    },
+    "separated": {
+      "date": "1945-10-22",
+      "place": "Separation Center, Indiantown Gap, Pennsylvania"
+    },
+    "lengthOfService": {
+      "continental": "1 year, 5 months, 18 days",
+      "foreign": "1 year, 5 months, 8 days"
+    },
+    "weaponsQualification": "Carbine, .30 cal — Sharpshooter; TSMG — 1st Class Gunner",
+    "woundsReceived": "None",
+    "source": { "id": "separation-record" },
+    "pending": []
   },
+
+  "decorations": [
+    { "name": "Bronze Star Medal", "note": "For meritorious service, 30 June 1944 – 15 March 1945." },
+    { "name": "Good Conduct Medal" },
+    { "name": "American Defense Service Medal" },
+    {
+      "name": "European–African–Middle Eastern Campaign Medal",
+      "note": "With five bronze service stars, one for each campaign credit."
+    }
+  ],
+
+  "campaigns": [
+    { "name": "Normandy", "start": "1944-06-06", "end": "1944-07-24" },
+    { "name": "Northern France", "start": "1944-07-25", "end": "1944-09-14" },
+    { "name": "Rhineland", "start": "1944-09-15", "end": "1945-03-21" },
+    { "name": "Ardennes-Alsace", "start": "1944-12-16", "end": "1945-01-25" },
+    { "name": "Central Europe", "start": "1945-03-22", "end": "1945-05-11" }
+  ],
 
   "unit": {
     "designation": "153rd Field Artillery Battalion",
@@ -32,7 +71,7 @@
       "source": { "id": "morning-reports", "page": 1 }
     },
     "strengthAtEmbarkation": { "officers": 4, "enlisted": 118 },
-    "pending": ["parent division or corps artillery group", "weapon (105mm vs 155mm)", "campaign credits"]
+    "pending": ["parent group or corps artillery assignment", "weapon (105mm vs 155mm)"]
   },
 
   "sources": [
@@ -43,14 +82,57 @@
       "note": "Primary source for every dated movement and personnel action on this site."
     },
     {
-      "id": "enlistment-record",
-      "title": "Enlistment record — Clarence Cole",
-      "citation": "To be added.",
-      "pending": true
+      "id": "separation-record",
+      "title": "Enlisted Record and Report of Separation",
+      "citation": "WD AGO Form 53-55, Honorable Discharge, 22 October 1945. Sgt Clarence J. Cole, 36106875.",
+      "note": "Family papers. Confirms the sailing date independently of the morning reports.",
+      "document": "separation-record"
+    },
+    {
+      "id": "bronze-star-citation",
+      "title": "Citation — Award of Bronze Star Medal",
+      "citation": "War Department citation, Sergeant Clarence J. Cole, 36106875, Battery C, 153d Field Artillery Battalion.",
+      "note": "Family papers. An embossed War Department seal is struck at the foot; the headquarters named around its ring is only partly legible.",
+      "document": "citation"
+    }
+  ],
+
+  "documents": [
+    {
+      "id": "award-ceremony",
+      "title": "The award",
+      "image": "/images/award-ceremony.jpg",
+      "thumb": "/images/award-ceremony-thumb.jpg",
+      "width": 1181,
+      "height": 1450,
+      "caption": "A general officer pins the Bronze Star, the battalion drawn up in formation behind him and the colours uncased. Identified by the family as Sergeant Cole. Neither the date nor the place is written on the print.",
+      "alt": "A general officer in a steel helmet pins a medal to the field jacket of a soldier standing at attention, with ranks of helmeted soldiers and an American flag behind them in a damaged European town."
+    },
+    {
+      "id": "citation",
+      "title": "Bronze Star citation",
+      "image": "/images/citation.jpg",
+      "thumb": "/images/citation-thumb.jpg",
+      "width": 1600,
+      "height": 2121,
+      "caption": "The typed citation, folded in thirds for eighty years, with the War Department seal embossed at the foot.",
+      "alt": "A typed citation on aged paper headed CITATION, AWARD OF BRONZE STAR MEDAL, with an embossed War Department seal near the bottom."
+    },
+    {
+      "id": "separation-record",
+      "title": "Enlisted Record and Report of Separation",
+      "image": "/images/separation-record.jpg",
+      "thumb": "/images/separation-record-thumb.jpg",
+      "width": 1512,
+      "height": 2016,
+      "caption": "WD AGO Form 53-55, 22 October 1945. Fifty-seven numbered boxes summarising three years of a life.",
+      "alt": "A completed United States Army discharge form, Enlisted Record and Report of Separation, densely filled in with typewriting."
     }
   ],
 
   "places": {
+    "caro": { "name": "Caro, Michigan", "region": "Tuscola County", "lat": 43.491, "lon": -83.398 },
+    "fort-sheridan": { "name": "Fort Sheridan", "region": "Illinois", "lat": 42.216, "lon": -87.812 },
     "fort-slocum": {
       "name": "Fort Slocum, New Rochelle",
       "region": "New York",
@@ -69,10 +151,42 @@
       "lat": 45.0,
       "lon": -35.0,
       "approximate": true
+    },
+    "england": {
+      "name": "England",
+      "region": "Port of arrival not recorded",
+      "lat": 51.5,
+      "lon": -2.6,
+      "approximate": true
+    },
+    "indiantown-gap": {
+      "name": "Indiantown Gap",
+      "region": "Pennsylvania",
+      "lat": 40.435,
+      "lon": -76.585
     }
   },
 
   "events": [
+    {
+      "id": "1906-09-22-born",
+      "date": "1906-09-22",
+      "kind": "admin",
+      "title": "Born at Caro, Michigan",
+      "place": "caro",
+      "summary": "He would be thirty-seven years old when he sailed, and a farmer by trade.",
+      "source": { "id": "separation-record" }
+    },
+    {
+      "id": "1942-11-27-active",
+      "date": "1942-11-27",
+      "kind": "admin",
+      "title": "Called to active service",
+      "place": "fort-sheridan",
+      "summary": "Enters active service at Fort Sheridan, Illinois, after a year on the inactive rolls of the Enlisted Reserve Corps.",
+      "verbatim": "Inactive service ERC from 26 Nov 41 to 26 Nov 42.",
+      "source": { "id": "separation-record" }
+    },
     {
       "id": "1944-05-02-embark",
       "date": "1944-05-02",
@@ -90,10 +204,11 @@
       "kind": "movement",
       "title": "Sails for Europe",
       "place": "nype",
-      "summary": "The transport clears the New York Port of Embarkation at 0630. The destination is not named in the report.",
+      "summary": "The transport clears the New York Port of Embarkation at 0630. The morning report does not name the destination; the discharge, written eighteen months later, records it as England.",
       "verbatim": "Army Transport left NYPE for destination at 0630 hrs.",
       "strength": { "presentForDuty": 117, "absent": 1, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 1 }
+      "source": { "id": "morning-reports", "page": 1 },
+      "corroboration": { "id": "separation-record", "note": "Date of departure: 3 May 44." }
     },
     {
       "id": "1944-05-09-hosp",
@@ -118,31 +233,65 @@
       "source": { "id": "morning-reports", "page": 2 }
     },
     {
-      "id": "pending-arrival",
+      "id": "1944-05-15-england",
       "date": "1944-05-15",
       "kind": "movement",
-      "title": "Arrival in the United Kingdom",
-      "place": null,
-      "summary": "Port and date to be read from the morning reports.",
-      "pending": true
+      "title": "Arrives in England",
+      "place": "england",
+      "summary": "Twelve days out of New York. The port is not recorded on the discharge, and the morning report for the day has not yet been read.",
+      "source": { "id": "separation-record" }
     },
     {
-      "id": "pending-continent",
-      "date": "1944-07-01",
-      "kind": "movement",
-      "title": "Crossing to the Continent",
-      "place": null,
-      "summary": "Beach or port of entry and date to be read from the morning reports.",
-      "pending": true
+      "id": "1944-06-30-combat",
+      "date": "1944-06-30",
+      "kind": "combat",
+      "title": "In support of active combat operations",
+      "summary": "The Bronze Star citation dates his cited service from this day — three weeks after the Normandy landings — which places the battery on the Continent, or about to be, by the end of June.",
+      "verbatim": "For meritorious service in support of active combat operations from 30 June 1944 to 15 March 1945 in France, Germany and Belgium.",
+      "source": { "id": "bronze-star-citation" }
     },
     {
-      "id": "pending-bronze-star",
-      "date": "1945-01-01",
+      "id": "1945-03-15-cited-end",
+      "date": "1945-03-15",
+      "kind": "combat",
+      "title": "End of the cited period",
+      "summary": "Eight and a half months of ammunition supply across three countries, closing a week before the Rhine crossings that opened Central Europe.",
+      "source": { "id": "bronze-star-citation" }
+    },
+    {
+      "id": "1945-bronze-star",
+      "date": "1945-03-15",
       "kind": "award",
       "title": "Bronze Star Medal",
-      "place": null,
-      "summary": "Date, general orders number and citation to be located.",
-      "pending": true
+      "dateApproximate": true,
+      "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
+      "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
+      "source": { "id": "bronze-star-citation" }
+    },
+    {
+      "id": "1945-10-07-home",
+      "date": "1945-10-07",
+      "kind": "movement",
+      "title": "Sails for home",
+      "summary": "Departs the theater after seventeen months overseas.",
+      "source": { "id": "separation-record" }
+    },
+    {
+      "id": "1945-10-16-usa",
+      "date": "1945-10-16",
+      "kind": "movement",
+      "title": "Arrives in the United States",
+      "source": { "id": "separation-record" }
+    },
+    {
+      "id": "1945-10-22-discharge",
+      "date": "1945-10-22",
+      "kind": "admin",
+      "title": "Honorably discharged",
+      "place": "indiantown-gap",
+      "summary": "Separated at Indiantown Gap, Pennsylvania, under the point system. His Adjusted Service Rating score was 80.",
+      "verbatim": "Lapel button issued. ASR score 2 Sep 45 80.",
+      "source": { "id": "separation-record" }
     }
   ],
 
@@ -150,7 +299,7 @@
     {
       "date": "1944-06-06",
       "title": "D-Day",
-      "summary": "Allied forces land on five Normandy beaches, opening the Western Front that the 153rd would eventually fight along."
+      "summary": "Allied forces land on five Normandy beaches. Cole had been in England three weeks."
     },
     {
       "date": "1944-07-25",
@@ -165,7 +314,7 @@
     {
       "date": "1944-12-16",
       "title": "The Ardennes offensive begins",
-      "summary": "Three German armies attack through the Ardennes in winter fog, opening the Battle of the Bulge."
+      "summary": "Three German armies attack through the Ardennes in winter fog, opening the Battle of the Bulge. Cole's campaign credits include Ardennes, and his citation names Belgium."
     },
     {
       "date": "1945-03-07",
@@ -175,7 +324,7 @@
     {
       "date": "1945-05-08",
       "title": "V-E Day",
-      "summary": "Germany's unconditional surrender takes effect and the war in Europe ends."
+      "summary": "Germany's unconditional surrender takes effect and the war in Europe ends. Cole would sail for home five months later."
     }
   ]
 }
