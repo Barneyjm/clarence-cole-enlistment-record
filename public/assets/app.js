@@ -1,5 +1,6 @@
 import { drawMap } from "/assets/map.js";
 import { renderRosterGraph, wireGraphSearch, wireGraphDocFilter } from "/assets/graph.js";
+import { renderDailyRecord } from "/assets/record.js";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -26,6 +27,26 @@ async function main() {
   wireFilters();
   renderMaps(data);
   renderBattalionGraph(data);
+  renderFullRecord();
+}
+
+/**
+ * Like the roster network, the full day-by-day record is a nice-to-have on top of
+ * the curated timeline: it loads its own data and keeps its failures to itself.
+ */
+async function renderFullRecord() {
+  const host = document.getElementById("record-list");
+  if (!host) return;
+  try {
+    await renderDailyRecord(host, {
+      search: document.getElementById("record-search"),
+      status: document.getElementById("record-status"),
+      more: document.getElementById("record-more"),
+    });
+  } catch (err) {
+    console.error(err);
+    host.innerHTML = `<li class="map-empty">The daily record could not be loaded.</li>`;
+  }
 }
 
 /**
@@ -453,13 +474,40 @@ function renderMaps(data) {
     // Only where the battery itself was. A man's leave destination is not a
     // unit position and would read as one on a map.
     const POSITION_KINDS = new Set(["movement", "combat"]);
-    const plotted = data.events
-      .filter((e) => POSITION_KINDS.has(e.kind) && e.place && places[e.place] && !e.pending)
-      .map((e) => places[e.place])
-      .filter((p) => p.lon > -6 && p.lon < 16 && p.lat > 43 && p.lat < 55);
+    const inWindow = (p) => p.lon > -6 && p.lon < 16 && p.lat > 43 && p.lat < 55;
+
+    // One point per position, in the order the battery first reached it. The
+    // events repeat a place for every day spent there, and plotting each one
+    // would stack dozens of pins on the same village.
+    const ordered = [];
+    const seen = new Set();
+    for (const e of [...data.events].sort((a, b) => a.date.localeCompare(b.date))) {
+      if (!POSITION_KINDS.has(e.kind) || e.pending) continue;
+      const place = e.place && places[e.place];
+      if (!place || !inWindow(place) || seen.has(e.place)) continue;
+      seen.add(e.place);
+      ordered.push(place);
+    }
+
+    // Label only the positions held longest, or the map illegibly fills with type.
+    const dwell = new Map();
+    for (const e of data.events) {
+      if (e.place) dwell.set(e.place, (dwell.get(e.place) ?? 0) + 1);
+    }
+    const named = new Set(
+      [...dwell.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 8)
+        .map(([key]) => key),
+    );
 
     drawMap(theater, {
-      points: plotted,
+      points: ordered.map((p) => {
+        const key = Object.keys(places).find((k) => places[k] === p);
+        return named.has(key) ? { ...p, label: p.name.split(",")[0] } : p;
+      }),
+      // The advance, joined in the order the battery reached each position.
+      routes: ordered.length > 1 ? [ordered.map((p) => [p.lon, p.lat])] : [],
       emptyMessage: "No Continental positions transcribed yet.",
     });
   }

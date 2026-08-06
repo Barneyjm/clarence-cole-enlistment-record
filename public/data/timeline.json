@@ -3,10 +3,17 @@
     "title": "Sergeant Clarence Cole",
     "subtitle": "Battery C, 153rd Field Artillery Battalion — European Theater of Operations, 1944–1945",
     "status": "in-progress",
-    "note": "The service record, the Bronze Star citation, and the battalion morning reports agree on every date where they overlap. The day-by-day transcription of the morning reports is still in progress; entries marked as not yet verified are placeholders for structure only.",
-    "updated": "2026-08-06"
+    "note": "The service record, the Bronze Star citation, Special Orders 66 and the battalion morning reports agree on every date where they overlap. Frames 1-218 of the morning reports are transcribed day by day; frames 219-284, covering the occupation from mid-July 1945 to the sailing home, are not yet done.",
+    "updated": "2026-08-06",
+    "transcription": {
+      "framesTranscribed": 221,
+      "framesTotal": 284,
+      "dailyReports": 399,
+      "firstDate": "1944-05-02",
+      "lastDate": "1945-07-12",
+      "note": "63 frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home."
+    }
   },
-
   "subject": {
     "name": "Clarence J. Cole",
     "rank": "Sergeant",
@@ -38,28 +45,54 @@
     },
     "weaponsQualification": "Carbine, .30 cal — Sharpshooter; TSMG — 1st Class Gunner",
     "woundsReceived": "None",
-    "source": { "id": "separation-record" },
+    "source": {
+      "id": "separation-record"
+    },
     "pending": []
   },
-
   "decorations": [
-    { "name": "Bronze Star Medal", "note": "For meritorious service, 30 June 1944 – 15 March 1945." },
-    { "name": "Good Conduct Medal" },
-    { "name": "American Defense Service Medal" },
+    {
+      "name": "Bronze Star Medal",
+      "note": "For meritorious service, 30 June 1944 – 15 March 1945."
+    },
+    {
+      "name": "Good Conduct Medal"
+    },
+    {
+      "name": "American Defense Service Medal"
+    },
     {
       "name": "European–African–Middle Eastern Campaign Medal",
       "note": "With five bronze service stars, one for each campaign credit."
     }
   ],
-
   "campaigns": [
-    { "name": "Normandy", "start": "1944-06-06", "end": "1944-07-24" },
-    { "name": "Northern France", "start": "1944-07-25", "end": "1944-09-14" },
-    { "name": "Rhineland", "start": "1944-09-15", "end": "1945-03-21" },
-    { "name": "Ardennes-Alsace", "start": "1944-12-16", "end": "1945-01-25" },
-    { "name": "Central Europe", "start": "1945-03-22", "end": "1945-05-11" }
+    {
+      "name": "Normandy",
+      "start": "1944-06-06",
+      "end": "1944-07-24"
+    },
+    {
+      "name": "Northern France",
+      "start": "1944-07-25",
+      "end": "1944-09-14"
+    },
+    {
+      "name": "Rhineland",
+      "start": "1944-09-15",
+      "end": "1945-03-21"
+    },
+    {
+      "name": "Ardennes-Alsace",
+      "start": "1944-12-16",
+      "end": "1945-01-25"
+    },
+    {
+      "name": "Central Europe",
+      "start": "1945-03-22",
+      "end": "1945-05-11"
+    }
   ],
-
   "unit": {
     "designation": "153rd Field Artillery Battalion",
     "battery": "Battery C",
@@ -68,17 +101,40 @@
       {
         "name": "Robert B. Ford",
         "rank": "Captain",
-        "note": "Signs the Battery C morning reports from the May 1944 embarkation onward.",
-        "source": { "id": "morning-reports", "page": 1 }
+        "from": "1944-05-02",
+        "to": "1945-06-26",
+        "note": "Signs the Battery C morning reports from the New York embarkation through to the occupation. Relieved and departed on the card of 26 June 1945.",
+        "source": {
+          "id": "morning-reports",
+          "page": 208
+        }
+      },
+      {
+        "name": "Charles R. Wood Jr.",
+        "rank": "1st Lieutenant",
+        "from": "1945-06-27",
+        "to": "1945-07-05",
+        "note": "Signs the cards in the fortnight between Ford leaving and Kerkhoff arriving. Himself transferred to the 268th FA Bn on 11 July 1945.",
+        "source": {
+          "id": "morning-reports",
+          "page": 208
+        }
       },
       {
         "name": "Gordon F. Kerkhoff",
         "rank": "Captain",
-        "note": "Signing the battery's morning reports by August 1945. When command changed is not yet known.",
-        "source": { "id": "morning-report-1945-08-20" }
+        "from": "1945-07-06",
+        "note": "Assigned and joined from Headquarters, 153rd FA Bn on 6 July 1945 and signs the battery cards from then on, including the two that name Sergeant Cole.",
+        "source": {
+          "id": "morning-reports",
+          "page": 214
+        }
       }
     ],
-    "strengthAtEmbarkation": { "officers": 4, "enlisted": 118 },
+    "strengthAtEmbarkation": {
+      "officers": 4,
+      "enlisted": 118
+    },
     "attachments": [
       {
         "asOf": "1945-01-01",
@@ -89,21 +145,43 @@
           "XVIII Airborne Corps",
           "79th Field Artillery Group"
         ],
-        "sisterBattalions": ["551st Field Artillery Battalion", "552nd Field Artillery Battalion"],
+        "sisterBattalions": [
+          "551st Field Artillery Battalion",
+          "552nd Field Artillery Battalion"
+        ],
         "note": "A single-date snapshot. Non-divisional artillery battalions were reassigned between groups and corps constantly, so this is where the battalion sat on 1 January 1945, not where it sat for the whole war.",
-        "source": { "id": "bulge-oob" }
+        "source": {
+          "id": "bulge-oob"
+        }
       },
       {
         "asOf": "1945-08-20",
         "label": "In occupation, Germany",
-        "chain": ["32nd Field Artillery Brigade"],
+        "chain": [
+          "32nd Field Artillery Brigade"
+        ],
         "note": "Inferred rather than stated: the battery's leave and furlough orders that month are issued by Headquarters, 32nd Field Artillery Brigade, which puts Battery C under that brigade for administration.",
-        "source": { "id": "morning-report-1945-08-20" }
+        "source": {
+          "id": "morning-report-1945-08-20"
+        }
       }
     ],
-    "pending": ["weapon (105mm vs 155mm)", "attachments on dates other than these two"]
+    "pending": [
+      "The calibre, stated rather than inferred",
+      "Attachments on dates other than 1 January 1945 and 20 August 1945"
+    ],
+    "weapon": {
+      "status": "inferred",
+      "reading": "Tractor-drawn heavy artillery — 155mm or 8-inch, not the truck-drawn 105mm.",
+      "evidence": [
+        "The battery moves on tracked prime movers: two were wrecked on the night march to Tohogne, 27 December 1944 (frame 110).",
+        "It carries the MOS 244 Tractor Driver as a standing duty assignment (frames 78, 133).",
+        "Gun tubes were replaced after roughly 780 service rounds per gun — guns numbered 51 and 52 (frame 128).",
+        "It is non-divisional artillery, held at First Army and lent to divisions, which in 1944-45 means corps-level medium or heavy pieces."
+      ],
+      "caveat": "No morning report in frames 1-218 states the calibre. This is an inference from how the battery moved and was maintained, not a documented fact, and should not be cited as one."
+    }
   },
-
   "sources": [
     {
       "id": "morning-reports",
@@ -153,7 +231,6 @@
       "url": "https://cgsc.contentdm.oclc.org/digital/collection/p15040coll6/id/4713"
     }
   ],
-
   "documents": [
     {
       "id": "award-ceremony",
@@ -206,10 +283,19 @@
       "alt": "A completed United States Army discharge form, Enlisted Record and Report of Separation, densely filled in with typewriting."
     }
   ],
-
   "places": {
-    "caro": { "name": "Caro, Michigan", "region": "Tuscola County", "lat": 43.491, "lon": -83.398 },
-    "fort-sheridan": { "name": "Fort Sheridan", "region": "Illinois", "lat": 42.216, "lon": -87.812 },
+    "caro": {
+      "name": "Caro, Michigan",
+      "region": "Tuscola County",
+      "lat": 43.491,
+      "lon": -83.398
+    },
+    "fort-sheridan": {
+      "name": "Fort Sheridan",
+      "region": "Illinois",
+      "lat": 42.216,
+      "lon": -87.812
+    },
     "fort-slocum": {
       "name": "Fort Slocum, New Rochelle",
       "region": "New York",
@@ -225,8 +311,8 @@
     "atlantic": {
       "name": "North Atlantic",
       "region": "En route",
-      "lat": 45.0,
-      "lon": -35.0,
+      "lat": 45,
+      "lon": -35,
       "approximate": true
     },
     "england": {
@@ -248,9 +334,312 @@
       "lat": 50.94,
       "lon": 5.97,
       "approximate": true
+    },
+    "branksome-bournemouth-dorset": {
+      "name": "Branksome, Bournemouth, Dorset",
+      "lat": 50.7255,
+      "lon": -1.913,
+      "country": "England",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "marshalling-area-c-14-southampton": {
+      "name": "Marshalling Area C-14, Southampton",
+      "lat": 50.9097,
+      "lon": -1.4044,
+      "country": "England",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "aboard-lct-southampton-water": {
+      "name": "Aboard LCT, Southampton Water",
+      "lat": 50.87,
+      "lon": -1.38,
+      "country": "England",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "omaha-beach-normandy": {
+      "name": "Omaha Beach, Normandy",
+      "lat": 49.3703,
+      "lon": -0.8712,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "blosville-manche": {
+      "name": "Blosville, Manche",
+      "lat": 49.3806,
+      "lon": -1.3175,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "meautis-manche": {
+      "name": "Méautis, Manche",
+      "lat": 49.2789,
+      "lon": -1.2597,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "saint-clair-sur-l-elle-manche": {
+      "name": "Saint-Clair-sur-l'Elle, Manche",
+      "lat": 49.2242,
+      "lon": -1.0294,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "moyon-manche": {
+      "name": "Moyon, Manche",
+      "lat": 48.9789,
+      "lon": -1.0508,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "position-near-vire-calvados": {
+      "name": "Position near Vire, Calvados",
+      "lat": 48.8397,
+      "lon": -0.8892,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "sourdeval-manche": {
+      "name": "Sourdeval, Manche",
+      "lat": 48.7239,
+      "lon": -0.9214,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "ger-manche": {
+      "name": "Ger, Manche",
+      "lat": 48.6428,
+      "lon": -0.7297,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "domfront-orne": {
+      "name": "Domfront, Orne",
+      "lat": 48.5931,
+      "lon": -0.6478,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "la-pallu-mayenne": {
+      "name": "La Pallu, Mayenne",
+      "lat": 48.4225,
+      "lon": -0.5203,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "near-verneuil-sur-avre-eure": {
+      "name": "Near Verneuil-sur-Avre, Eure",
+      "lat": 48.7386,
+      "lon": 0.9264,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "versailles-seine-et-oise": {
+      "name": "Versailles, Seine-et-Oise",
+      "lat": 48.8014,
+      "lon": 2.1301,
+      "country": "France",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "monceau-imbrechies-hainaut": {
+      "name": "Monceau-Imbrechies, Hainaut",
+      "lat": 50.0672,
+      "lon": 4.2242,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "henri-chapelle-liege": {
+      "name": "Henri-Chapelle, Liège",
+      "lat": 50.6903,
+      "lon": 5.9236,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "schmidthof-near-aachen": {
+      "name": "Schmidthof, near Aachen",
+      "lat": 50.7106,
+      "lon": 6.1328,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "hurtgen-hurtgen-forest": {
+      "name": "Hürtgen, Hürtgen Forest",
+      "lat": 50.7078,
+      "lon": 6.3594,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "tohogne-luxembourg-province": {
+      "name": "Tohogne, Luxembourg Province",
+      "lat": 50.3606,
+      "lon": 5.4661,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "werbomont-liege": {
+      "name": "Werbomont, Liège",
+      "lat": 50.3822,
+      "lon": 5.6889,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "basse-bodeux-liege": {
+      "name": "Basse-Bodeux, Liège",
+      "lat": 50.3392,
+      "lon": 5.8286,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "sourbrodt-liege": {
+      "name": "Sourbrodt, Liège",
+      "lat": 50.4914,
+      "lon": 6.1017,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "elsenborn-liege": {
+      "name": "Elsenborn, Liège",
+      "lat": 50.4622,
+      "lon": 6.2372,
+      "country": "Belgium",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "nothberg-eschweiler": {
+      "name": "Nothberg, Eschweiler",
+      "lat": 50.8092,
+      "lon": 6.2611,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "derichsweiler-duren": {
+      "name": "Derichsweiler, Düren",
+      "lat": 50.7717,
+      "lon": 6.4319,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "bivouac-west-of-the-rhine": {
+      "name": "Bivouac west of the Rhine",
+      "lat": 50.9,
+      "lon": 6.55,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "remagen-bridgehead-east-bank-of-the-rhine": {
+      "name": "Remagen bridgehead, east bank of the Rhine",
+      "lat": 50.5786,
+      "lon": 7.2461,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "position-east-of-the-rhine": {
+      "name": "Position east of the Rhine",
+      "lat": 50.65,
+      "lon": 7.4,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "wilgersdorf-siegerland": {
+      "name": "Wilgersdorf, Siegerland",
+      "lat": 50.8306,
+      "lon": 8.1017,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "eisern-near-siegen": {
+      "name": "Eisern, near Siegen",
+      "lat": 50.8486,
+      "lon": 8.0119,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "meiswinkel-siegerland": {
+      "name": "Meiswinkel, Siegerland",
+      "lat": 50.8781,
+      "lon": 8.0261,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "drolshagen-sauerland": {
+      "name": "Drolshagen, Sauerland",
+      "lat": 51.0264,
+      "lon": 7.7719,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "nieder-ennepe-ruhr": {
+      "name": "Nieder Ennepe, Ruhr",
+      "lat": 51.2694,
+      "lon": 7.4014,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "near-wuppertal-ruhr": {
+      "name": "Near Wuppertal, Ruhr",
+      "lat": 51.2,
+      "lon": 7.3,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "radevormwald-bergisches-land": {
+      "name": "Radevormwald, Bergisches Land",
+      "lat": 51.2036,
+      "lon": 7.3603,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "roddenau-hesse": {
+      "name": "Roddenau, Hesse",
+      "lat": 51.0472,
+      "lon": 8.6819,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
+    },
+    "geismar-hesse": {
+      "name": "Geismar, Hesse",
+      "lat": 51.0006,
+      "lon": 8.8036,
+      "country": "Germany",
+      "approximate": true,
+      "note": "Coordinate is the village named in the station entry; the battery position was within a mile or two of it, as the reports themselves state."
     }
   },
-
   "events": [
     {
       "id": "1906-09-22-born",
@@ -259,7 +648,9 @@
       "title": "Born at Caro, Michigan",
       "place": "caro",
       "summary": "He would be thirty-seven years old when he sailed, and a farmer by trade.",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      }
     },
     {
       "id": "1942-11-27-active",
@@ -269,7 +660,9 @@
       "place": "fort-sheridan",
       "summary": "Enters active service at Fort Sheridan, Illinois, after a year on the inactive rolls of the Enlisted Reserve Corps.",
       "verbatim": "Inactive service ERC from 26 Nov 41 to 26 Nov 42.",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      }
     },
     {
       "id": "1944-05-02-embark",
@@ -278,9 +671,20 @@
       "title": "Boards the transport at the New York Port of Embarkation",
       "place": "fort-slocum",
       "summary": "Battery C leaves Fort Slocum by harbor boat and boards an Army transport at Terminal Pier before midnight.",
-      "verbatim": "Boarded harbor boat at Ft Slocum NY at 1930 hrs. Arrived at Terminal Pier NYPE. Boarded Army Transport at 2315 hrs.",
-      "strength": { "presentForDuty": 117, "absent": 1, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 1 }
+      "verbatim": "Boarded harbor boat at Ft Slocum NY at 1830 hrs. Arrived at Terminal Pier NYPE. Boarded Army Transport at 2315 hrs.",
+      "strength": {
+        "presentForDuty": 117,
+        "absent": 1,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 1
+      },
+      "uncertain": [
+        "verbatim"
+      ],
+      "uncertainNote": "The departure time is read as 1830 by one transcription of frame 1 and 1930 by the other. The digit is genuinely ambiguous on the microfilm and has not been resolved. Everything else on the card agrees."
     },
     {
       "id": "1944-05-03-sail",
@@ -290,9 +694,19 @@
       "place": "nype",
       "summary": "The transport clears the New York Port of Embarkation at 0630. The morning report does not name the destination; the discharge, written eighteen months later, records it as England.",
       "verbatim": "Army Transport left NYPE for destination at 0630 hrs.",
-      "strength": { "presentForDuty": 117, "absent": 1, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 1 },
-      "corroboration": { "id": "separation-record", "note": "Date of departure: 3 May 44." }
+      "strength": {
+        "presentForDuty": 117,
+        "absent": 1,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 1
+      },
+      "corroboration": {
+        "id": "separation-record",
+        "note": "Date of departure: 3 May 44."
+      }
     },
     {
       "id": "1944-05-09-hosp",
@@ -302,8 +716,15 @@
       "place": "atlantic",
       "summary": "Chester S. Chmielewski, 35761991, is carried from duty to the ship's hospital mid-ocean — the first personnel change recorded since the battery left New York. He was still with Battery C fifteen months later, a Pfc by then, leaving on furlough for Lyons the same week Cole went to Holland.",
       "verbatim": "Chmielewski, Pvt — Fr dy to hosp LD ship hosp.",
-      "strength": { "presentForDuty": 116, "absent": 2, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 2 },
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 2,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 2
+      },
       "corroboration": {
         "id": "morning-report-1945-08-20",
         "note": "Full name and serial number read from the August 1945 card, which lists him again."
@@ -316,9 +737,16 @@
       "title": "Routine transport duties",
       "place": "atlantic",
       "summary": "A second man goes to the ship's hospital. Otherwise the battery is standing watches and drills at sea.",
-      "verbatim": "Organization performing routine transport duties.",
-      "strength": { "presentForDuty": 115, "absent": 3, "assigned": 118 },
-      "source": { "id": "morning-reports", "page": 2 }
+      "verbatim": "Org performing routine transport duties.",
+      "strength": {
+        "presentForDuty": 115,
+        "absent": 3,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 2
+      }
     },
     {
       "id": "1944-05-15-england",
@@ -327,7 +755,122 @@
       "title": "Arrives in England",
       "place": "england",
       "summary": "Twelve days out of New York. The port is not recorded on the discharge, and the morning report for the day has not yet been read.",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      },
+      "verbatim": "Arrived at Port of Debarkation 1520 hrs.",
+      "strength": {
+        "presentForDuty": 117,
+        "absent": 1,
+        "assigned": 118
+      }
+    },
+    {
+      "id": "1944-05-16-mr",
+      "date": "1944-05-16",
+      "kind": "movement",
+      "title": "Moves to Branksome",
+      "place": "branksome-bournemouth-dorset",
+      "verbatim": "Unit debarked fr Army Transport at 0400 hrs. Boarded train for destination. Unit arrived at Bournemouth (Branksome-Mount) Dorset U-4910 at 1130 hrs.",
+      "strength": {
+        "presentForDuty": 117,
+        "absent": 1,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 5
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-06-13-mr",
+      "date": "1944-06-13",
+      "kind": "admin",
+      "title": "Alerted for departure",
+      "place": "branksome-bournemouth-dorset",
+      "verbatim": "ALERTED FOR DEPARTURE.",
+      "strength": {
+        "presentForDuty": 117,
+        "absent": 1,
+        "assigned": 118
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 11
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-06-14-mr",
+      "date": "1944-06-14",
+      "kind": "personnel",
+      "title": "Alerted for departure",
+      "place": "branksome-bournemouth-dorset",
+      "summary": "2 personnel actions recorded on the card.",
+      "verbatim": "ALERTED FOR DEPARTURE.",
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 1,
+        "assigned": 117
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 13
+      },
+      "personnel": [
+        {
+          "name": "Causey",
+          "grade": "Tec 5",
+          "serial": "6272459",
+          "action": "Fr hosp to trf to 4119 US Army Hosp Plant per par 1 SO #58 Hq 28th Gen Hosp dtd 14 June 44"
+        },
+        {
+          "name": "Leonard",
+          "grade": "Tec 5",
+          "serial": "6242152",
+          "action": "Fr dy to hosp LD at 28th Gen Hosp - slight hand injury"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-06-26-mr",
+      "date": "1944-06-26",
+      "kind": "movement",
+      "title": "Moves to Marshalling Area C-14",
+      "place": "marshalling-area-c-14-southampton",
+      "summary": "The battery moved 23 miles to a new position.",
+      "verbatim": "Left Branksome-Hants 0950 hours. Arrived at marshalling area C-14 at 1430 hours, distance traveled 23 miles.",
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 0,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 15
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-06-27-mr",
+      "date": "1944-06-27",
+      "kind": "movement",
+      "title": "Moves to Aboard LCT",
+      "place": "aboard-lct-southampton-water",
+      "summary": "The battery moved 9 miles to a new position.",
+      "verbatim": "Left marshalling area C-14 at 0930 hours. Arrived Southampton Dock S-4 at 1120 hours, distance traveled 9 miles. Loading of men and equipment on LCT craft completed at 2320 hours. Loaded at Hard S-4 Dock.",
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 0,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 15
+      },
+      "generated": true
     },
     {
       "id": "1944-06-30-combat",
@@ -336,7 +879,787 @@
       "title": "In support of active combat operations",
       "summary": "The Bronze Star citation dates his cited service from this day — three weeks after the Normandy landings — which places the battery on the Continent, or about to be, by the end of June.",
       "verbatim": "For meritorious service in support of active combat operations from 30 June 1944 to 15 March 1945 in France, Germany and Belgium.",
-      "source": { "id": "bronze-star-citation" }
+      "source": {
+        "id": "bronze-star-citation"
+      },
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 0,
+        "assigned": 116
+      },
+      "place": "omaha-beach-normandy"
+    },
+    {
+      "id": "1944-06-30-omaha",
+      "date": "1944-06-30",
+      "kind": "movement",
+      "title": "Lands over Omaha Beach",
+      "place": "omaha-beach-normandy",
+      "summary": "Twenty-four days after D-Day, and eight weeks after leaving New York, the battery came ashore in France.",
+      "verbatim": "Arrived at Omaha Beach 1230 hours. Debarked and moved to vehicle transit area North Section at 2230 hours.",
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 0,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 17
+      },
+      "corroboration": {
+        "id": "bronze-star-citation"
+      },
+      "note": "The Bronze Star cited period opens on this date. The citation and the morning report describe the same day from opposite ends: one says what it was for, the other says what happened."
+    },
+    {
+      "id": "1944-07-01-mr",
+      "date": "1944-07-01",
+      "kind": "movement",
+      "title": "Moves to Blosville",
+      "place": "blosville-manche",
+      "summary": "The battery moved 9 miles to a new position.",
+      "verbatim": "1220 hours left vehicle transit area No. 4. 1330 hours arrived at La Cambe, distance traveled 9 miles. 1930 hours left La Cambe. 2230 hours arrived at gun position 1 mile east of Blosville.",
+      "strength": {
+        "presentForDuty": 115,
+        "absent": 1,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 18
+      },
+      "personnel": [
+        {
+          "name": "Croom M",
+          "grade": "Cpl",
+          "serial": "34259714",
+          "action": "Atchd to Service Btry for rats & qrs only"
+        },
+        {
+          "name": "1 EM",
+          "action": "Atchd for rats & qrs only fr Med Det 153rd FA Bn"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-07-13-mr",
+      "date": "1944-07-13",
+      "kind": "movement",
+      "title": "Moves to Blosville",
+      "place": "blosville-manche",
+      "summary": "The battery moved 7 miles to a new position.",
+      "verbatim": "0110 hours light vehicles left position. 2200 hours arrived at new position 2 miles south of Carentan, distance traveled 7 miles.",
+      "strength": {
+        "presentForDuty": 115,
+        "absent": 1,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 24
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-07-14-mr",
+      "date": "1944-07-14",
+      "kind": "movement",
+      "title": "Moves to Méautis",
+      "place": "meautis-manche",
+      "summary": "The battery moved 8 miles to a new position.",
+      "verbatim": "0020 hours track vehicles left position. 0400 hours arrived at new position 3 miles south of Carentan and 1 mile east of Meautis. Distance traveled 8 miles.",
+      "strength": {
+        "presentForDuty": 115,
+        "absent": 1,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 24
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-07-17-mr",
+      "date": "1944-07-17",
+      "kind": "movement",
+      "title": "Moves to Saint-Clair-sur-l'Elle",
+      "place": "saint-clair-sur-l-elle-manche",
+      "summary": "2 personnel actions recorded on the card.",
+      "verbatim": "Left Meautis 0012, arrived at St Clair 2 Mi E T5670 Lambert Zone I at 0345 hrs. Occupying firing position. (Map St Lo Sheet 6E/2.) CORRECTIONS: M/R dtd 6 Jul 44 thru 13 Jul 44 reading station 'APO 230, France' corrected to read station Blosville-area grid T3891 Lambert Zone I (La Haye Du Puits, Sheet 6E/5). M/R dtd 14 Jul 44 thru 16 Jul 44 incl reading station 'Meautis, France' corrected to read station Meautis 1 Mi E T3681 Lambert Zone I (La Haye Du Puits, Sheet 6E/5).",
+      "strength": {
+        "presentForDuty": 114,
+        "absent": 2,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 26
+      },
+      "personnel": [
+        {
+          "name": "Brown",
+          "grade": "Pfc",
+          "serial": "33474410",
+          "action": "Fr dy to sk in hosp LD 62nd Med Bn Clearing Station 609"
+        },
+        {
+          "name": "1 EM",
+          "action": "Atchd for rat & qtrs only fr Med Det 153rd FA Bn"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-07-29-mr",
+      "date": "1944-07-29",
+      "kind": "combat",
+      "title": "Enemy air action over the position",
+      "place": "saint-clair-sur-l-elle-manche",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "Slight enemy air action over position. No casualties. (Map St Lo Sheet 6F/2.)",
+      "strength": {
+        "presentForDuty": 113,
+        "absent": 1,
+        "assigned": 114
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 31
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-03-mr",
+      "date": "1944-08-03",
+      "kind": "movement",
+      "title": "Moves to Moyon",
+      "place": "moyon-manche",
+      "summary": "The battery moved 21 miles to a new position.",
+      "verbatim": "Left St Clair 2 Mi E T5670 Lambert Zone I. Arrived at bivouac area, distance traveled 21 miles. (Map Torigni Sur Vire Sheet 6F/4.)",
+      "strength": {
+        "presentForDuty": 113,
+        "absent": 1,
+        "assigned": 114
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 34
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-08-mr",
+      "date": "1944-08-08",
+      "kind": "movement",
+      "title": "Moves to Position near Vire",
+      "place": "position-near-vire-calvados",
+      "verbatim": "1010 hrs left Moyon 1 Mi S bivouac area. 1420 hrs arrived at position area. (Map Vire Sheet 6F/6.)",
+      "strength": {
+        "presentForDuty": 113,
+        "absent": 1,
+        "assigned": 114
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 36
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-14-mr",
+      "date": "1944-08-14",
+      "kind": "movement",
+      "title": "Moves to Sourdeval",
+      "place": "sourdeval-manche",
+      "summary": "The battery moved 19 miles to a new position.",
+      "verbatim": "0930 hrs left Chaisel 1/2 Mi NW T5935 Lambert Zone I. 1350 hrs arrived at Sourdeval 1 Mi W T5819 Lambert Zone I, distance traveled 19 miles. (Map Mortain Sheet 6G/2.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 39
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-15-mr",
+      "date": "1944-08-15",
+      "kind": "movement",
+      "title": "Moves to Ger",
+      "place": "ger-manche",
+      "summary": "The battery moved 10 miles to a new position.",
+      "verbatim": "1745 hrs left Sourdeval 1 Mi W T5819 Lambert Zone I. 1920 hrs arrived at Ger 1/2 Mi S T7012 Lambert Zone I, distance traveled 10 miles. (Map Mortain Sheet 6G/2.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 40
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-16-mr",
+      "date": "1944-08-16",
+      "kind": "movement",
+      "title": "Moves to Domfront",
+      "place": "domfront-orne",
+      "summary": "The battery moved 12 miles to a new position.",
+      "verbatim": "1400 hrs left Ger 1/2 Mi S T7012 Lambert Zone I. 1630 hrs arrived at Domfront 1/2 Mi SE T8102 Lambert Zone I, in bivouac, distance traveled 12 miles. (Map Domfront Sheet 2G/1.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 40
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-17-mr",
+      "date": "1944-08-17",
+      "kind": "movement",
+      "title": "Moves to La Pallu",
+      "place": "la-pallu-mayenne",
+      "summary": "The battery moved 18 miles to a new position.",
+      "verbatim": "1910 hrs left Domfront T8102 1/2 Mi SE. Arrived at La Pallu Y0692 1/2 Mi E at 2320 hrs, distance travelled 18 miles.",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 41
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-22-mr",
+      "date": "1944-08-22",
+      "kind": "movement",
+      "title": "Moves to Near Verneuil-sur-Avre",
+      "place": "near-verneuil-sur-avre-eure",
+      "summary": "The battery moved 96 miles to a new position.",
+      "verbatim": "Unit moved to new position, distance travelled 96 miles. In bivouac. (Map Verneuil Sheet 8G/2.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 43
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-08-31-mr",
+      "date": "1944-08-31",
+      "kind": "movement",
+      "title": "Moves to Versailles",
+      "place": "versailles-seine-et-oise",
+      "summary": "The battery moved 61 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area, distance traveled 61 miles. (Map Paris (West) Sheet 10F/5.)",
+      "strength": {
+        "presentForDuty": 99,
+        "absent": 14,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 48
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-09-18-mr",
+      "date": "1944-09-18",
+      "kind": "movement",
+      "title": "Moves to Monceau-Imbrechies",
+      "place": "monceau-imbrechies-hainaut",
+      "summary": "The battery moved 178 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area, distance travelled 178 miles. (Map Chimay Sheet 103.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 59
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-09-20-mr",
+      "date": "1944-09-20",
+      "kind": "movement",
+      "title": "Moves to Henri-Chapelle",
+      "place": "henri-chapelle-liege",
+      "summary": "The battery moved 120 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area, distance traveled 120 miles. (Map Liege Sheet 9.)",
+      "strength": {
+        "presentForDuty": 112,
+        "absent": 1,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 60
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-09-21-mr",
+      "date": "1944-09-21",
+      "kind": "combat",
+      "title": "Andrews wounded",
+      "place": "henri-chapelle-liege",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In bivouac area. (Map Liege Sheet 9.)",
+      "strength": {
+        "presentForDuty": 111,
+        "absent": 2,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 60
+      },
+      "personnel": [
+        {
+          "name": "Cook",
+          "grade": "Tec 5",
+          "serial": "35150876",
+          "action": "Fr dy to sk in hosp LD, slight foot injury, 5th Evac Hosp (non-battle injury)"
+        },
+        {
+          "name": "Andrews",
+          "grade": "S Sgt",
+          "serial": "35208371",
+          "action": "LIA due to enemy land mine, remained on duty"
+        },
+        {
+          "name": "Bachelder",
+          "grade": "Pvt",
+          "serial": "36185315",
+          "action": "LIA due to enemy land mine, remained on duty"
+        },
+        {
+          "name": "Smith",
+          "grade": "Pvt",
+          "serial": "34289567",
+          "action": "LIA due to enemy land mine, remained on duty"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-09-22-mr",
+      "date": "1944-09-22",
+      "kind": "movement",
+      "title": "Moves to Schmidthof",
+      "place": "schmidthof-near-aachen",
+      "summary": "The battery moved 21 miles to a new position.",
+      "verbatim": "Unit moved into firing position, distance traveled 21 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 111,
+        "absent": 2,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 61
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-09-23-mr",
+      "date": "1944-09-23",
+      "kind": "combat",
+      "title": "Stein wounded",
+      "place": "schmidthof-near-aachen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In position firing. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 111,
+        "absent": 2,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 61
+      },
+      "personnel": [
+        {
+          "name": "Stein",
+          "grade": "Pvt",
+          "serial": "33452612",
+          "action": "LIA due to enemy land mine, slight face and right hand wound, remained on duty as of 21 Sept 44"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-10-15-mr",
+      "date": "1944-10-15",
+      "kind": "combat",
+      "title": "Enemy artillery on the position",
+      "place": "schmidthof-near-aachen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In firing position. Enemy artillery fire in position from 1545 to 1630 hrs. No casualties. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 110,
+        "absent": 2,
+        "assigned": 112
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 73
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-10-16-mr",
+      "date": "1944-10-16",
+      "kind": "combat",
+      "title": "Enemy artillery on the position",
+      "place": "schmidthof-near-aachen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In firing position. Enemy artillery fire in position. No casualties. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 110,
+        "absent": 2,
+        "assigned": 112
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 73
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-11-14-mr",
+      "date": "1944-11-14",
+      "kind": "combat",
+      "title": "Enemy artillery on the position",
+      "place": "schmidthof-near-aachen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In position firing. Enemy artillery fire in position. No casualties. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 108,
+        "absent": 2,
+        "assigned": 110
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 88
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-04-mr",
+      "date": "1944-12-04",
+      "kind": "personnel",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Training with German artillery guns. CORRECTION (4 Oct 44 to 3 Dec 44 incl): coordinates wF8935 should read coordinates wK8935. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 98
+      },
+      "personnel": [
+        {
+          "name": "Derr, George E.",
+          "grade": "Tec 5",
+          "serial": "33483707",
+          "action": "Fr absent sick to lost to 45th Evac Hosp LD, non-battle casualty, per Section 2 Cir 69 ETOUSA dtd 13 Jun 44, non-flying status"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-12-05-mr",
+      "date": "1944-12-05",
+      "kind": "combat",
+      "title": "Wood, Charles R. Jr. wounded",
+      "place": "schmidthof-near-aachen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 99
+      },
+      "personnel": [
+        {
+          "name": "Wood, Charles R. Jr.",
+          "grade": "1st Lt",
+          "serial": "01174476",
+          "action": "CORRECTION to M/R dtd 2 Oct 44 which read 'No Change': INJURED IN ACTION in Germany, not hospitalized - non-flying status"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-12-06-mr",
+      "date": "1944-12-06",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Test fired German artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 99
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-07-mr",
+      "date": "1944-12-07",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 100
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-08-mr",
+      "date": "1944-12-08",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 100
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-09-mr",
+      "date": "1944-12-09",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 101
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-10-mr",
+      "date": "1944-12-10",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 95,
+        "absent": 11,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 101
+      },
+      "personnel": [
+        {
+          "name": "10 EM",
+          "action": "Attached to Service Btry for rations only"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-12-11-mr",
+      "date": "1944-12-11",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 95,
+        "absent": 11,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 102
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-12-mr",
+      "date": "1944-12-12",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 95,
+        "absent": 11,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 102
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-13-mr",
+      "date": "1944-12-13",
+      "kind": "admin",
+      "title": "Training on captured German guns",
+      "place": "schmidthof-near-aachen",
+      "verbatim": "Training with German light artillery guns. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 95,
+        "absent": 11,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 103
+      },
+      "generated": true
+    },
+    {
+      "id": "1944-12-14-mr",
+      "date": "1944-12-14",
+      "kind": "movement",
+      "title": "Training on captured German guns",
+      "place": "hurtgen-hurtgen-forest",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Unit moved to new position and firing German guns. (Map Lendersdorf 1:25,000 Sheet 5204.)",
+      "strength": {
+        "presentForDuty": 95,
+        "absent": 11,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 103
+      },
+      "personnel": [
+        {
+          "name": "1 EM",
+          "action": "Fr rations with orgn to rations elsewhere"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-12-26-mr",
+      "date": "1944-12-26",
+      "kind": "movement",
+      "title": "Hands the German guns to the 269th",
+      "place": "schmidthof-near-aachen",
+      "summary": "The battery moved 15 miles to a new position.",
+      "verbatim": "Shipped German guns to 269th FA Bn and moved from Hurtgen 1 Mi W to bivouac area, distance travelled 15 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 1,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 109
+      },
+      "personnel": [
+        {
+          "name": "10 EM",
+          "action": "Fr rations elsewhere to rations with orgn"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1944-12-27-mr",
+      "date": "1944-12-27",
+      "kind": "movement",
+      "title": "Moves to Tohogne",
+      "place": "tohogne-luxembourg-province",
+      "summary": "The battery moved 62 miles to a new position.",
+      "verbatim": "Unit moved from Schmidthof, Germany to Tohogne, Belgium, distance traveled 62 miles. Unit wrecked 2 prime movers on march; 3 men hospitalized. In firing position. (Map Aywaille S.W. 1:25,000 Sheet 80.)",
+      "strength": {
+        "presentForDuty": 102,
+        "absent": 4,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 110
+      },
+      "personnel": [
+        {
+          "name": "Sittler, Charles W.",
+          "grade": "Pfc",
+          "serial": "33483701",
+          "action": "Fr dy to sk in 75th Clearing Station 577th Medical Bn LD, non-battle casualty"
+        },
+        {
+          "name": "Balderson, Graham A.",
+          "grade": "Pvt",
+          "serial": "33519388",
+          "action": "Fr dy to sk in 75th Clearing Station 577th Medical Bn LD, non-battle casualty"
+        },
+        {
+          "name": "Harris, John R.",
+          "grade": "Pvt",
+          "serial": "6295628",
+          "action": "Fr dy to sk in 75th Clearing Station 577th Medical Bn LD, non-battle casualty"
+        }
+      ],
+      "generated": true
     },
     {
       "id": "1945-01-01-oob",
@@ -344,7 +1667,367 @@
       "kind": "combat",
       "title": "In the Ardennes, under XVIII Airborne Corps",
       "summary": "On New Year's Day 1945 the battalion is carried on the Allied order of battle under the 79th Field Artillery Group, XVIII Airborne Corps, First Army — Ridgway's corps, holding the northern shoulder of the Bulge. Its sister battalions in the group are the 551st and 552nd.",
-      "source": { "id": "bulge-oob" }
+      "source": {
+        "id": "bulge-oob"
+      },
+      "verbatim": "Unit moved to new position. Distance travelled 16 miles. (Map Aywaille Sheet 80 SE.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 0,
+        "assigned": 105
+      },
+      "place": "werbomont-liege"
+    },
+    {
+      "id": "1945-01-11-mr",
+      "date": "1945-01-11",
+      "kind": "movement",
+      "title": "Moves to Basse-Bodeux",
+      "place": "basse-bodeux-liege",
+      "summary": "The battery moved 10 miles to a new position.",
+      "verbatim": "Unit moved to new firing position, distance traveled 10 miles. (Map Vielsalm 1:25,000 Sheet 93 N.)",
+      "strength": {
+        "presentForDuty": 102,
+        "absent": 3,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 118
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-01-26-mr",
+      "date": "1945-01-26",
+      "kind": "movement",
+      "title": "Moves to Sourbrodt",
+      "place": "sourbrodt-liege",
+      "summary": "The battery moved 21 miles to a new position.",
+      "verbatim": "Unit moved to new position at Sourbrodt, distance traveled 21 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 3,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 126
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-01-27-mr",
+      "date": "1945-01-27",
+      "kind": "movement",
+      "title": "Moves to Sourbrodt",
+      "place": "sourbrodt-liege",
+      "summary": "The battery moved 1 miles to a new position.",
+      "verbatim": "Unit moved into firing position, distance traveled 1 mile. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 3,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 126
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-01-30-mr",
+      "date": "1945-01-30",
+      "kind": "personnel",
+      "title": "Changing gun tubes",
+      "place": "sourbrodt-liege",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Changing gun tubes. Gun No. 51 fired 786 service rounds. Gun No. 52 fired 774 service rounds. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 101,
+        "absent": 4,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 128
+      },
+      "personnel": [
+        {
+          "name": "O'Connell, Frank H.",
+          "grade": "Pvt",
+          "serial": "37285303",
+          "action": "Fr absent sick to lost to hosp, 2nd Evac Hosp LD, non-battle casualty, AUS, Sec 2 Cir 69 ETOUSA dtd 13 Jun 44"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-01-31-mr",
+      "date": "1945-01-31",
+      "kind": "personnel",
+      "title": "Changing gun tubes",
+      "place": "sourbrodt-liege",
+      "summary": "2 personnel actions recorded on the card.",
+      "verbatim": "Changing gun tubes. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 100,
+        "absent": 4,
+        "assigned": 104
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 128
+      },
+      "personnel": [
+        {
+          "name": "Mathis Jr, Albert L.",
+          "grade": "Pfc",
+          "serial": "33837632",
+          "action": "Fr absent sick to lost to hosp, 662nd Med Clearing Co (2d Platoon) LD, non-battle casualty"
+        },
+        {
+          "name": "Reisberg, Roland H.",
+          "grade": "Cpl",
+          "serial": "33386993",
+          "action": "Fr dy to sk, 2nd Evac Hosp LD, non-battle casualty"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-02-01-mr",
+      "date": "1945-02-01",
+      "kind": "movement",
+      "title": "Changing gun tubes",
+      "place": "sourbrodt-liege",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Gun tubes replaced. In firing position. March ordered. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 100,
+        "absent": 3,
+        "assigned": 103
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 129
+      },
+      "personnel": [
+        {
+          "name": "Reisberg, Roland H.",
+          "grade": "Cpl",
+          "serial": "33386993",
+          "action": "Fr absent sick to lost to hosp, 2nd Evac Hosp LD, non-battle casualty, AUS, Sec 2 Cir 69 ETOUSA dtd 13 Jun 44"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-02-02-mr",
+      "date": "1945-02-02",
+      "kind": "movement",
+      "title": "Moves to Elsenborn",
+      "place": "elsenborn-liege",
+      "summary": "The battery moved 4 miles to a new position.",
+      "verbatim": "Unit moved to new position, distance traveled 4 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 100,
+        "absent": 3,
+        "assigned": 103
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 129
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-02-07-mr",
+      "date": "1945-02-07",
+      "kind": "movement",
+      "title": "Moves to Nothberg",
+      "place": "nothberg-eschweiler",
+      "summary": "The battery moved 27 miles to a new position.",
+      "verbatim": "Unit moved to new position, distance traveled 27 miles. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 102,
+        "absent": 3,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 132
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-02-10-mr",
+      "date": "1945-02-10",
+      "kind": "combat",
+      "title": "Bonczyk, Stanley P. killed",
+      "place": "nothberg-eschweiler",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In firing position. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 102,
+        "absent": 2,
+        "assigned": 104
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 134
+      },
+      "personnel": [
+        {
+          "name": "Bonczyk, Stanley P.",
+          "grade": "Pvt",
+          "serial": "36624640",
+          "action": "KILLED IN GERMANY. Accidental discharge from rifle which penetrated the heart. LD. Non-battle casualty."
+        },
+        {
+          "name": "O'Connell, Frank H.",
+          "grade": "Pvt",
+          "serial": "37285303",
+          "action": "CORRECTION (30 Jan 45): serial and MOS corrected to 37285303, Pvt, MOS 641"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-02-16-mr",
+      "date": "1945-02-16",
+      "kind": "combat",
+      "title": "Berge, Carl M. killed",
+      "place": "nothberg-eschweiler",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In position firing. (Map Cologne 1:100,000 Sheet R-1.) 2-page typed report.",
+      "strength": {
+        "presentForDuty": 104,
+        "absent": 2,
+        "assigned": 106
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 137
+      },
+      "personnel": [
+        {
+          "name": "Berge, Carl M.",
+          "grade": "1st Lt",
+          "serial": "01174228",
+          "action": "KILLED IN ACTION IN GERMANY"
+        },
+        {
+          "name": "Squires, John J.",
+          "grade": "Tec 4",
+          "serial": "33403788",
+          "action": "SLIGHTLY WOUNDED IN ACTION IN GERMANY - slight face wound, remained on duty"
+        },
+        {
+          "name": "Mathis Jr, Albert E.",
+          "grade": "Pfc",
+          "serial": "33832637",
+          "action": "CORRECTION (31 Jan 45): entry corrected to add MOS 8531 and 'per Cir 69 ETOUSA dtd 13 Jun 44'"
+        },
+        {
+          "name": "Reisberg, Roland H.",
+          "grade": "Cpl",
+          "serial": "33386993",
+          "action": "CORRECTION (1 Feb 45): entry corrected to add MOS 603"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-02-25-mr",
+      "date": "1945-02-25",
+      "kind": "movement",
+      "title": "Moves to Derichsweiler",
+      "place": "derichsweiler-duren",
+      "summary": "The battery moved 7 miles to a new position.",
+      "verbatim": "Unit moved to new firing position in Derichsweiler, distance traveled 7 miles. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 106,
+        "absent": 1,
+        "assigned": 107
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 142
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-03-01-mr",
+      "date": "1945-03-01",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "derichsweiler-duren",
+      "verbatim": "March ordered. Guns and personnel remained in area. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 2,
+        "assigned": 107
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 144
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-03-03-mr",
+      "date": "1945-03-03",
+      "kind": "movement",
+      "title": "Moves to Bivouac west of the Rhine",
+      "place": "bivouac-west-of-the-rhine",
+      "summary": "The battery moved 10 miles to a new position.",
+      "verbatim": "Unit moved to bivouac area, distance traveled 10 miles. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 105,
+        "absent": 2,
+        "assigned": 107
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 145
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-03-06-mr",
+      "date": "1945-03-06",
+      "kind": "movement",
+      "title": "Displaces to a new position",
+      "summary": "The battery moved 22 miles to a new position.",
+      "verbatim": "Unit moved to firing position, distance traveled 22 miles. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 104,
+        "absent": 3,
+        "assigned": 107
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 146
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-03-14-mr",
+      "date": "1945-03-14",
+      "kind": "movement",
+      "title": "March ordered",
+      "verbatim": "March ordered. Guns remained in area. (Map Cologne 1:100,000 Sheet R-1.)",
+      "strength": {
+        "presentForDuty": 104,
+        "absent": 3,
+        "assigned": 107
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 150
+      },
+      "generated": true
     },
     {
       "id": "1945-03-15-cited-end",
@@ -352,7 +2035,16 @@
       "kind": "combat",
       "title": "End of the cited period",
       "summary": "Eight and a half months of ammunition supply across three countries, closing a week before the Rhine crossings that opened Central Europe.",
-      "source": { "id": "bronze-star-citation" }
+      "source": {
+        "id": "bronze-star-citation"
+      },
+      "verbatim": "Unit moved to new position, distance traveled 40 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 104,
+        "absent": 3,
+        "assigned": 107
+      },
+      "place": "remagen-bridgehead-east-bank-of-the-rhine"
     },
     {
       "id": "1945-bronze-star",
@@ -362,7 +2054,295 @@
       "dateApproximate": true,
       "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
       "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
-      "source": { "id": "bronze-star-citation" }
+      "source": {
+        "id": "bronze-star-citation"
+      },
+      "verbatim": "Unit moved to new position, distance traveled 40 miles. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 104,
+        "absent": 3,
+        "assigned": 107
+      },
+      "place": "remagen-bridgehead-east-bank-of-the-rhine"
+    },
+    {
+      "id": "1945-03-26-mr",
+      "date": "1945-03-26",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "remagen-bridgehead-east-bank-of-the-rhine",
+      "verbatim": "March ordered. Guns remained in area. (Map Bonn 1:100,000 Sheet S-1.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 2,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 156
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-03-27-mr",
+      "date": "1945-03-27",
+      "kind": "movement",
+      "title": "Moves to Position east of the Rhine",
+      "place": "position-east-of-the-rhine",
+      "summary": "The battery moved 20 miles to a new position.",
+      "verbatim": "Unit moved to new position, distance traveled 20 miles. (Map Koblenz 1:100,000 Sheet S-2.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 2,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 157
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-04-03-mr",
+      "date": "1945-04-03",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "wilgersdorf-siegerland",
+      "summary": "2 personnel actions recorded on the card.",
+      "verbatim": "March ordered. Guns remained in area. (Map Koblenz 1:100,000 Sheet S-2.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 2,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 162
+      },
+      "personnel": [
+        {
+          "name": "Breeger, Wilfred W.",
+          "grade": "Pfc",
+          "serial": "36260397",
+          "action": "Appointed Cpl per par 1 SO #26 Hq 153rd FA Bn 2 Apr 45; duty changed fr 8531 to 505"
+        },
+        {
+          "name": "Higgins, Everett",
+          "grade": "Tec 4",
+          "serial": "35115709",
+          "action": "Duty changed fr 060 to 504"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-04-04-mr",
+      "date": "1945-04-04",
+      "kind": "movement",
+      "title": "Moves to Eisern",
+      "place": "eisern-near-siegen",
+      "summary": "The battery moved 6 miles to a new position.",
+      "verbatim": "Unit moved to new position, distance traveled 6 miles. (Map Siegen 1:100,000 Sheet R-2.)",
+      "strength": {
+        "presentForDuty": 103,
+        "absent": 2,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 162
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-04-05-mr",
+      "date": "1945-04-05",
+      "kind": "combat",
+      "title": "Enemy artillery on the position",
+      "place": "eisern-near-siegen",
+      "summary": "Recorded under fire, or a man hit, in the day's report.",
+      "verbatim": "In position firing. Enemy artillery fire in position from 1645 to 1715 hrs. No casualties. (Map Siegen 1:100,000 Sheet R-2.)",
+      "strength": {
+        "presentForDuty": 102,
+        "absent": 3,
+        "assigned": 105
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 163
+      },
+      "personnel": [
+        {
+          "name": "Cherez, Edwin",
+          "grade": "Cpl",
+          "serial": "18016775",
+          "action": "Fr dy to hosp LD, non-battle casualty, 4th Convalescent Hosp"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-04-10-mr",
+      "date": "1945-04-10",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "meiswinkel-siegerland",
+      "summary": "The battery moved 14 miles to a new position.",
+      "verbatim": "March ordered. Guns moved to new bivouac area, distance traveled 14 miles. (Map Siegen 1:100,000 Sheet R-2.)",
+      "strength": {
+        "presentForDuty": 106,
+        "absent": 2,
+        "assigned": 108
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 166
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-04-11-mr",
+      "date": "1945-04-11",
+      "kind": "movement",
+      "title": "Moves to Drolshagen",
+      "place": "drolshagen-sauerland",
+      "summary": "The battery moved 21 miles to a new position.",
+      "verbatim": "Unit moved to firing position, distance traveled 21 miles. (Map Siegen 1:100,000 Sheet R-2.)",
+      "strength": {
+        "presentForDuty": 106,
+        "absent": 2,
+        "assigned": 108
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 166
+      },
+      "personnel": [
+        {
+          "name": "Reisberg, Roland H.",
+          "grade": "Cpl",
+          "serial": "33386993",
+          "action": "Appointed Sgt fr Cpl per SO #29 Hq 153rd FA Bn dtd 10 Apr 45; duty changed fr 603 to 539"
+        },
+        {
+          "name": "O'Connell, Frank H.",
+          "grade": "Pvt",
+          "serial": "37285303",
+          "action": "Appointed Pfc per BO #4 dtd 1 Apr 45"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-04-13-mr",
+      "date": "1945-04-13",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "nieder-ennepe-ruhr",
+      "summary": "The battery moved 24 miles to a new position.",
+      "verbatim": "March ordered. Guns moved to new firing position, distance traveled 24 miles. (Map Hagen 1:50,000 Sheet 78.)",
+      "strength": {
+        "presentForDuty": 106,
+        "absent": 2,
+        "assigned": 108
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 167
+      },
+      "personnel": [
+        {
+          "name": "Andrews, Paul W.",
+          "grade": "S Sgt",
+          "serial": "35208371",
+          "action": "Duty changed fr 539 to 585 (First Sergeant)"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-04-16-mr",
+      "date": "1945-04-16",
+      "kind": "movement",
+      "title": "March ordered",
+      "place": "near-wuppertal-ruhr",
+      "summary": "The battery moved 13 miles to a new position.",
+      "verbatim": "March ordered. Guns moved to new bivouac area, distance traveled 13 miles. (Map Wuppertal 1:50,000 Sheet 58.)",
+      "strength": {
+        "presentForDuty": 110,
+        "absent": 2,
+        "assigned": 112
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 169
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-04-19-mr",
+      "date": "1945-04-19",
+      "kind": "movement",
+      "title": "Moves to Radevormwald",
+      "place": "radevormwald-bergisches-land",
+      "summary": "The battery moved 22 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area, distance traveled 22 miles. (Map Marburg 1:100,000 Sheet R-3.)",
+      "strength": {
+        "presentForDuty": 108,
+        "absent": 4,
+        "assigned": 112
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 170
+      },
+      "generated": true
+    },
+    {
+      "id": "1945-04-28-mr",
+      "date": "1945-04-28",
+      "kind": "personnel",
+      "title": "Adjusted Service Rating cards issued",
+      "place": "roddenau-hesse",
+      "summary": "1 personnel action recorded on the card.",
+      "verbatim": "Usual bivouac area duties. RECEIVED ADJUSTED SERVICE RATING CARDS (WD AGO Form 163) in sufficient quantities to cover all assigned and attached unassigned enlisted personnel. (Map Marburg 1:100,000 Sheet R-3.)",
+      "strength": {
+        "presentForDuty": 109,
+        "absent": 4,
+        "assigned": 113
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 175
+      },
+      "personnel": [
+        {
+          "name": "Spring, Frank S.",
+          "grade": "S Sgt",
+          "serial": "33386630",
+          "action": "Assigned & joined fr 3rd Repl Depot APO 153 US Army, MOO 345, Race W, per par 19 SO #107 Hq 3rd Repl Depot dtd 17 Apr 45"
+        }
+      ],
+      "generated": true
+    },
+    {
+      "id": "1945-05-19-mr",
+      "date": "1945-05-19",
+      "kind": "movement",
+      "title": "Moves to Geismar",
+      "place": "geismar-hesse",
+      "summary": "The battery moved 12 miles to a new position.",
+      "verbatim": "Unit moved to new bivouac area at Geismar, distance traveled 12 miles. (Map Marburg 1:100,000 Sheet R-3.)",
+      "strength": {
+        "presentForDuty": 114,
+        "absent": 2,
+        "assigned": 116
+      },
+      "source": {
+        "id": "morning-reports",
+        "page": 186
+      },
+      "generated": true
     },
     {
       "id": "1945-08-20-furlough",
@@ -373,7 +2353,9 @@
       "locationText": "Herzhausen, Germany — map reference wG8188, Nord de Guerre grid",
       "summary": "The first morning report found that names him. The battery is in occupied Germany; Cole leaves on 19 August for five days at Treebeek, in Dutch Limburg, on a leave order from the 32nd Field Artillery Brigade. Three of his battery mates go to Lyons the same day, one of them Chmielewski, who had been carried to the ship's hospital crossing the Atlantic fifteen months before.",
       "verbatim": "Cole Clarence J 36106875 Sgt — Fr dy to TD Treebek, Holland per ltr Hq 32nd FA Brig (Lv Fur & Passes) dtd 16 Aug 45. Departed. Approx duration 5 days, as of 19 Aug 45.",
-      "source": { "id": "morning-report-1945-08-20" }
+      "source": {
+        "id": "morning-report-1945-08-20"
+      }
     },
     {
       "id": "1945-08-24-so66",
@@ -382,7 +2364,9 @@
       "title": "Special Orders 66 — a hundred and forty-two men sent home",
       "summary": "The battalion adjutant lists 142 officers and men by name, serial number, specialty and points, and transfers them to the 70th Infantry Division for return to the United States. Cole is not among them.",
       "verbatim": "The following-named O & EM, this headquarters, are trfd in gr to the 70th Inf Div, APO 70, U.S. Army. Auth: VOCG XXIII Corps & 32d F.A. Brigade. EDCMR 26 August 1945.",
-      "source": { "id": "special-orders-66" }
+      "source": {
+        "id": "special-orders-66"
+      }
     },
     {
       "id": "1945-08-25-return",
@@ -392,7 +2376,9 @@
       "locationText": "Herzhausen, Germany — Marburg 1/100,000, Sheet R-3",
       "summary": "Three words against his name. The battery is down to three officers and sixty-seven men, from the hundred and eighteen who sailed.",
       "verbatim": "Cole, Clarence J 36106875 Sgt — Fr TD to dy. Record of events: usual bivouac area duties.",
-      "source": { "id": "morning-report-1945-08-25" }
+      "source": {
+        "id": "morning-report-1945-08-25"
+      }
     },
     {
       "id": "1945-10-07-home",
@@ -400,14 +2386,18 @@
       "kind": "movement",
       "title": "Sails for home",
       "summary": "Departs the theater after seventeen months overseas.",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      }
     },
     {
       "id": "1945-10-16-usa",
       "date": "1945-10-16",
       "kind": "movement",
       "title": "Arrives in the United States",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      }
     },
     {
       "id": "1945-10-22-discharge",
@@ -417,10 +2407,11 @@
       "place": "indiantown-gap",
       "summary": "Separated at Indiantown Gap, Pennsylvania, under the point system. His Adjusted Service Rating score was 80.",
       "verbatim": "Lapel button issued. ASR score 2 Sep 45 80.",
-      "source": { "id": "separation-record" }
+      "source": {
+        "id": "separation-record"
+      }
     }
   ],
-
   "context": [
     {
       "date": "1944-06-06",
@@ -451,6 +2442,61 @@
       "date": "1945-05-08",
       "title": "V-E Day",
       "summary": "Germany's unconditional surrender takes effect and the war in Europe ends. Cole would sail for home five months later."
+    }
+  ],
+  "crossReferences": [
+    {
+      "claim": "Sailing date",
+      "sources": [
+        "separation-record",
+        "morning-reports"
+      ],
+      "detail": "The discharge and the morning report of 3 May 1944 (frame 1) both give 3 May 1944. Produced eighteen months apart by different clerks.",
+      "agrees": true
+    },
+    {
+      "claim": "Bronze Star cited period opens on the landing",
+      "sources": [
+        "bronze-star-citation",
+        "morning-reports"
+      ],
+      "detail": "The citation runs from 30 June 1944. The morning report for that day (frame 17) records the battery arriving at Omaha Beach at 1230 hours and moving to the vehicle transit area at 2230. The cited period begins on the day the battery first set foot in France.",
+      "agrees": true
+    },
+    {
+      "claim": "Bronze Star cited period closes on the Rhine crossing",
+      "sources": [
+        "bronze-star-citation",
+        "morning-reports"
+      ],
+      "detail": "The citation runs to 15 March 1945. The morning report for that day (frame 151) records a 40-mile move into the Remagen bridgehead on the east bank of the Rhine. The cited period brackets the battery combat record from the landing to the crossing of the Rhine.",
+      "agrees": true
+    },
+    {
+      "claim": "Battery C in the Ardennes",
+      "sources": [
+        "bulge-oob",
+        "morning-reports"
+      ],
+      "detail": "The order of battle places the battalion under XVIII Airborne Corps on 1 January 1945. The morning report for that day (frame 113) puts Battery C at Werbomont, on the northern shoulder of the Bulge, which is consistent with that corps sector.",
+      "agrees": true
+    },
+    {
+      "claim": "Eighteen men of Special Orders 66 are placed in Battery C",
+      "sources": [
+        "special-orders-66",
+        "morning-reports"
+      ],
+      "detail": "Special Orders 66 carries no battery column, so it cannot place a man in Battery C on its own. Cross-matching its serial numbers against the Battery C morning reports resolves eighteen of the 142: thirteen on an exact serial match and five where the two transcriptions differ by one or two digits.",
+      "agrees": true
+    },
+    {
+      "claim": "Bronze Star general orders number",
+      "sources": [
+        "morning-reports"
+      ],
+      "detail": "Not present in frames 1-218. No award of any kind is recorded in the transcribed cards. If the battalion announced it in the morning reports it will be in frames 219-284, which cover the period the award was most likely published.",
+      "agrees": null
     }
   ]
 }

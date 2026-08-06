@@ -133,6 +133,33 @@
         <ol class="timeline" id="timeline-list"></ol>
       </section>
 
+      <section id="daily-record">
+        <div class="section-head prose">
+          <h2>The daily record</h2>
+          <p>
+            The timeline above carries the days that changed something. This is every card:
+            the movements and the casualties, but also the long stretches where the entry
+            reads <em>in position firing</em> and nothing else. Those days are most of the
+            war a gun battery actually fought.
+          </p>
+        </div>
+
+        <div class="record-controls">
+          <label class="sr-only" for="record-search">Search the daily record</label>
+          <input
+            type="search"
+            id="record-search"
+            class="record-search"
+            placeholder="Search a name, a place, a date, an event…"
+            autocomplete="off"
+          />
+          <p class="record-status" id="record-status" role="status"></p>
+        </div>
+
+        <ol class="record" id="record-list"></ol>
+        <button type="button" class="record-more" id="record-more" hidden></button>
+      </section>
+
       <section id="campaigns">
         <div class="section-head prose">
           <h2>Campaigns</h2>
@@ -160,8 +187,11 @@
             a new firing position, then a few miles more. Plotted against the campaign as a
             whole, those small displacements trace the shape of the advance.
           </p>
-          <p class="pending-note">
-            Positions will appear here as the morning reports are transcribed.
+          <p>
+            Every position below is a village the battery named in its own station entry,
+            joined in the order it reached them: Omaha Beach to the Cotentin, across France in
+            the pursuit, into Belgium, and over the German frontier. The battery logged 979
+            road miles for itself in the process.
           </p>
           <div class="chain" id="attachment"></div>
         </div>

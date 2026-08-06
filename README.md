@@ -1,29 +1,64 @@
 # Sergeant Clarence Cole — a documentary record
 
 A timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion,
-in the European Theater of Operations, built from the battalion's morning reports.
+in the European Theater of Operations, built from his discharge papers, his
+Bronze Star citation, and the battalion's own paperwork.
 
 Deployed as a Cloudflare Worker serving static assets:
 **https://clarence-cole-enlistment-record.james-e09.workers.dev**
 
 ## Status
 
-The frame of the service is complete and sourced end to end: induction,
-sailing, arrival in England, the Bronze Star citation period, the five campaign
-credits, the return, and the discharge. The day-by-day transcription of the
-morning reports is still in progress and is loaded into
-`public/data/timeline.json` as it lands.
+The frame of the service is complete and sourced end to end: induction, sailing,
+arrival in England, the Bronze Star citation period, the five campaign credits,
+the return, and the discharge.
 
-Three primary sources, all agreeing where they overlap:
+Transcribed from the film so far:
+
+| Frames | What | State |
+| --- | --- | --- |
+| 1–218 | Battery C morning reports — 397 daily cards, 2 May 1944 to 12 July 1945 | first pass, not second-read; 8 frames missed inside the range |
+| 248–252 | Special Orders 66 — 142 men out, to the 70th Inf Div | verified |
+| 265–270 | Special Orders 226 — 241 men in, from the 29th Inf Div | first pass |
+
+74 frames are still to do: **12, 158, 207, 209, 211, 213, 215, 217** — missed
+inside the morning-report range during a fast pass — and **219–247, 253–264,
+271–284**, which cover the occupation from mid-July 1945, the dissolution of the
+battery, and the sailing home.
+
+Four primary sources, all agreeing where they overlap:
 
 | Source | What it gives |
 | --- | --- |
 | Enlisted Record and Report of Separation (WD AGO 53-55) | Serial number, dates, campaigns, decorations, service abroad |
 | Bronze Star citation | The cited period, the countries, and what he actually did |
-| Battalion morning reports (284 frames) | Day-by-day movement and personnel actions |
+| Battery C morning reports | Day-by-day movement, positions, strength, and personnel actions |
+| Special Orders 66 and 226 | Who left the battalion in August, and who replaced them in September |
 
-The discharge and the morning reports were produced eighteen months apart by
-different clerks and give the same sailing date, 3 May 1944.
+## Where the sources meet
+
+Recorded as data in `timeline.json` → `crossReferences`, not just asserted here:
+
+- The discharge and the morning report of 3 May 1944 give the same sailing date,
+  eighteen months and two clerks apart.
+- The Bronze Star cited period, 30 June 1944 – 15 March 1945, opens on the day
+  the battery landed over Omaha Beach (frame 17) and closes on the day it moved
+  into the Remagen bridgehead across the Rhine (frame 151). The citation brackets
+  the battery's combat record exactly.
+- The Ardennes order of battle puts the battalion under XVIII Airborne Corps on
+  1 January 1945; the morning report for that day puts Battery C at Werbomont, on
+  the northern shoulder of the Bulge.
+- Neither special order carries a battery column, so neither can place a man in
+  Battery C on its own. Cross-matching serials against the Battery C morning
+  reports resolves **19 of the 383** — 13 confirmed on an exact match, 6 probable
+  where the two readings differ by a digit or two. None of the 241 men on SO 226
+  match, which is what you would expect: they arrived in September, after the
+  transcribed cards end.
+
+The cross-reference has also caught real errors in both directions. The
+independent reading of SO 66 corrected `35013798` from *Kolosxi* to **McKoski**
+in the morning-report transcription, and exposed an internal inconsistency where
+the same man was written *Frehnheiser* on one card and *Frohnheiser* on another.
 
 ## Running it
 
@@ -41,60 +76,33 @@ npm run deploy   # publish to Cloudflare
 
 ```
 wrangler.jsonc            assets-only Worker config
+transcriptions/           EVERYTHING read off the film, one file per PDF page
+                          kind: order          -> roster.json
+                          kind: morning-report -> timeline.json
+data/gazetteer.json       place name to coordinate, phase bands, station overrides
 public/                   everything served
-  index.html
-  404.html
-  assets/style.css
   assets/app.js           renders the timeline from JSON
   assets/map.js           SVG maps, no tiles and no external libraries
-  data/timeline.json      the record — the only file that needs editing
-  data/roster.json        generated from tools/build-roster.mjs — do not edit
-  data/geo/theater.json   generated coastline, committed
   assets/graph.js         the roster network: force layout, no libraries
+  assets/record.js        the full day-by-day record, loaded on demand
+  data/timeline.json      curated events + events built from the film
+  data/morning-reports.json  generated — the complete daily record
+  data/roster.json        generated from transcriptions/ — do not edit
+  data/geo/theater.json   generated coastline, committed
   images/                 scanned documents, web-sized plus thumbnails
-tools/build-geo.mjs       rebuilds theater.json from Natural Earth data (CDN, cached)
-tools/build-roster.mjs    the Special Orders 66 transcription, and its build
+tools/build-geo.mjs       rebuilds theater.json from Natural Earth data
+tools/lib/pages.mjs       the page format, parsed in one place
+tools/build-roster.mjs    order pages -> roster.json, + Battery C match
+tools/build-timeline.mjs  morning-report pages -> timeline.json
+tools/compare-transcription.mjs  second-reader diff for a page
+tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
 ```
-
-## Adding transcribed events
-
-Everything the site shows comes from `public/data/timeline.json`. Add an entry
-to `events`:
-
-```jsonc
-{
-  "id": "1944-07-14-position",          // unique; date-slug convention
-  "date": "1944-07-14",                 // YYYY-MM-DD
-  "kind": "movement",                   // movement | personnel | combat | admin | award
-  "title": "Displaces to a new firing position",
-  "place": "saint-lo",                  // key into "places"
-  "summary": "One sentence in plain prose.",
-  "verbatim": "Text as written in the Record of Events block.",
-  "strength": { "presentForDuty": 115, "absent": 3, "assigned": 118 },
-  "source": { "id": "morning-reports", "page": 47 }   // microfilm frame number
-}
-```
-
-New locations go in `places` with `lat`/`lon` in decimal degrees; add
-`"approximate": true` when the coordinate is inferred rather than named. Any
-event carrying `"pending": true` renders as an unverified placeholder and is
-exempt from the source requirement.
-
-Then:
-
-```sh
-npm run check:data
-```
-
-It fails on structural errors (bad dates, unknown place keys, duplicate ids,
-uncited events) and warns on things worth a second look, such as strength
-figures that do not balance.
 
 ## Transcriptions
 
 Everything read off the film lives in `transcriptions/`, **one file per PDF
-page**, named for the page: `p248.md` is page 248. See
+page**, named for the page — orders and morning-report cards alike. See
 [`transcriptions/README.md`](transcriptions/README.md) for the file format and
 the row conventions.
 
@@ -106,65 +114,111 @@ npm run build:roster             # transcriptions/*.md -> public/data/roster.jso
 node tools/compare-transcription.mjs 266 .work/p266-second-read.md
 ```
 
-Two skills in `.claude/skills/` carry the procedure, including the reasons
-behind the parts that look fussy: **transcribe-film-page** for a first pass and
+Two skills in `.claude/skills/` carry the procedure, including the reasons behind
+the parts that look fussy: **transcribe-film-page** for a first pass and
 **verify-transcription** for the second reading.
 
-`public/data/roster.json` is generated. Never edit it by hand.
-
 The build fails on a filename that disagrees with its `page`, a row with no
-serial number, or two pages recording the same serial differently — that last
-one is the point of splitting by page, since the film photographs some pages
-twice and the copies can then be checked against each other.
+serial number, or two pages recording the same serial differently — that last one
+is the point of splitting by page.
 
-Two documents are transcribed so far:
+### Does the skew problem affect the morning reports?
 
-| Document | Date | Men | Direction | Verified |
-| --- | --- | --- | --- | --- |
-| SO 66, Hq 153rd FA Bn | 24 Aug 1945 | 142 | out, to the 70th Inf Div | yes |
-| SO 226, Hq 29th Inf Div | 11 Sept 1945 | 241 | in, from the 29th Inf Div | first pass |
+Less than it affects the orders, and it has been checked rather than assumed.
+The failure mode needs many adjacent rows for a shifted column to pair each man
+with his neighbour's serial. Of the 403 transcribed cards, **370 carry two or
+fewer serial-bearing rows** and are structurally immune; 14 carry six or more.
+The worst of them, frame 113 — twenty men promoted on 1 January 1945 — was
+re-read against the image and every name-to-serial pairing is correct. The cards
+are typed on printed rules that bound each row, which is what saves them.
 
-The network on the site joins each man to a hub for his MOS, because a shared
-specialty is the *only* relationship between two men these documents actually
-record. Anything stronger — who served in which section, who crewed which gun —
-is not in the source and must not be inferred from it.
+That is not a clean bill of health. No morning-report card has been second-read
+by the `verify-transcription` procedure, and they should not be treated as
+verified until they have been.
 
-Two caveats that matter: neither order has a battery column, so no man on either
-can be placed in Battery C from these documents alone; and 24 men on SO 226 have
-serial numbers that are not fully legible, carried as `?` characters.
+## The timeline, and which file to edit
+
+`timeline.json` holds two kinds of event, and the distinction matters:
+
+- **Hand-authored events** — the birth, the induction, the citation, the special
+  orders, the discharge. Edit these directly in `public/data/timeline.json`. They
+  carry no `generated` flag and the build never touches them.
+- **Generated events** — everything read off the morning reports. These carry
+  `"generated": true`. **Do not edit them in `timeline.json`; they are rebuilt and
+  your change will be lost.** Edit the page file in `transcriptions/` and rerun:
+
+```sh
+npm run build:timeline
+npm run check:data
+```
+
+`build:timeline` removes every event flagged `generated`, rebuilds them from the
+JSONL, and leaves hand-authored events alone. Where a hand-authored event already
+covers a date, the transcription *enriches* it — filling a missing `verbatim`,
+`strength` or frame number — rather than adding a second event for the same day.
+The curated title and summary always win.
+
+Only days that changed something reach the main timeline. The rest are still
+transcribed and still shipped, in `public/data/morning-reports.json`, and render
+in the *daily record* section.
+
+### The card format
+
+One file per frame, one `## <date>` section per card, documented in
+[`transcriptions/README.md`](transcriptions/README.md). Duplicate scans and
+multi-page reports are merged by date at build time.
+
+New places go in `data/gazetteer.json` under `places`. Matching is on whole words,
+longest match first — which is why `"Ger"` (the Manche village) does not swallow
+every station string ending `(Germany)`. That bug relocated three months of the
+war to Normandy before it was caught; the ordering is load-bearing.
 
 ## Conventions
 
 - **Cite everything.** Every dated claim carries the microfilm frame it came from.
-- **Mark uncertainty.** Doubtful readings stay doubtful; `pending: true` and
-  `approximate: true` exist so the site can show gaps honestly.
+- **Mark uncertainty.** `pending: true`, `approximate: true`, `uncertain: [...]`,
+  `verified: false` and `status: "inferred"` exist so the site can show gaps
+  honestly. Use `?` for a character that cannot be read. Do not guess.
 - **`verbatim` is transcription, `summary` is editorial.** Keep the original
-  wording, abbreviations and all, in `verbatim`.
+  wording and abbreviations in `verbatim`.
+- **Corrections are content.** The battery filed them constantly, sometimes
+  retracting an entry months later. Preserved as written, not silently applied.
+- **`asn` is the identity key.** Two men may share a name; nobody shares a serial.
 
 ## Maps
 
 `theater.json` is derived from Natural Earth 1:50m country boundaries (public
-domain) via `world-atlas`, clipped to the North Atlantic and Western Europe,
-simplified, and committed so the site has no runtime dependencies — no tiles,
-no map library, no external requests.
+domain), clipped, simplified, and committed so the site has no runtime
+dependencies — no tiles, no map library, no external requests. Rebuild only when
+changing the map window or the simplification tolerance: `npm run build:geo`.
 
-You only need to rebuild it when changing the map window or the simplification
-tolerance:
+## Continuous integration
 
-```sh
-npm run build:geo
-```
+`.github/workflows/ci.yml` rebuilds the roster and the timeline from the
+transcriptions on every pull request, validates `timeline.json`, and fails if the
+committed files under `public/data` no longer match their sources.
 
-The first run downloads the source from the jsDelivr CDN and caches it in
-`tools/.cache/` (gitignored); later runs are offline. The build is
-deterministic — the same source and settings reproduce the committed file
-byte for byte.
+It does **not** deploy. Cloudflare's Git integration already deploys `main` on
+push; a second deploy path would race it. The workflow carries a commented
+`deploy` job for the day you'd rather GitHub owned that.
 
 ## Still to do
 
-- Transcribe the remaining morning-report frames
-- The Bronze Star general orders number and award date — on neither the
-  citation nor the discharge, so most likely announced in the morning reports
-- The battalion's parent group or corps artillery assignment, and its weapon
-- Continental positions for the theater map, which currently plots England only
-- The date and place of the award ceremony photograph
+- Transcribe frames 219–247, 253–264 and 271–284
+- Second-read the morning-report cards; none has been through
+  `verify-transcription` yet
+- Adjudicate the six `probable` Battery C matches, where the two readings of a
+  serial differ by a digit or two: Andrews, Adams, Tierce, Lee, Lyman, Holland
+- The Bronze Star general orders number and award date. **Confirmed absent from
+  frames 1–218**, which narrows the search to the untranscribed frames or to the
+  battalion's general orders at NARA
+- The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
+  evidence as tractor-drawn medium or heavy artillery and says plainly that this
+  is an inference
+
+## History
+
+Two independent efforts merged into this repository: the documentary frame built
+from the family papers, and a full transcription of the morning-report microfilm.
+The pre-merge Nuxt implementation of the transcription side is preserved on the
+`nuxt-transcription` branch; it is not deployed.
