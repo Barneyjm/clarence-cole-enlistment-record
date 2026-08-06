@@ -197,17 +197,22 @@ export async function renderRosterGraph(container) {
     } else {
       const p = node.person;
       const c = el("circle", {
-        class: `net-man band-${asrBand(p.asr)}${p.officer ? " is-officer" : ""}`,
+        class:
+          `net-man band-${asrBand(p.asr)}` +
+          (p.officer ? " is-officer" : "") +
+          (p.unverified ? " is-unverified" : ""),
         cx: node.x.toFixed(1),
         cy: node.y.toFixed(1),
         r: p.officer ? 6 : 4.6,
         tabindex: "0",
         "data-asn": p.asn,
         "data-name": p.name,
+        "data-doc": p.document ?? "",
       });
       const title = el("title");
-      const points = p.officer ? p.asrRaw : `${p.asr} points`;
-      title.textContent = `${p.grade} ${p.name} — ${p.asn} — MOS ${p.mos} — ${points}`;
+      const points = p.asr != null ? `${p.asr} points` : (p.asrRaw ?? "no rating");
+      const doc = p.document ? ` — ${p.document}` : "";
+      title.textContent = `${p.grade} ${p.name} — ${p.asn} — MOS ${p.mos} — ${points}${doc}`;
       c.appendChild(title);
       nodeLayer.appendChild(c);
     }
@@ -215,7 +220,22 @@ export async function renderRosterGraph(container) {
   svg.appendChild(nodeLayer);
 
   container.replaceChildren(svg);
-  return { svg, count: data.people.length, order: data.order };
+  return { svg, count: data.people.length, documents: data.documents, pages: data.pages };
+}
+
+/** Show only one of the two orders, or both. */
+export function wireGraphDocFilter(chips, svg) {
+  if (!chips.length || !svg) return;
+  const men = [...svg.querySelectorAll(".net-man")];
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => c.classList.toggle("is-on", c === chip));
+      const want = chip.dataset.doc;
+      for (const m of men) {
+        m.classList.toggle("is-out", want !== "all" && m.dataset.doc !== want);
+      }
+    });
+  }
 }
 
 /** Filter the plotted men by a serial-number or name fragment. */

@@ -11,9 +11,11 @@ microfilm. Read `README.md` first; it documents the data contracts.
 
 ## Load-bearing invariants
 
-**`data/morning-reports.jsonl` is the source of truth for everything read off the
-film.** `public/data/timeline.json` holds *both* hand-authored events and events
-generated from that JSONL. Generated events carry `"generated": true` and are
+**`data/morning-reports.jsonl` is the source of truth for the morning-report
+cards; `transcriptions/*.md` is the source of truth for the orders.** Neither is
+the source of truth for everything — see "Two transcription homes" below.
+`public/data/timeline.json` holds *both* hand-authored events and events
+generated from the JSONL. Generated events carry `"generated": true` and are
 destroyed and rebuilt by `npm run build:timeline`. Editing one in `timeline.json`
 loses the change on the next build. Edit the JSONL.
 
@@ -87,3 +89,35 @@ to the day, as the frame his service sits inside — is deliberate.
 He is also not on Special Orders 66, despite 80 points putting him in range of the
 men being sent home. He stayed with Battery C and sailed six weeks later. The site
 states this explicitly rather than leaving it as an absence.
+
+## Two transcription homes (post-PR#2)
+
+Orders live in `transcriptions/` as one markdown file per PDF page. Morning-report
+cards live in `data/morning-reports.jsonl` as one object per card. They came from
+two independent efforts and are **not** unified yet.
+
+`build-roster.mjs` reads every `p<n>.md` and treats each table row as a person
+requiring a serial. Dropping morning-report pages into `transcriptions/` without
+first teaching it to skip `kind: morning-report` will break the roster build.
+That patch, plus rewriting `build-timeline.mjs` to read markdown, is what
+unification costs. Until then nothing goes in both homes.
+
+## The skew problem, and the morning reports
+
+`transcriptions/README.md` warns that sheets sit up to ~1.6 degrees off square,
+which over a wide order shifts the serial column by a full row and silently pairs
+each man with his neighbour's serial. That warning is real and applies to orders.
+
+For morning-report cards it was checked, not assumed: 370 of 403 cards carry two
+or fewer serial-bearing rows and cannot exhibit the failure; 14 carry six or more.
+Frame 113, the worst (twenty men promoted 1 January 1945), was re-read against the
+image and every pairing is correct — the cards are typed on printed rules that
+bound each row. Do not extend that finding into a claim that the cards are
+verified. None has been through `verify-transcription`.
+
+## Cross-reference is a bug-finder, not just a feature
+
+Matching the orders against the morning reports on serial number has already
+corrected `35013798` from *Kolosxi* to *McKoski* and caught the same man written
+*Frehnheiser* and *Frohnheiser* on different cards. When the two sources disagree,
+that is a finding to adjudicate against the film — not noise to smooth over.

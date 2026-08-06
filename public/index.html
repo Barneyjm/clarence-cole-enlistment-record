@@ -214,20 +214,32 @@
         <div class="section-head prose">
           <h2>The battalion, by the numbers</h2>
           <p>
-            On 24 August 1945 the battalion adjutant typed out Special Orders 66: one hundred
-            forty-two men, by name and serial number, transferred to the 70th Infantry Division
-            to go home. It is the closest thing in the film to a roster.
+            Twice in three weeks the battalion was taken apart and put back together. On
+            24 August 1945 its own adjutant typed out Special Orders 66, transferring 142 men
+            to the 70th Infantry Division to go home. On 11 September the 29th Infantry
+            Division — itself going home — signed 241 of its men over to the 153rd to replace
+            them. Between them, the two orders name 383 soldiers.
           </p>
           <p>
-            Each dot below is one man, keyed to his Army serial number. The document records
-            only one relationship between any two of them — that they held the same military
+            The points tell the story on their own. Almost every man leaving on SO 66 had 78 or
+            more; almost every man arriving on SO 226 had fewer. The Army was sorting by who had
+            earned the right to go home, and the men who had not were shuffled into the units
+            that stayed.
+          </p>
+          <p>
+            Each dot is one man, keyed to his Army serial number. These documents record just
+            one relationship between any two of them — that they held the same military
             occupational specialty, and so did the same job — so that is what the lines mean.
-            Men who worked alongside each other cluster together. Colour is the Adjusted Service
-            Rating, the points score that decided who went home first.
+            Men who worked alongside each other cluster together.
           </p>
         </div>
 
         <div class="graph-controls">
+          <div class="filters filters--tight" role="group" aria-label="Filter by order">
+            <button type="button" class="chip is-on" data-doc="all">Both orders</button>
+            <button type="button" class="chip" data-doc="SO 66">Sent home, August</button>
+            <button type="button" class="chip" data-doc="SO 226">Sent in, September</button>
+          </div>
           <label class="graph-search">
             <span>Find a man</span>
             <input type="search" id="graph-search" placeholder="serial number or name"
@@ -244,10 +256,12 @@
           <span class="legend__dot band-3"></span>90–99
           <span class="legend__dot band-4"></span>100+
           <span class="legend__sep"></span>points. Officers are open rings — their rating was
-          scored on a different scale.
+          scored on a different scale. Everything from the September order is a first-pass
+          reading; use <em>Sent in, September</em> above to see exactly which men that is.
         </p>
 
         <div class="callout" id="graph-note"></div>
+        <div class="callout callout--open" id="graph-provenance"></div>
       </section>
 
       <section id="bronze-star">

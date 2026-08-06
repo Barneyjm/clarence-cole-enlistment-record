@@ -873,23 +873,6 @@
       "generated": true
     },
     {
-      "id": "1944-06-30-combat",
-      "date": "1944-06-30",
-      "kind": "combat",
-      "title": "In support of active combat operations",
-      "summary": "The Bronze Star citation dates his cited service from this day — three weeks after the Normandy landings — which places the battery on the Continent, or about to be, by the end of June.",
-      "verbatim": "For meritorious service in support of active combat operations from 30 June 1944 to 15 March 1945 in France, Germany and Belgium.",
-      "source": {
-        "id": "bronze-star-citation"
-      },
-      "strength": {
-        "presentForDuty": 116,
-        "absent": 0,
-        "assigned": 116
-      },
-      "place": "omaha-beach-normandy"
-    },
-    {
       "id": "1944-06-30-omaha",
       "date": "1944-06-30",
       "kind": "movement",
@@ -910,6 +893,23 @@
         "id": "bronze-star-citation"
       },
       "note": "The Bronze Star cited period opens on this date. The citation and the morning report describe the same day from opposite ends: one says what it was for, the other says what happened."
+    },
+    {
+      "id": "1944-06-30-combat",
+      "date": "1944-06-30",
+      "kind": "combat",
+      "title": "In support of active combat operations",
+      "summary": "The Bronze Star citation dates his cited service from this day — three weeks after the Normandy landings — which places the battery on the Continent, or about to be, by the end of June.",
+      "verbatim": "For meritorious service in support of active combat operations from 30 June 1944 to 15 March 1945 in France, Germany and Belgium.",
+      "source": {
+        "id": "bronze-star-citation"
+      },
+      "strength": {
+        "presentForDuty": 116,
+        "absent": 0,
+        "assigned": 116
+      },
+      "place": "omaha-beach-normandy"
     },
     {
       "id": "1944-07-01-mr",
@@ -2039,11 +2039,13 @@
       "generated": true
     },
     {
-      "id": "1945-03-15-cited-end",
+      "id": "1945-bronze-star",
       "date": "1945-03-15",
-      "kind": "combat",
-      "title": "End of the cited period",
-      "summary": "Eight and a half months of ammunition supply across three countries, closing a week before the Rhine crossings that opened Central Europe.",
+      "kind": "award",
+      "title": "Bronze Star Medal",
+      "dateApproximate": true,
+      "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
+      "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
       "source": {
         "id": "bronze-star-citation"
       },
@@ -2056,13 +2058,11 @@
       "place": "remagen-bridgehead-east-bank-of-the-rhine"
     },
     {
-      "id": "1945-bronze-star",
+      "id": "1945-03-15-cited-end",
       "date": "1945-03-15",
-      "kind": "award",
-      "title": "Bronze Star Medal",
-      "dateApproximate": true,
-      "dateNote": "The award date is not written on the citation or the discharge. Placed here at the close of the cited period.",
-      "summary": "Awarded for meritorious service in support of active combat operations — the ammunition of a firing battery kept counted, kept sound, and kept coming.",
+      "kind": "combat",
+      "title": "End of the cited period",
+      "summary": "Eight and a half months of ammunition supply across three countries, closing a week before the Rhine crossings that opened Central Europe.",
       "source": {
         "id": "bronze-star-citation"
       },
