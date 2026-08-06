@@ -674,6 +674,63 @@ section {
   color: var(--ink-faint);
 }
 
+/* -------------------------------------------------- chain of command ---- */
+
+.chain {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.chain__head {
+  margin: 0 0 0.9rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.chain__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+
+.chain__list li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+}
+
+/* Each rung is indented one step further than the last. */
+.chain__list li + li {
+  margin-left: 0.85rem;
+}
+
+.chain__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+.chain__list li:last-child {
+  font-weight: 620;
+  color: var(--stamp);
+}
+
+.chain__note {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
 /* ----------------------------------------------------------- bronze star */
 
 .award {

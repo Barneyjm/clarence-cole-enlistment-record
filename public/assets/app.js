@@ -18,6 +18,7 @@ async function main() {
   renderRecord(data);
   renderTimeline(data);
   renderCampaigns(data);
+  renderAttachment(data);
   renderDecorations(data);
   renderGallery(data);
   renderSources(data);
@@ -135,6 +136,32 @@ function renderCampaigns({ campaigns, events }) {
   }
 
   host.replaceChildren(frag);
+}
+
+/** Chain of command on the one date we can source it for. */
+function renderAttachment({ unit }) {
+  const host = document.getElementById("attachment");
+  const a = unit.attachment;
+  if (!host || !a) return;
+
+  const head = document.createElement("p");
+  head.className = "chain__head";
+  head.textContent = `Chain of command, ${formatDate(a.asOf)}`;
+
+  const list = document.createElement("ol");
+  list.className = "chain__list";
+  for (const step of [a.armyGroup, a.army, a.corps, a.group, `${unit.battery}, ${unit.designation}`]) {
+    if (!step) continue;
+    const li = document.createElement("li");
+    li.textContent = step;
+    list.append(li);
+  }
+
+  const note = document.createElement("p");
+  note.className = "chain__note";
+  note.textContent = a.note;
+
+  host.replaceChildren(head, list, note);
 }
 
 function renderDecorations({ decorations }) {

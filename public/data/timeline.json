@@ -71,7 +71,17 @@
       "source": { "id": "morning-reports", "page": 1 }
     },
     "strengthAtEmbarkation": { "officers": 4, "enlisted": 118 },
-    "pending": ["parent group or corps artillery assignment", "weapon (105mm vs 155mm)"]
+    "attachment": {
+      "asOf": "1945-01-01",
+      "group": "79th Field Artillery Group",
+      "corps": "XVIII Airborne Corps",
+      "army": "First US Army",
+      "armyGroup": "12th US Army Group",
+      "sisterBattalions": ["551st Field Artillery Battalion", "552nd Field Artillery Battalion"],
+      "note": "A single-date snapshot. Non-divisional artillery battalions were reassigned between groups and corps constantly, so this is where the battalion sat on 1 January 1945, not where it sat for the whole war.",
+      "source": { "id": "bulge-oob" }
+    },
+    "pending": ["weapon (105mm vs 155mm)", "attachments on dates other than 1 January 1945"]
   },
 
   "sources": [
@@ -94,6 +104,13 @@
       "citation": "War Department citation, Sergeant Clarence J. Cole, 36106875, Battery C, 153d Field Artillery Battalion.",
       "note": "Family papers. An embossed War Department seal is struck at the foot; the headquarters named around its ring is only partly legible.",
       "document": "citation"
+    },
+    {
+      "id": "bulge-oob",
+      "title": "Allied Army order of battle, Battle of the Bulge, 1 January 1945",
+      "citation": "Combined Arms Research Library digital collections, US Army Command and General Staff College, item p15040coll6/4713.",
+      "note": "A compiled order of battle rather than a unit record. Good enough to place the battalion on one date; not a substitute for the battalion's own after-action reports.",
+      "url": "https://cgsc.contentdm.oclc.org/digital/collection/p15040coll6/id/4713"
     }
   ],
 
@@ -249,6 +266,14 @@
       "summary": "The Bronze Star citation dates his cited service from this day — three weeks after the Normandy landings — which places the battery on the Continent, or about to be, by the end of June.",
       "verbatim": "For meritorious service in support of active combat operations from 30 June 1944 to 15 March 1945 in France, Germany and Belgium.",
       "source": { "id": "bronze-star-citation" }
+    },
+    {
+      "id": "1945-01-01-oob",
+      "date": "1945-01-01",
+      "kind": "combat",
+      "title": "In the Ardennes, under XVIII Airborne Corps",
+      "summary": "On New Year's Day 1945 the battalion is carried on the Allied order of battle under the 79th Field Artillery Group, XVIII Airborne Corps, First Army — Ridgway's corps, holding the northern shoulder of the Bulge. Its sister battalions in the group are the 551st and 552nd.",
+      "source": { "id": "bulge-oob" }
     },
     {
       "id": "1945-03-15-cited-end",
