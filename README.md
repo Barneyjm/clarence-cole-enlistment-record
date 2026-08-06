@@ -3,7 +3,8 @@
 A timeline of Sergeant Clarence Cole, Battery C, 153rd Field Artillery Battalion,
 in the European Theater of Operations, built from the battalion's morning reports.
 
-Deployed as a Cloudflare Worker serving static assets.
+Deployed as a Cloudflare Worker serving static assets:
+**https://clarence-cole-enlistment-record.james-e09.workers.dev**
 
 ## Status
 
