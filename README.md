@@ -101,7 +101,14 @@ the row conventions.
 ```sh
 node tools/deskew-page.mjs 248   # straightened, banded images to read from
 npm run build:roster             # transcriptions/*.md -> public/data/roster.json
+
+# second-reader pass, to move a page from verified:false to true
+node tools/compare-transcription.mjs 266 .work/p266-second-read.md
 ```
+
+Two skills in `.claude/skills/` carry the procedure, including the reasons
+behind the parts that look fussy: **transcribe-film-page** for a first pass and
+**verify-transcription** for the second reading.
 
 `public/data/roster.json` is generated. Never edit it by hand.
 
