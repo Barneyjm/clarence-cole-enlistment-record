@@ -5,25 +5,48 @@ name: CI
 # each other. What was missing is a gate: rebuild every generated file from the
 # transcriptions and fail the PR if anything is stale, invalid, or inconsistent.
 #
-# If you ever disconnect the Cloudflare Git integration and want GitHub to own
-# the deploy instead, uncomment the `deploy` job at the bottom and add
-# CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as repository secrets.
+# It uses no marketplace actions. actions/checkout and actions/setup-node were
+# here originally and the job spent days failing in "Set up job" with "Failed to
+# resolve action download info / Service Unavailable" — GitHub could not serve
+# the actions themselves, so not one step of ours ever ran. Nothing here needs
+# them: the runner ships git, node and npm, and a shallow fetch of one commit is
+# four lines. Fewer moving parts between a push and an answer.
 
 on:
   pull_request:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the commit under test
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # On a pull_request event github.sha is the merge commit. The staleness
+          # check is about what was actually committed, so take the branch head.
+          SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          git init -q .
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git -c protocol.version=2 fetch -q --depth=1 origin "$SHA"
+          git checkout -q FETCH_HEAD
+          echo "Checked out $SHA"
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
+      - name: Report the toolchain
+        run: |
+          node --version
+          npm --version
+          # The build scripts are plain ES modules; anything modern will do.
+          major=$(node -p "process.versions.node.split('.')[0]")
+          if [ "$major" -lt 20 ]; then
+            echo "::error::Node 20 or newer required, runner has $(node --version)"
+            exit 1
+          fi
 
       - run: npm ci
 
@@ -48,16 +71,23 @@ jobs:
           fi
           echo "Generated files match their transcriptions."
 
+  # To let GitHub own the deploy instead of Cloudflare's Git integration:
+  # disconnect that integration first, then uncomment this and add
+  # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as repository secrets.
+  # Running both is what you want to avoid — they race on the same commit.
+  #
   # deploy:
   #   needs: check
   #   if: github.ref == 'refs/heads/main'
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 24
-  #         cache: npm
+  #     - env:
+  #         GH_TOKEN: ${{ github.token }}
+  #       run: |
+  #         git init -q .
+  #         git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+  #         git -c protocol.version=2 fetch -q --depth=1 origin "$GITHUB_SHA"
+  #         git checkout -q FETCH_HEAD
   #     - run: npm ci
   #     - run: npx wrangler deploy
   #       env:
