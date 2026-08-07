@@ -30,8 +30,10 @@ const GAZ = resolve(ROOT, "data/gazetteer.json");
 const TIMELINE = resolve(ROOT, "public/data/timeline.json");
 const FULL = resolve(ROOT, "public/data/morning-reports.json");
 
+const pages = readPages(SRC);
+
 // Every morning-report card on the film, flattened out of the page files.
-const raw = readPages(SRC)
+const raw = pages
   .filter((p) => p.meta.kind === "morning-report")
   .flatMap((p) =>
     parseCards(p.body).map((card) => ({
@@ -47,9 +49,15 @@ const raw = readPages(SRC)
     })),
   );
 // Counted, never asserted — the number drifts every time a frame is added.
-const FRAMES_TRANSCRIBED = new Set(
-  readPages(SRC).map((p) => p.page),
-).size;
+const FRAMES_TOTAL = 284;
+const FRAMES_TRANSCRIBED = new Set(pages.map((p) => p.page)).size;
+const FRAMES_REMAINING = FRAMES_TOTAL - FRAMES_TRANSCRIBED;
+// Counted for the same reason: pages clear `verified: false` one at a time, and
+// a sentence naming which ones are outstanding goes stale on the next pass.
+const unverified = (kind) =>
+  pages.filter((p) => p.meta.kind === kind && p.meta.verified !== true).length;
+const UNVERIFIED_CARDS = unverified("morning-report");
+const UNVERIFIED_ORDERS = unverified("order");
 
 const gaz = JSON.parse(readFileSync(GAZ, "utf8"));
 const timeline = JSON.parse(readFileSync(TIMELINE, "utf8"));
@@ -280,17 +288,33 @@ for (const [key, value] of usedPlaces) {
   if (!places[key]) places[key] = value;
 }
 
+const transcriptionNote = () => {
+  if (FRAMES_REMAINING > 0) {
+    return `${FRAMES_REMAINING} frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home.`;
+  }
+  const outstanding = [
+    UNVERIFIED_CARDS && `${UNVERIFIED_CARDS} morning-report frames`,
+    UNVERIFIED_ORDERS && `${UNVERIFIED_ORDERS} order frames`,
+  ].filter(Boolean);
+  if (outstanding.length === 0) {
+    return `All ${FRAMES_TOTAL} frames are transcribed and verified.`;
+  }
+  return `All ${FRAMES_TOTAL} frames are transcribed. What remains is verification: ${outstanding.join(
+    " and ",
+  )} have not been through a second reading.`;
+};
+
 timeline.events = events;
 timeline.places = places;
 timeline.meta = {
   ...timeline.meta,
   transcription: {
     framesTranscribed: FRAMES_TRANSCRIBED,
-    framesTotal: 284,
+    framesTotal: FRAMES_TOTAL,
     dailyReports: days.length,
     firstDate: days[0].date,
     lastDate: days[days.length - 1].date,
-    note: `${284 - FRAMES_TRANSCRIBED} frames are not yet transcribed, including the occupation from mid-July 1945, the dissolution of the battery, and the sailing home.`,
+    note: transcriptionNote(),
   },
 };
 
@@ -306,7 +330,7 @@ writeFileSync(
         title: "Battery C, 153rd Field Artillery Battalion — daily morning reports",
         note: "Every transcribed card, including the routine days kept off the main timeline. Source of truth is transcriptions/pNNN.md.",
         framesTranscribed: FRAMES_TRANSCRIBED,
-        framesTotal: 284,
+        framesTotal: FRAMES_TOTAL,
         count: days.length,
       },
       days: days.map((d) => ({
