@@ -351,9 +351,16 @@ push; a second deploy path would race it. The workflow carries a commented
   `p121-comments.md` for Lyman, where the card agrees with the verified order
   against both morning reports
 - The Bronze Star general orders number and award date. **Confirmed absent from
-  the film.** The Archives' catalogue does not describe the battalion's general
-  orders at item level either, so this needs a request to the unit records at
-  College Park rather than an online search
+  the film.** The likeliest home for it is now identified: NARA series 333187305,
+  *Army General Orders*, 1940–1957, at the National Archives at St. Louis. The
+  Army gave these to NARA after the 1973 fire to reconstruct service data; they
+  are unit general orders, digitised, unrestricted, and they name individual
+  soldiers with serial numbers. 1,581 fiche of about 199 images each.
+  The catalogue does not full-text search them and does not publish the index,
+  which is an Excel spreadsheet held by the reference unit — so the next step is
+  to ask stl.archives@nara.gov for the fiche number covering the 153rd Field
+  Artillery Battalion, or the headquarters that issued the citation, in 1945.
+  The series is arranged by unit, thereunder by date
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
   is an inference
