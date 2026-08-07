@@ -178,8 +178,11 @@ Two orders: Special Orders 66 (frames 248–252, verified) and Special Orders 22
 carries the procedure for both a first pass and the second reading that clears
 `verified: false`.
 
-What remains is verification, not transcription. No morning-report card has been
-through `verify-transcription`, and the September order is still a first pass.
+What remains is verification, not transcription. Frames 218 and 219 are the only
+morning-report pages through `verify-transcription` — the same two cards were
+photographed twice and read against each other. Every other card, and the
+September order, is a first pass. `build:timeline` counts the `verified` front
+matter and writes the current figures into `meta.transcription.note`.
 
 Working from the source PDF: `cole.pdf` is gitignored and symlinked in locally —
 63 MB, and not ours to commit. `tools/deskew-page.mjs` renders and straightens a
@@ -226,12 +229,13 @@ An earlier hardcoded 218 was wrong by eight frames for weeks.
 which over a wide order shifts the serial column by a full row and silently pairs
 each man with his neighbour's serial. That warning is real and applies to orders.
 
-For morning-report cards it was checked, not assumed: 370 of 403 cards carry two
-or fewer serial-bearing rows and cannot exhibit the failure; 14 carry six or more.
+For morning-report cards it was checked, not assumed: of the 403 cards on frames
+1–218, 370 carry two or fewer serial-bearing rows and cannot exhibit the failure;
+14 carry six or more. The count has not been rerun over the frames added since.
 Frame 113, the worst (twenty men promoted 1 January 1945), was re-read against the
 image and every pairing is correct — the cards are typed on printed rules that
 bound each row. Do not extend that finding into a claim that the cards are
-verified. None has been through `verify-transcription`.
+verified. Only frames 218 and 219 have been through `verify-transcription`.
 
 ## Cross-reference is a bug-finder, not just a feature
 

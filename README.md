@@ -13,18 +13,18 @@ The frame of the service is complete and sourced end to end: induction, sailing,
 arrival in England, the Bronze Star citation period, the five campaign credits,
 the return, and the discharge.
 
-Transcribed from the film so far:
+Transcribed from the film:
 
 | Frames | What | State |
 | --- | --- | --- |
-| 1–218 | Battery C morning reports — 397 daily cards, 2 May 1944 to 12 July 1945 | first pass, not second-read; 8 frames missed inside the range |
+| 1–247, 253–264, 271–284 | Battery C morning reports — 495 daily reports, 2 May 1944 to 10 October 1945 | first pass, except frames 218 and 219 |
 | 248–252 | Special Orders 66 — 142 men out, to the 70th Inf Div | verified |
 | 265–270 | Special Orders 226 — 241 men in, from the 29th Inf Div | first pass |
 
-74 frames are still to do: **12, 158, 207, 209, 211, 213, 215, 217** — missed
-inside the morning-report range during a fast pass — and **219–247, 253–264,
-271–284**, which cover the occupation from mid-July 1945, the dissolution of the
-battery, and the sailing home.
+All 284 frames are transcribed. What remains is the second reading. Frames 218
+and 219 are the same two cards photographed twice, read against each other, and
+verified; every other morning-report card is a first pass, as is Special Orders
+226, where twenty-four men still have an incomplete serial number.
 
 Four primary sources, all agreeing where they overlap:
 
@@ -145,14 +145,15 @@ is the point of splitting by page.
 
 Less than it affects the orders, and it has been checked rather than assumed.
 The failure mode needs many adjacent rows for a shifted column to pair each man
-with his neighbour's serial. Of the 403 transcribed cards, **370 carry two or
+with his neighbour's serial. Of the 403 cards on frames 1–218, **370 carry two or
 fewer serial-bearing rows** and are structurally immune; 14 carry six or more.
+The count has not been rerun over the frames transcribed since.
 The worst of them, frame 113 — twenty men promoted on 1 January 1945 — was
 re-read against the image and every name-to-serial pairing is correct. The cards
 are typed on printed rules that bound each row, which is what saves them.
 
-That is not a clean bill of health. No morning-report card has been second-read
-by the `verify-transcription` procedure, and they should not be treated as
+That is not a clean bill of health. Only frames 218 and 219 have been second-read
+by the `verify-transcription` procedure. The rest should not be treated as
 verified until they have been.
 
 ## The timeline, and which file to edit
@@ -340,14 +341,15 @@ push; a second deploy path would race it. The workflow carries a commented
 
 ## Still to do
 
-- Transcribe frames 219–247, 253–264 and 271–284
-- Second-read the morning-report cards; none has been through
-  `verify-transcription` yet
-- Adjudicate the six `probable` Battery C matches, where the two readings of a
-  serial differ by a digit or two: Andrews, Adams, Tierce, Lee, Lyman, Holland
+- Second-read the morning-report cards; only frames 218 and 219 have been through
+  `verify-transcription`
+- Second-read Special Orders 226, frames 265–270, and resolve the twenty-four
+  incomplete serials
+- Adjudicate the nine `probable` Battery C matches, where the two readings of a
+  serial differ by a digit or two: Andrews, Griffith, Adams, Lee, Mays, Holland,
+  Agee, Cole (James E), Hickman
 - The Bronze Star general orders number and award date. **Confirmed absent from
-  frames 1–218**, which narrows the search to the untranscribed frames or to the
-  battalion's general orders at NARA
+  all 284 frames**, which leaves the battalion's general orders at NARA
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
   is an inference
