@@ -86,8 +86,14 @@
     "stlo-6e2": {
       "series": "GSGS 4250",
       "basis": "inferred",
-      "sources": [],
-      "designationNote": "St Lô is sheet 6F/2 in the GSGS 4250 index; there is no 6E/2 St Lô. Almost certainly the same sheet as stlo-6f2, misread once. Kept separate until the frame is read again."
+      "sources": [
+        {
+          "label": "Normandy War Guide — GSGS 4250 St Lô, Sheet 6F/2 (the sheet this card means)",
+          "url": "https://www.normandywarguide.com/archives/map-6f2",
+          "terms": "free"
+        }
+      ],
+      "designationNote": "The card reads 6E/2, checked against the film on frame 29 where the letter is clear. St Lô is sheet 6F/2 in the GSGS 4250 index and the series has no 6E/2, so the clerk wrote the wrong designation. He corrected himself from 28 July, which is the stlo-6f2 entry below. Both are kept, because the film is the record."
     },
     "stlo-6f2": {
       "series": "GSGS 4250",
@@ -144,7 +150,7 @@
           "terms": "free"
         }
       ],
-      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame."
+      "designationNote": "The card reads 2G/1, checked against the film on frame 40. The GSGS 4250 index puts Domfront on 7G/1; 2G is in Brittany, around Brest, several hundred miles from where the battery was. The same clerk forms a 7 quite differently two lines above, in 1745 hrs, so this is his error and not a misreading of it."
     },
     "ambrieres-2g3": {
       "series": "GSGS 4250",
@@ -156,7 +162,7 @@
           "terms": "free"
         }
       ],
-      "designationNote": "The card reads 2G, but the GSGS 4250 index puts this town on 7G — 2G is in Brittany, around Brest, which the battery was nowhere near. A 7 misread as a 2 on the film is the likely explanation. Left as transcribed, flagged here, and to be settled by re-reading the frame."
+      "designationNote": "The card reads 2G/3, checked against the film on frame 41. The GSGS 4250 index puts Ambrières on 7G/3. The clerk made the same substitution he had made for Domfront two days earlier."
     },
     "verneuil-8g2": {
       "series": "GSGS 4250",
