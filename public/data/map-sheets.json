@@ -5,7 +5,7 @@
     "grid": "Positions are Nord de Guerre grid references decoded to WGS 84. A four-figure reference names a one-kilometre square; the point given is its centre.",
     "sheets": 25,
     "citations": 351,
-    "positions": 48,
+    "positions": 50,
     "located": 13,
     "rights": "The Army Map Service editions are works of the US federal government and were never in copyright. Crown copyright on the War Office editions ran fifty years and has expired."
   },
@@ -1757,7 +1757,7 @@
           "squareInferred": true,
           "first": "1945-06-05",
           "last": "1945-07-05",
-          "days": 28,
+          "days": 35,
           "station": "Geismar G7875 Nord de Guerre Zone (Germany)",
           "lat": 51.072413,
           "lon": 8.855279,
@@ -1774,8 +1774,8 @@
           "square": "wG",
           "squareInferred": true,
           "first": "1945-07-06",
-          "last": "1945-07-12",
-          "days": 5,
+          "last": "1945-07-16",
+          "days": 13,
           "station": "Herzhausen G8188 Nord de Guerre Zone (Germany)",
           "lat": 51.188854,
           "lon": 8.900946,
@@ -1786,6 +1786,43 @@
             "agrees": false
           },
           "disputed": "Decodes to a point 15 km from Herzhausen, Hesse, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wG8188",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": false,
+          "first": "1945-07-17",
+          "last": "1945-08-25",
+          "days": 46,
+          "station": "Herzhausen wG8188 Nord de Guerre Zone",
+          "lat": 51.188854,
+          "lon": 8.900946,
+          "precision": 1000,
+          "check": {
+            "place": "Herzhausen, Hesse",
+            "km": 14.6,
+            "agrees": false
+          },
+          "disputed": "Decodes to a point 15 km from Herzhausen, Hesse, which the same line names. One of the two readings is wrong and the film has not been re-read; the position is recorded but not drawn."
+        },
+        {
+          "ref": "wG7875",
+          "zone": "nord-de-guerre",
+          "square": "wG",
+          "squareInferred": false,
+          "first": "1945-08-26",
+          "last": "1945-09-17",
+          "days": 24,
+          "station": "Geismar wG7875 Nord de Guerre Zone",
+          "lat": 51.072413,
+          "lon": 8.855279,
+          "precision": 1000,
+          "check": {
+            "place": "Geismar, Hesse",
+            "km": 8.8,
+            "agrees": true
+          }
         }
       ]
     }
