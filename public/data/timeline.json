@@ -20,7 +20,7 @@
     "serial": "36106875",
     "unit": "Battery C, 153rd Field Artillery Battalion",
     "branch": "Field Artillery",
-    "mos": "Squad Leader (653)",
+    "mos": "Squad Leader (653) on the discharge; 845 on the morning report of 5 September 1945",
     "born": "1906-09-22",
     "birthplace": "Caro, Michigan",
     "homeAddress": "RFD 2, Caro, Michigan",
@@ -2484,6 +2484,19 @@
         }
       ],
       "generated": true
+    },
+    {
+      "id": "1945-09-05-transferred",
+      "date": "1945-09-05",
+      "kind": "personnel",
+      "title": "Transferred out of Battery C",
+      "summary": "Sent to the 3rd Reinforcement Depot with two other men under Special Orders 71 of the battalion. He left the battery a month before he sailed, so the last weeks of his service were not spent with the unit this record follows. The card gives his military occupation as 845; his discharge gives Squad Leader, 653.",
+      "verbatim": "Cole, Clarence J 36106875 Sgt — Trfd to 3rd Reinf Depot APO 153 US Army per par 1 SO 71 Hq 153rd FA Bn APO 758 dtd 5 Sept 45 Departed (EDCMR 5 Sept 45). MOS 845",
+      "source": {
+        "id": "morning-reports",
+        "page": 259
+      },
+      "place": "geismar-hesse"
     },
     {
       "id": "1945-09-18-mr",

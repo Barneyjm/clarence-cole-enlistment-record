@@ -130,9 +130,10 @@ async function renderBattalionGraph(data) {
       note.textContent = onList
         ? `Sergeant Cole, ${cole}, is on this list.`
         : `Sergeant Cole is on neither order. His ${cole} does not appear in the ${count} ` +
-          "names. He had 80 points, which was within the range of men sent home in August, " +
-          "but he stayed with Battery C and sailed six weeks later. Neither order lists a " +
-          "battery, so these men cannot be assigned to Battery C from these documents alone.";
+          "names. He had 80 points, which was within the range of men sent home in August. " +
+          "He left Battery C on 5 September 1945, transferred to the 3rd Reinforcement " +
+          "Depot, and sailed a month after that. Neither order lists a battery, so these " +
+          "men cannot be assigned to Battery C from these documents alone.";
     }
   } catch (err) {
     console.error(err);

@@ -137,39 +137,45 @@ constructed URL that looks right is worth nothing.
 
 ## Transcription status
 
-221 pages of 284: 210 morning-report pages (399 daily cards, 2 May 1944 –
-12 July 1945), 10 order pages, and 1 page that duplicates another frame. Don't
-quote a number from memory — run `npm run build:timeline` and
-`npm run build:roster`, which count the files.
+**All 284 frames are transcribed.** 269 morning-report pages, 10 order
+pages, and 5 that duplicate another frame. Don't quote a number from memory — run
+`npm run build:timeline` and `npm run build:roster`, which count the files.
 
-Two orders are transcribed: Special Orders 66 (frames 248–252, verified) and
-Special Orders 226 (frames 265–270, first pass, 24 serials still incomplete).
-`.claude/skills/` carries the procedure for both a first pass and the second
-reading that clears `verified: false`.
+Two orders: Special Orders 66 (frames 248–252, verified) and Special Orders 226
+(frames 265–270, first pass, 24 serials still incomplete). `.claude/skills/`
+carries the procedure for both a first pass and the second reading that clears
+`verified: false`.
 
-Still to do: frames 12, 158, 207, 209, 211, 213, 215, 217 (missed inside the
-morning-report range during a fast pass) and 219–247, 253–264, 271–284, covering
-the occupation, the dissolution of the battery, and the sailing home.
+What remains is verification, not transcription. No morning-report card has been
+through `verify-transcription`, and the September order is still a first pass.
 
-Working from the source PDF: render with `pdftoppm -jpeg -r 220`, then crop
-`1819x2210+0+200` per page to isolate the two cards. The film drifts horizontally,
-so a full-width crop is required — a tighter one clips the left card.
+Working from the source PDF: `cole.pdf` is gitignored and symlinked in locally —
+63 MB, and not ours to commit. `tools/deskew-page.mjs` renders and straightens a
+frame; pass `--rotate 0` when a card frame comes out sideways.
 
 ## On Sergeant Cole
 
-He is named in exactly two known cards, both from the occupation period and both
-supplied as separate images rather than from the microfilm run: 20 August 1945
-(five days' leave in Holland) and 25 August 1945 (returned). He appears nowhere in
-frames 1–218.
+The film names him on three frames, all from the occupation: 243 (20 August 1945,
+five days' leave at Treebeek), 246 (25 August, returned), and **259 (5 September,
+transferred out of Battery C** to the 3rd Reinforcement Depot under SO 71). He
+appears nowhere in frames 1–218.
 
-That is expected, not a gap: morning reports name a soldier only on a *status
-change*. Do not add speculative first-person narration, and do not imply the
-day-by-day record documents his individual days. The framing — his battery's war,
-to the day, as the frame his service sits inside — is deliberate.
+That silence is expected, not a gap: morning reports name a soldier only on a
+*status change*. Do not add speculative first-person narration, and do not imply
+the day-by-day record documents his individual days. The framing — his battery's
+war, to the day, as the frame his service sits inside — is deliberate.
 
-He is also not on Special Orders 66, despite 80 points putting him in range of the
-men being sent home. He stayed with Battery C and sailed six weeks later. The site
-states this explicitly rather than leaving it as an absence.
+Two things the completed transcription changed, and which earlier drafts of this
+file and the site got wrong:
+
+- **He did not stay with Battery C to the end.** He left on 5 September 1945, a
+  month before he sailed. The site said otherwise until frame 259 was read.
+- **His MOS is recorded twice and differently.** The 5 September card gives 845;
+  the discharge gives Squad Leader, 653. Both are shown rather than reconciled.
+
+He is not on Special Orders 66, despite 80 points putting him in range of the men
+being sent home in August. The site states that explicitly rather than leaving it
+as an absence.
 
 ## One format, one parser
 
