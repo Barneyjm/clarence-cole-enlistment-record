@@ -1,9 +1,15 @@
 # clarence-cole-enlistment-record
 
 Documentary site for Sgt Clarence J. Cole (36106875), Battery C, 153rd Field
-Artillery Battalion, ETO 1944–45. Static assets served by a Cloudflare Worker —
-vanilla ES modules, no framework, no runtime dependencies, no external requests.
-Not part of the CMDIY ecosystem: no Supabase, no daisyUI, no Font Awesome, no Nuxt.
+Artillery Battalion, ETO 1944–45. Six static pages served by a Cloudflare Worker
+— vanilla ES modules, no framework, no build step for the HTML. Not part of the
+CMDIY ecosystem: no Supabase, no daisyUI, no Font Awesome, no Nuxt.
+
+The site once made no external request at all. It now makes exactly one kind:
+CARTO Voyager map tiles, fetched by Leaflet when a map comes into view. Leaflet
+itself and both typefaces are vendored under `public/assets/`, so the tiles are
+the whole of it. Do not add a second — no CDN, no analytics, no embedded font
+service.
 
 This repository is the merge of two independent efforts — the documentary frame
 built from the family papers, and a full transcription of the morning-report
@@ -75,6 +81,32 @@ crept in:
 
 The same applies to code comments. Explain why a thing is done, not how
 conscientious it was to do it.
+
+## Six rooms, one stylesheet
+
+`/` is the entrance; `/story/`, `/timeline/`, `/maps/`, `/battalion/` and
+`/archive/` are the rooms. Each is a plain `index.html` carrying the nav and the
+colophon inline, plus one module named for it — `assets/story.js` and so on.
+There is no template step, so a change to the shared chrome is a change to seven
+files including `404.html`. That is the price of having no build; do not
+introduce one to avoid it.
+
+`assets/style.css` is the whole design system and the only stylesheet. Three of
+the modules — `graph.js`, `record.js`, `sheets.js` — emit their own markup and
+are restyled entirely through the class names they already write. Do not edit
+them to change how something looks.
+
+On the two pages with maps, `leaflet.css` is linked **before** `style.css`. Our
+rules for the tooltips, the zoom control and the tile grade are single-class
+selectors that tie with Leaflet's own; ours have to come second to win. Swapping
+the order silently restores white tooltip boxes and ungraded tiles.
+
+Fonts are self-hosted variable woff2 in `assets/fonts`, latin and latin-ext, one
+file per family and style. `font-weight: 300 700` in the `@font-face` is not a
+mistake: 400 and 600 are the same file.
+
+The palette is fixed and `color-scheme: light` is declared. This is a printed
+page; there is no dark variant and adding one is a design decision, not a fix.
 
 ## Verify after data changes
 

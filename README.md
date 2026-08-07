@@ -82,16 +82,29 @@ transcriptions/           EVERYTHING read off the film, one file per PDF page
 data/gazetteer.json       place name to coordinate, phase bands, station overrides
 data/map-series.json      GSGS series catalogue, and where each sheet can be found
 public/                   everything served
-  assets/app.js           renders the timeline from JSON
-  assets/map.js           SVG maps, no tiles and no external libraries
+  index.html              Home — the hero and the five rooms
+  story/    timeline/     one directory per room, each a plain index.html
+  maps/     battalion/    with the shared nav and colophon inline
+  archive/
+  assets/style.css        the whole design system: tokens, chrome, every room
+  assets/home.js          one module per room, named for its page
+  assets/story.js         the discharge record, both maps, the campaign bars
+  assets/timeline.js      the merged event list and its filters
+  assets/maps.js          the positions map; frames sheets.js
+  assets/battalion.js     wires graph.js and writes the two notes under it
+  assets/archive.js       the documents and the sources; fires record.js
+  assets/lib/format.js    dates and small DOM helpers, shared by the rooms
+  assets/lib/atlas.js     the themed Leaflet map, and which labels can be pinned
   assets/graph.js         the roster network: force layout, no libraries
   assets/record.js        the full day-by-day record, loaded on demand
   assets/sheets.js        the map sheets and the decoded firing positions
+  assets/fonts/           Cormorant Garamond and Lora, self-hosted woff2
+  assets/vendor/          Leaflet 1.9.4, vendored — no CDN
   data/timeline.json      curated events + events built from the film
   data/morning-reports.json  generated — the complete daily record
   data/roster.json        generated from transcriptions/ — do not edit
   data/map-sheets.json    generated — sheets named, positions decoded
-  data/geo/theater.json   generated coastline, committed
+  data/geo/theater.json   generated coastline — no longer read by the site
   images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from Natural Earth data
 tools/lib/pages.mjs       the page format, parsed in one place
@@ -240,10 +253,23 @@ default and works fine. Nothing breaks by never touching R2.
 
 ## Maps
 
+The three maps — the Atlantic crossing, the advance, and the firing positions —
+are Leaflet over CARTO Voyager raster tiles, graded warm in CSS so the basemap
+sits inside the page. Leaflet is vendored under `public/assets/vendor`; the tiles
+are the one thing on the site fetched from a third party at view time, and the
+OpenStreetMap and CARTO attribution stays on the map for that reason.
+
+A permanent label is pinned to a position only where it fits. Positions come in
+clusters — four of the eight the battery held longest are inside thirty miles of
+Aachen — so `pinLabels()` in `assets/lib/atlas.js` places each candidate in turn,
+most deserving first, measures where the label actually landed, and drops it back
+to a hover label if it covers one already placed. Separation in kilometres is the
+wrong test: a label runs sideways from its pin and its width is in pixels.
+
 `theater.json` is derived from Natural Earth 1:50m country boundaries (public
-domain), clipped, simplified, and committed so the site has no runtime
-dependencies — no tiles, no map library, no external requests. Rebuild only when
-changing the map window or the simplification tolerance: `npm run build:geo`.
+domain), clipped, simplified, and committed. It fed the hand-drawn SVG renderer
+that Leaflet replaced, and nothing reads it now; `npm run build:geo` still
+rebuilds it. Both are kept against the SVG maps being wanted back.
 
 ### The sheets the battery worked from
 

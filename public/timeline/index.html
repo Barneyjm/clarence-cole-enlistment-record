@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Timeline — Sergeant Clarence Cole</title>
+    <meta
+      name="description"
+      content="Battalion events against the wider war, 1944-1945, every entry cited to the microfilm frame it was read from."
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/fonts/cormorant-garamond-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/lora-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127894;</text></svg>"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#timeline-list">Skip to the entries</a>
+
+    <nav class="nav" aria-label="Rooms">
+      <a class="nav__brand" href="/"
+        >Sgt. Clarence Cole <span class="nav__unit">153rd Field Artillery Bn</span></a
+      >
+      <a class="nav__link" href="/story/">The Story</a>
+      <a class="nav__link" href="/timeline/" aria-current="page">Timeline</a>
+      <a class="nav__link" href="/maps/">The Maps</a>
+      <a class="nav__link" href="/battalion/">The Battalion</a>
+      <a class="nav__link" href="/archive/">The Archive</a>
+    </nav>
+
+    <header class="wrap wrap--prose page-head">
+      <p class="kicker">Day by day</p>
+      <h1 class="page-title">The Timeline</h1>
+      <p class="prose page-intro">
+        Battalion events in ink, the wider war in grey. Each entry names the microfilm frame
+        it was read from. The routine days between — <em>in position firing</em> and nothing
+        more — are in <a href="/archive/">the Archive</a>.
+      </p>
+      <div class="filters" role="group" aria-label="Filter the timeline">
+        <button type="button" class="chip is-on" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="movement">Movements</button>
+        <button type="button" class="chip" data-filter="personnel">Personnel</button>
+        <button type="button" class="chip" data-filter="combat">Combat</button>
+        <button type="button" class="chip" data-filter="admin">Service record</button>
+        <button type="button" class="chip" data-filter="award">Awards</button>
+        <button type="button" class="chip" data-filter="context">The wider war</button>
+        <span class="filters__count" id="entry-count" role="status"></span>
+      </div>
+    </header>
+
+    <main class="wrap wrap--prose">
+      <ol class="timeline" id="timeline-list"></ol>
+    </main>
+
+    <footer class="colophon">
+      <div class="wrap wrap--prose">
+        <p>
+          Built from the 153rd Field Artillery Battalion morning reports.<br />
+          A family record, kept for the family — not published for distribution.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/timeline.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Maps — Sergeant Clarence Cole</title>
+    <meta
+      name="description"
+      content="The map sheets Battery C, 153rd Field Artillery Battalion worked from, and the firing positions decoded from its own grid references."
+    />
+    <!-- Leaflet first: style.css restyles its tooltips, controls and tiles, and
+         needs to win the cascade against leaflet.css's own rules. -->
+    <link rel="stylesheet" href="/assets/vendor/leaflet.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/fonts/cormorant-garamond-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/lora-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127894;</text></svg>"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#positions">Skip to the firing positions</a>
+
+    <nav class="nav" aria-label="Rooms">
+      <a class="nav__brand" href="/"
+        >Sgt. Clarence Cole <span class="nav__unit">153rd Field Artillery Bn</span></a
+      >
+      <a class="nav__link" href="/story/">The Story</a>
+      <a class="nav__link" href="/timeline/">Timeline</a>
+      <a class="nav__link" href="/maps/" aria-current="page">The Maps</a>
+      <a class="nav__link" href="/battalion/">The Battalion</a>
+      <a class="nav__link" href="/archive/">The Archive</a>
+    </nav>
+
+    <header class="wrap page-head">
+      <p class="kicker">The ground</p>
+      <h1 class="page-title">The Maps</h1>
+      <p class="prose page-intro">
+        Every morning report ends its record of events by naming the map sheet in use —
+        <em>(Map Bonn 1:100,000 Sheet S-1.)</em> — and opens its station line with a
+        position on that sheet. Between them they give a firing position to the kilometre,
+        on a named map, on a dated day.
+      </p>
+    </header>
+
+    <section class="band" id="positions">
+      <div class="wrap">
+        <h2 class="section-title">The firing positions</h2>
+        <p class="section-intro">
+          Two grid systems appear in the reports: Lambert Zone I in Normandy, and the Nord
+          de Guerre zone from the Seine onward. Both need a datum shift of more than a
+          kilometre to match a modern map. The lettered squares are not taken from a manual
+          — they are worked out from the reports, by requiring each village the battery
+          named to agree with the square written beside it.
+        </p>
+        <figure class="figure--spaced">
+          <div
+            class="mapframe mapframe--positions"
+            id="map-positions"
+            role="img"
+            aria-label="Map of north-west Europe showing the battery's firing positions as decoded from its grid references."
+          ></div>
+          <figcaption id="positions-caption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2 class="section-title">The sheets they worked from</h2>
+        <p class="section-intro" id="sheets-intro"></p>
+        <ol class="sheets" id="sheet-list"></ol>
+        <div class="callout callout--wide" id="sheet-note"></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="credits" id="sheet-credits"></div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div class="wrap">
+        <p>
+          Built from the 153rd Field Artillery Battalion morning reports.<br />
+          A family record, kept for the family — not published for distribution.
+        </p>
+      </div>
+    </footer>
+
+    <script defer src="/assets/vendor/leaflet.js"></script>
+    <script type="module" src="/assets/maps.js"></script>
+  </body>
+</html>
