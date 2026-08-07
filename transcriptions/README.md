@@ -57,6 +57,25 @@ goes here, if the page carries one.
 - Keep the spelling as typed, including obvious misspellings. The film is the
   record; corrections belong in a note, not in the row.
 
+## Comments alongside a page
+
+Questions and findings about a page go in `pNNN-comments.md` — `p259-comments.md`
+sits beside `p259.md`. Free-form markdown, no front matter, nothing parses them:
+the page loader matches `^p\d+\.md$` exactly, so a comments file is never read as
+a transcription.
+
+Use one when there is something a later reader needs and the row cannot carry it:
+
+- A reading checked against the film, and what was found. `p40-comments.md`
+  records that the clerk really did write sheet 2G/1, so nobody re-does that work.
+- A disagreement between sources that is not settled, and what would settle it.
+- A trap. `p265-comments.md` warns that a second man named Cole arrives on that
+  order, so nobody matches him to the subject of this site by surname.
+
+Keep them factual and keep the uncertainty. A comment saying "not established" is
+worth more than a guess, and the point of writing one is to stop the next reader
+repeating an investigation that has already been done.
+
 ## Why pages, and why duplicates matter
 
 The film photographs some pages twice. Those frames get their own file with
