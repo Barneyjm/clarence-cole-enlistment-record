@@ -19,6 +19,7 @@ async function main() {
 
   bindHeader(data);
   renderRecord(data);
+  renderEnlistmentCard(data);
   renderTimeline(data);
   renderCampaigns(data);
   renderAttachment(data);
@@ -182,17 +183,35 @@ function renderRecord({ subject }) {
     ["Description", [d.height, d.weight, `${d.eyes} eyes`, `${d.hair} hair`].filter(Boolean).join(" · ")],
   ].filter(([, value]) => value);
 
-  host.replaceChildren(
-    ...rows.map(([label, value]) => {
-      const wrap = document.createElement("div");
-      const dt = document.createElement("dt");
-      dt.textContent = label;
-      const dd = document.createElement("dd");
-      dd.textContent = value;
-      wrap.append(dt, dd);
-      return wrap;
-    }),
-  );
+  host.replaceChildren(...definitionList(rows));
+}
+
+function definitionList(rows) {
+  return rows.map(([label, value]) => {
+    const wrap = document.createElement("div");
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    wrap.append(dt, dd);
+    return wrap;
+  });
+}
+
+/**
+ * The enlistment card, decoded. The Army wrote it in numbers — a state, a
+ * county, a place, a trade, all as codes — so each row carries the code it was
+ * read from, and a row whose code cannot be resolved says so.
+ */
+function renderEnlistmentCard({ subject }) {
+  const host = document.getElementById("enlistment-card");
+  const card = subject.enlistmentCard;
+  if (!host || !card) return;
+
+  host.replaceChildren(...definitionList(card.fields));
+
+  const note = document.getElementById("enlistment-card-note");
+  if (note) note.textContent = `${card.film}\n${card.raw.replace(/\s+$/, "")}`;
 }
 
 /**

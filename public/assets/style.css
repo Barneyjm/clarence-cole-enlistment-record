@@ -566,6 +566,21 @@ section {
   font-size: 0.98rem;
 }
 
+/*
+ * The punch card as the conversion left it, under the decoded reading of it.
+ * Its fields are fixed columns and the blanks are part of the record, so the
+ * spacing has to survive; `anywhere` lets it wrap rather than push the page.
+ */
+.record-note {
+  margin: 0.9rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--ink-faint);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 /* ------------------------------------------------------------- campaigns */
 
 .campaigns {

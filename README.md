@@ -50,15 +50,39 @@ Recorded as data in `timeline.json` → `crossReferences`, not just asserted her
   the northern shoulder of the Bulge.
 - Neither special order carries a battery column, so neither can place a man in
   Battery C on its own. Cross-matching serials against the Battery C morning
-  reports resolves **19 of the 383** — 13 confirmed on an exact match, 6 probable
-  where the two readings differ by a digit or two. None of the 241 men on SO 226
-  match, which is what you would expect: they arrived in September, after the
-  transcribed cards end.
+  reports resolves **41 of the 383** — 32 confirmed on an exact match, 9 probable
+  where the two readings differ by a digit or two. Twelve of the 241 men on
+  SO 226 match, which is fewer than the order's length suggests: they arrived in
+  September, at the end of the transcribed run.
 
 The cross-reference has also caught real errors in both directions. The
 independent reading of SO 66 corrected `35013798` from *Kolosxi* to **McKoski**
 in the morning-report transcription, and exposed an internal inconsistency where
 the same man was written *Frehnheiser* on one card and *Frohnheiser* on another.
+
+A third source now checks the same field from outside the film. The Archives
+hold a punch card for nearly every man who entered the Army between 1938 and
+1946, converted to a data file of 9,200,232 records keyed on serial number
+(NARA ID 1263923). `npm run check:serials` looks up all 524 serials read off the
+transcriptions and writes `data/nara-asn-crosscheck.json`.
+
+| | |
+| --- | --- |
+| land on a card of the same name | 198 |
+| same man, spelt differently | 60 |
+| land on a different man | 100 |
+| no card of that serial | 166 |
+
+For 62 of the disagreements the man named on the film is on a card one or two
+digits from the serial as read, which names the column to re-read. Verified
+Special Orders 66 produces those at 11 per cent of its checkable serials;
+first-pass Special Orders 226 at 25 — the clearest measure yet of what a second
+reading is worth.
+
+Nothing it finds has been applied. A missing card is not a disagreement: a sixth
+of the cards were lost before conversion. And the card file has its own errors —
+NARA compared 377 records against the original punch cards and found 5 serials
+and 18 names wrong. The film decides; the check says where to look.
 
 ## Running it
 
@@ -101,6 +125,8 @@ tools/build-timeline.mjs  morning-report pages -> timeline.json
 tools/build-map-sheets.mjs  map citations + grid refs -> map-sheets.json
 tools/derive-grid-squares.mjs  recovers the lettered squares from the reports
 tools/compare-transcription.mjs  second-reader diff for a page
+tools/nara-asn-crosscheck.mjs  every serial against the Archives' card file
+data/nara-asn-crosscheck.json  its result, committed so the download is optional
 tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
 ```
@@ -314,14 +340,20 @@ push; a second deploy path would race it. The workflow carries a commented
 
 ## Still to do
 
-- Transcribe frames 219–247, 253–264 and 271–284
 - Second-read the morning-report cards; none has been through
-  `verify-transcription` yet
+  `verify-transcription` yet. `npm run check:serials` names 16 rows on them where
+  the serial disagrees with the Archives' card file
+- Re-read the 62 rows `check:serials` flags, starting with Special Orders 226,
+  where 39 of 158 checkable serials point at a near miss
 - Adjudicate the six `probable` Battery C matches, where the two readings of a
-  serial differ by a digit or two: Andrews, Adams, Tierce, Lee, Lyman, Holland
+  serial differ by a digit or two: Andrews, Adams, Tierce, Lee, Lyman, Holland.
+  Four of the six are now named by the card file as well — see
+  `p121-comments.md` for Lyman, where the card agrees with the verified order
+  against both morning reports
 - The Bronze Star general orders number and award date. **Confirmed absent from
-  frames 1–218**, which narrows the search to the untranscribed frames or to the
-  battalion's general orders at NARA
+  the film.** The Archives' catalogue does not describe the battalion's general
+  orders at item level either, so this needs a request to the unit records at
+  College Park rather than an online search
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
   is an inference
