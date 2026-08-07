@@ -50,15 +50,39 @@ Recorded as data in `timeline.json` → `crossReferences`, not just asserted her
   the northern shoulder of the Bulge.
 - Neither special order carries a battery column, so neither can place a man in
   Battery C on its own. Cross-matching serials against the Battery C morning
-  reports resolves **19 of the 383** — 13 confirmed on an exact match, 6 probable
-  where the two readings differ by a digit or two. None of the 241 men on SO 226
-  match, which is what you would expect: they arrived in September, after the
-  transcribed cards end.
+  reports resolves **41 of the 383** — 32 confirmed on an exact match, 9 probable
+  where the two readings differ by a digit or two. Twelve of the 241 men on
+  SO 226 match, which is fewer than the order's length suggests: they arrived in
+  September, at the end of the transcribed run.
 
 The cross-reference has also caught real errors in both directions. The
 independent reading of SO 66 corrected `35013798` from *Kolosxi* to **McKoski**
 in the morning-report transcription, and exposed an internal inconsistency where
 the same man was written *Frehnheiser* on one card and *Frohnheiser* on another.
+
+A third source now checks the same field from outside the film. The Archives
+hold a punch card for nearly every man who entered the Army between 1938 and
+1946, converted to a data file of 9,200,232 records keyed on serial number
+(NARA ID 1263923). `npm run check:serials` looks up all 524 serials read off the
+transcriptions and writes `data/nara-asn-crosscheck.json`.
+
+| | |
+| --- | --- |
+| land on a card of the same name | 198 |
+| same man, spelt differently | 60 |
+| land on a different man | 100 |
+| no card of that serial | 166 |
+
+For 62 of the disagreements the man named on the film is on a card one or two
+digits from the serial as read, which names the column to re-read. Verified
+Special Orders 66 produces those at 11 per cent of its checkable serials;
+first-pass Special Orders 226 at 25 — the clearest measure yet of what a second
+reading is worth.
+
+Nothing it finds has been applied. A missing card is not a disagreement: a sixth
+of the cards were lost before conversion. And the card file has its own errors —
+NARA compared 377 records against the original punch cards and found 5 serials
+and 18 names wrong. The film decides; the check says where to look.
 
 ## Running it
 
@@ -114,6 +138,8 @@ tools/build-timeline.mjs  morning-report pages -> timeline.json
 tools/build-map-sheets.mjs  map citations + grid refs -> map-sheets.json
 tools/derive-grid-squares.mjs  recovers the lettered squares from the reports
 tools/compare-transcription.mjs  second-reader diff for a page
+tools/nara-asn-crosscheck.mjs  every serial against the Archives' card file
+data/nara-asn-crosscheck.json  its result, committed so the download is optional
 tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
 ```
@@ -342,14 +368,26 @@ push; a second deploy path would race it. The workflow carries a commented
 ## Still to do
 
 - Second-read the morning-report cards; only frames 218 and 219 have been through
-  `verify-transcription`
+  `verify-transcription`. `npm run check:serials` names 16 rows on the others
+  where the serial disagrees with the Archives' card file
 - Second-read Special Orders 226, frames 265–270, and resolve the twenty-four
-  incomplete serials
+  incomplete serials. `check:serials` flags 39 of its 158 checkable serials as
+  one or two digits from a card of the same man, against 11 per cent on verified
+  Special Orders 66
 - Adjudicate the nine `probable` Battery C matches, where the two readings of a
   serial differ by a digit or two: Andrews, Griffith, Adams, Lee, Mays, Holland,
   Agee, Cole (James E), Hickman
 - The Bronze Star general orders number and award date. **Confirmed absent from
-  all 284 frames**, which leaves the battalion's general orders at NARA
+  all 284 frames.** The likeliest home for it is now identified: NARA series
+  333187305, *Army General Orders*, 1940–1957, at the National Archives at
+  St. Louis. The Army gave these to NARA after the 1973 fire to reconstruct
+  service data; they are unit general orders, digitised, unrestricted, and they
+  name individual soldiers with serial numbers. 1,581 fiche of about 199 images
+  each. The catalogue does not full-text search them and does not publish the
+  index, which is an Excel spreadsheet held by the reference unit — so the next
+  step is to ask stl.archives@nara.gov for the fiche number covering the 153rd
+  Field Artillery Battalion, or the headquarters that issued the citation, in
+  1945. The series is arranged by unit, thereunder by date
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
   is an inference

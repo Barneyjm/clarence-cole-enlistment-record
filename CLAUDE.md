@@ -243,3 +243,17 @@ Matching the orders against the morning reports on serial number has already
 corrected `35013798` from *Kolosxi* to *McKoski* and caught the same man written
 *Frehnheiser* and *Frohnheiser* on different cards. When the two sources disagree,
 that is a finding to adjudicate against the film — not noise to smooth over.
+
+`npm run check:serials` widens that to a source outside the film: the Army Serial
+Number Electronic File, the Archives' converted punch cards for every man
+entering the Army 1938–46, keyed on serial number. It reads 524 serials off the
+transcriptions and finds 62 where the man named is on a card one or two digits
+from the serial as read — which names the column to re-read. Verified Special
+Orders 66 produces those at 11 per cent; first-pass Special Orders 226 at 25.
+
+Nothing it finds is applied. Findings live in `data/nara-asn-crosscheck.json` and
+in the comments files for the pages they affect, as candidates for a re-read. A
+missing card means nothing — a sixth of the cards were lost before conversion —
+and the card file has its own error rate, which NARA measured and publishes.
+Neither source outranks the other; the film decides, and the tool says where to
+look.
