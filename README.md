@@ -115,7 +115,8 @@ public/                   everything served
   assets/story.js         the discharge record, both maps, the campaign bars
   assets/timeline.js      the merged event list and its filters
   assets/maps.js          the positions map; frames sheets.js
-  assets/battalion.js     wires graph.js and writes the two notes under it
+  assets/battalion.js     wires battery.js and graph.js, and the notes under them
+  assets/battery.js       Battery C's strength line, status changes and casualties
   assets/archive.js       the documents and the sources; fires record.js
   assets/lib/format.js    dates and small DOM helpers, shared by the rooms
   assets/lib/atlas.js     the themed Leaflet map, and which labels can be pinned
@@ -126,6 +127,7 @@ public/                   everything served
   assets/vendor/          Leaflet 1.9.4, vendored — no CDN
   data/timeline.json      curated events + events built from the film
   data/morning-reports.json  generated — the complete daily record
+  data/battery.json       generated — strength by day, status changes by kind
   data/roster.json        generated from transcriptions/ — do not edit
   data/map-sheets.json    generated — sheets named, positions decoded
   data/geo/theater.json   generated coastline — no longer read by the site
