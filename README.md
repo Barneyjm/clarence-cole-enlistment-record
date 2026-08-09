@@ -96,7 +96,7 @@ public/                   everything served
   assets/archive.js       the documents and the sources; fires record.js
   assets/lib/format.js    dates and small DOM helpers, shared by the rooms
   assets/lib/atlas.js     the themed Leaflet map, and which labels can be pinned
-  assets/lib/weather.js   the modelled-weather line, and its "modelled" tag
+  assets/lib/weather.js   the modelled-weather strip: icon sprite, readings, tag
   assets/graph.js         the roster network: force layout, no libraries
   assets/record.js        the full day-by-day record, loaded on demand
   assets/sheets.js        the map sheets and the decoded firing positions
@@ -230,7 +230,14 @@ fresh clone serves the weather with nothing run and the browser never makes the
 request — the site still makes exactly one kind of external request, and it is
 still map tiles. `weather:fetch` is incremental; pass `--force` to refetch.
 
-Four decisions are worth knowing before changing any of it:
+It renders as a row of discrete readings — sky, temperature, precipitation,
+wind, daylight — each an icon and a figure, rather than a sentence. The glyphs
+are hand-drawn line SVG in a `<symbol>` sprite injected once per page; there is
+no icon font and no CDN, and adding one would break the site's single-request
+rule. The wind arrow is rotated to the bearing and points the way the wind was
+blowing, which is the direction it came *from* turned about.
+
+Five decisions are worth knowing before changing any of it:
 
 - **A day names the place it was modelled for**, and `npm run check:data` fails
   if that place disagrees with the station on the card. A weather line under the
@@ -243,6 +250,9 @@ Four decisions are worth knowing before changing any of it:
   June 1944, but Britain was on British Double Summer Time, so its sunrise is an
   hour out. Everything is fetched and stored in UTC and only the *length* of
   daylight is shown.
+- **Rain or snow under a hundredth of an inch reads "trace"**, the convention,
+  because 0.1 mm of modelled drizzle formatted to two places reads "0.00 in" —
+  which looks like a bug and tells the reader nothing. 34 days are traces.
 
 ## Map images
 

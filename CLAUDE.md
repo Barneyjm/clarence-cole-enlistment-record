@@ -130,6 +130,25 @@ carries a dotted neutral rule and is not from the film at all. Making the two
 resemble each other would erase the only visual difference between what the
 battery wrote and what a model reconstructed.
 
+**The weather glyphs are the only icons on the site**, and there is no icon font
+to add one to. They live as a hidden `<symbol>` sprite that `lib/weather.js`
+injects once per page, referenced by `<use>` — the daily record draws a weather
+strip on 451 cards, and inlining the paths would put thousands of duplicate
+nodes in the DOM. Two things about them are easy to undo by accident:
+
+- **The sprite holds geometry only.** `fill`, `stroke` and `stroke-width` are
+  inherited properties set on `.wx__icon` in the stylesheet, which is how they
+  reach the shadow content. Moving them onto the `<symbol>` would win over the
+  CSS and put the drawing weight beyond the design system's reach.
+- **They are drawn on a 24 grid and shown at 15px**, so anything finer than
+  about three grid units vanishes. An earlier set had six-stroke snowflakes and
+  two-tick thermometers, and both read as grey smudges. The condition *word* sits
+  next to the glyph, so the glyph only needs a distinct silhouette.
+
+Nothing lighter than `--color-neutral-600` appears in the weather strip. That is
+the muted floor the rest of the site already uses; `neutral-500` on this paper is
+2.4:1, which would be a new low rather than a match.
+
 On the two pages with maps, `leaflet.css` is linked **before** `style.css`. Our
 rules for the tooltips, the zoom control and the tile grade are single-class
 selectors that tie with Leaflet's own; ours have to come second to win. Swapping
