@@ -140,6 +140,7 @@ tools/derive-grid-squares.mjs  recovers the lettered squares from the reports
 tools/compare-transcription.mjs  second-reader diff for a page
 tools/nara-asn-crosscheck.mjs  every serial against the Archives' card file
 data/nara-asn-crosscheck.json  its result, committed so the download is optional
+tools/nara-catalog-grep.mjs  searches NARA's catalogue export, OCR included
 tools/deskew-page.mjs     straightened, banded images for a page
 tools/check-data.mjs      validates timeline.json
 ```
@@ -378,19 +379,12 @@ push; a second deploy path would race it. The workflow carries a commented
   serial differ by a digit or two: Andrews, Griffith, Adams, Lee, Mays, Holland,
   Agee, Cole (James E), Hickman
 - The Bronze Star general orders number and award date. **Confirmed absent from
-  all 284 frames.** The likeliest home for it is now identified: NARA series
-  333187305, *Army General Orders*, 1940–1957, at the National Archives at
-  St. Louis. The Army gave these to NARA after the 1973 fire to reconstruct
-  service data; they are unit general orders, digitised, unrestricted, and they
-  name individual soldiers with serial numbers. 1,581 fiche of about 199 images
-  each. The catalogue does not full-text search them and does not publish the
-  index, which is an Excel spreadsheet held by the reference unit — so the next
-  step is to ask stl.archives@nara.gov for the fiche number covering the 153rd
-  Field Artillery Battalion, or the headquarters that issued the citation, in
-  1945. The series is arranged by unit, thereunder by date
+  all 284 frames.** Two places to look, both now identified by file designator —
+  see *The battalion's own records at College Park* below
 - The battalion's calibre, stated rather than inferred. `unit.weapon` reads the
   evidence as tractor-drawn medium or heavy artillery and says plainly that this
-  is an inference
+  is an inference. `FABN-153-0.1`, the battalion's own unit history, would settle
+  it, and there is a candidate reading already — see below
 - Re-read the 13 disputed grid references on the film. Each decodes cleanly to a
   place the same line contradicts, and a second reading would settle whether the
   letters or the place name is the error
@@ -398,6 +392,69 @@ push; a second deploy path would race it. The workflow carries a commented
   `data/map-series.json`
 - `data/gazetteer.json` has "Herzhausen, Hesse" at the wrong Herzhausen: the
   reference `G8188` puts the battery 14 km away, at the one on the Edersee
+
+## The battalion's own records at College Park
+
+The National Archives publish their whole catalogue as a bulk export on S3,
+`s3://nara-national-archives-catalog` (us-east-2, public, no credentials). It is
+JSONL by record group, and it carries a field the Catalog API does not search:
+`extractedText`, the OCR of every digitised page.
+
+```sh
+node tools/nara-catalog-grep.mjs 407 'FABN.?153-|FAGP.?79-0'
+```
+
+That streams RG 407 — 12.3 GB, about ninety seconds — and finds the index card
+for the battalion in the *Index to World War II Operations Reports*:
+
+```
+153rd Field Arty Bn
+  FABN-153-0.1    History 15 Nov 42 – Nov 45
+  FABN-153-0.3    A/A Rpt – Jun 44, Apr, Jun, Aug 45      (item 5071)
+  FABN-153-1.13   General Orders 1943–45
+```
+
+The same sweep gives the parent formations the site already names on other
+evidence, and the box list from the series description:
+
+```
+79th Field Artillery Group          Boxes 16576–16578
+  FAGP-79-0.1     Unit History Jun 1940 – Jun 1946
+  FAGP-79-0.3     After Action Rpt w/ Jnl May–Jul 45
+  FAGP-79-0.7     Unit Jnl Jul–Sep 44, May 45             (item 48786)
+  FAGP-79-1.13    General Orders 1942–43, 45–46
+
+32nd Field Artillery Brigade        Boxes 16480–16484
+  FABR-32-0.3     Rpt w/ Unit Journal 18 Jun 44 – May 45  (item 49524)
+  FABR-32-1.13    General Orders – 14 May 45              (item 49161)
+```
+
+**Box 15969** covers `FABN-148-0.3 June 1944` through `FABN-154-0.7 January 1946`,
+so all three battalion files sit in it. None of this is digitised; it is ordered
+or read on site at College Park. `FABN-153-1.13` and `FABR-32-1.13` are the two
+places the Bronze Star order should be.
+
+### One identification to settle first
+
+The same OCR sweep turns up a 153rd Field Artillery Battalion in the 1st Cavalry
+Division's own after-action reports:
+
+> On 15 November 1942 the 153d Field Artillery Battalion (105mm Howitzer)
+> Motorized was formed at Fort Bliss, Texas. Cadres were furnished from the 61st
+> and 82nd Field Artillery … This Battalion never returned to the 1st Cavalry
+> Division.
+
+and, separately, that it was "relieved from assignment to the 1st Cavalry
+Division and reassigned to the Third Army". The index card above dates our
+battalion's history from the same day, 15 November 1942, and ours was
+non-divisional in the ETO — which fits a battalion stripped off a division and
+handed to an army.
+
+Against that, the same sweep finds "153rd FA Bn" in XI Corps and 32nd Infantry
+Division records on Leyte in late 1944, when Battery C was in Germany. Those may
+be OCR errors for another number, or a second unit. **Do not carry the 105mm
+reading into `unit.weapon` until the identification is settled.** `FABN-153-0.1`
+settles it, and that is the first thing to read in Box 15969.
 
 ## History
 
