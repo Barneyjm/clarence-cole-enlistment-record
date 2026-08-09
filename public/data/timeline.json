@@ -229,6 +229,13 @@
       "citation": "Combined Arms Research Library digital collections, US Army Command and General Staff College, item p15040coll6/4713.",
       "note": "A compiled order of battle rather than a unit record. Good enough to place the battalion on one date; not a substitute for the battalion's own after-action reports.",
       "url": "https://cgsc.contentdm.oclc.org/digital/collection/p15040coll6/id/4713"
+    },
+    {
+      "id": "era5",
+      "title": "ERA5 reanalysis weather, via the Open-Meteo Historical Weather API",
+      "citation": "ECMWF ERA5 global reanalysis, approximately 25 km grid, retrieved through archive-api.open-meteo.com. Open-Meteo data under CC BY 4.0; ERA5 under the Copernicus licence.",
+      "note": "Not a record of the war. A modern weather model rerun over the sparse observations that survive from the 1940s, reported for a grid cell up to 16 km from the village the clerk named. No morning-report card records the weather, so nothing here corroborates or is corroborated by the film. It is marked modelled everywhere it appears.",
+      "url": "https://open-meteo.com/en/docs/historical-weather-api"
     }
   ],
   "documents": [

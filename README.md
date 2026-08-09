@@ -81,6 +81,7 @@ transcriptions/           EVERYTHING read off the film, one file per PDF page
                           kind: morning-report -> timeline.json
 data/gazetteer.json       place name to coordinate, phase bands, station overrides
 data/map-series.json      GSGS series catalogue, and where each sheet can be found
+data/weather.json         the ERA5 pull, as fetched — committed, never refetched
 public/                   everything served
   index.html              Home — the hero and the five rooms
   story/    timeline/     one directory per room, each a plain index.html
@@ -95,6 +96,7 @@ public/                   everything served
   assets/archive.js       the documents and the sources; fires record.js
   assets/lib/format.js    dates and small DOM helpers, shared by the rooms
   assets/lib/atlas.js     the themed Leaflet map, and which labels can be pinned
+  assets/lib/weather.js   the modelled-weather strip: icon sprite, readings, tag
   assets/graph.js         the roster network: force layout, no libraries
   assets/record.js        the full day-by-day record, loaded on demand
   assets/sheets.js        the map sheets and the decoded firing positions
@@ -104,6 +106,7 @@ public/                   everything served
   data/morning-reports.json  generated — the complete daily record
   data/roster.json        generated from transcriptions/ — do not edit
   data/map-sheets.json    generated — sheets named, positions decoded
+  data/weather.json       generated — modelled weather, keyed by date
   data/geo/theater.json   generated coastline — no longer read by the site
   images/                 scanned documents, web-sized plus thumbnails
 tools/build-geo.mjs       rebuilds theater.json from Natural Earth data
@@ -112,6 +115,9 @@ tools/lib/grids.mjs       Lambert Zone I and Nord de Guerre -> WGS 84
 tools/build-roster.mjs    order pages -> roster.json, + Battery C match
 tools/build-timeline.mjs  morning-report pages -> timeline.json
 tools/build-map-sheets.mjs  map citations + grid refs -> map-sheets.json
+tools/lib/places.mjs      station -> place, matched in one place
+tools/fetch-weather.mjs   the one-time ERA5 pull (the only tool using the network)
+tools/build-weather.mjs   data/weather.json -> public/data/weather.json
 tools/derive-grid-squares.mjs  recovers the lettered squares from the reports
 tools/compare-transcription.mjs  second-reader diff for a page
 tools/deskew-page.mjs     straightened, banded images for a page
@@ -191,7 +197,62 @@ multi-page reports are merged by date at build time.
 New places go in `data/gazetteer.json` under `places`. Matching is on whole words,
 longest match first — which is why `"Ger"` (the Manche village) does not swallow
 every station string ending `(Germany)`. That bug relocated three months of the
-war to Normandy before it was caught; the ordering is load-bearing.
+war to Normandy before it was caught; the ordering is load-bearing. The matcher
+lives in `tools/lib/places.mjs` and both the timeline build and the weather fetch
+use it, so a station resolves the same way in both.
+
+## The weather, which is not a source
+
+Every dated claim on this site comes off the film except one: the line marked
+**modelled** on the timeline and on each card of the daily record.
+
+The morning reports never mention the weather. The word does not appear in any of
+the 284 frames. So the weather is not a corroboration of anything and nothing
+corroborates it — it is context, added because 451 of these days are a gun
+battery sitting in one place, and the sky is what changed.
+
+It is [ERA5](https://open-meteo.com/en/docs/historical-weather-api) via the
+Open-Meteo archive: a modern weather model rerun over the sparse observations
+that survive from the 1940s. Reanalysis, not observation, and regional rather
+than local — a grid cell roughly 25 km across, which can sit up to 16 km from the
+village the clerk named. `public/data/weather.json` records the cell used, its
+elevation, and that offset, for every place.
+
+```sh
+npm run build:timeline    # weather:fetch reads its output
+npm run weather:fetch     # the only command here that touches the network
+npm run build:weather
+```
+
+`data/weather.json` is the pull, committed and faithful to the API response;
+`public/data/weather.json` is derived from it and is what the site serves. A
+fresh clone serves the weather with nothing run and the browser never makes the
+request — the site still makes exactly one kind of external request, and it is
+still map tiles. `weather:fetch` is incremental; pass `--force` to refetch.
+
+It renders as a row of discrete readings — sky, temperature, precipitation,
+wind, daylight — each an icon and a figure, rather than a sentence. The glyphs
+are hand-drawn line SVG in a `<symbol>` sprite injected once per page; there is
+no icon font and no CDN, and adding one would break the site's single-request
+rule. The wind arrow is rotated to the bearing and points the way the wind was
+blowing, which is the direction it came *from* turned about.
+
+Five decisions are worth knowing before changing any of it:
+
+- **A day names the place it was modelled for**, and `npm run check:data` fails
+  if that place disagrees with the station on the card. A weather line under the
+  wrong sky would look completely normal on the page.
+- **Days with an unresolved station get nothing**, rather than the previous day's
+  weather. That is 38 of the 495.
+- **The Atlantic crossing gets nothing.** The gazetteer holds a single nominal
+  mid-ocean coordinate, and eight days of a moving convoy are not at it.
+- **No clock times are published.** Open-Meteo puts Europe/London at UTC+1 for
+  June 1944, but Britain was on British Double Summer Time, so its sunrise is an
+  hour out. Everything is fetched and stored in UTC and only the *length* of
+  daylight is shown.
+- **Rain or snow under a hundredth of an inch reads "trace"**, the convention,
+  because 0.1 mm of modelled drizzle formatted to two places reads "0.00 in" —
+  which looks like a bug and tells the reader nothing. 34 days are traces.
 
 ## Map images
 
@@ -329,11 +390,12 @@ fall behind the transcription.
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` rebuilds the roster, the timeline and the map-sheet
-register from the transcriptions on every pull request, validates
+`.github/workflows/ci.yml` rebuilds the roster, the timeline, the map-sheet
+register and the modelled weather on every pull request, validates
 `timeline.json`, re-derives the grid squares and fails if any has moved against
 `tools/lib/grids.mjs`, and fails if the committed files under `public/data` no
-longer match their sources.
+longer match their sources. Every step is offline — `weather:fetch` is the only
+command that uses the network and CI never runs it.
 
 It does **not** deploy. Cloudflare's Git integration already deploys `main` on
 push; a second deploy path would race it. The workflow carries a commented
@@ -360,6 +422,10 @@ push; a second deploy path would race it. The workflow carries a commented
   `data/map-series.json`
 - `data/gazetteer.json` has "Herzhausen, Hesse" at the wrong Herzhausen: the
   reference `G8188` puts the battery 14 km away, at the one on the Edersee
+- Resolve the 38 days whose station the gazetteer does not match — the four
+  Camp Pittsburgh spellings, "Nord de Guerre Zone (Germany)", "Hershausen
+  wG8188", "Enroute To Assembly Area", "Calas Staging Area". They carry no place
+  on the timeline and no weather. Rerun `weather:fetch` once they resolve
 
 ## History
 
