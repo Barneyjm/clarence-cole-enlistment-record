@@ -1621,6 +1621,11 @@ figcaption {
   margin: 24px auto 0;
 }
 
+/* The display above outranks the UA sheet's [hidden] rule, so restate it. */
+.record-more[hidden] {
+  display: none;
+}
+
 .sources__item {
   padding: 14px 0;
   border-bottom: 1px solid var(--color-divider);
