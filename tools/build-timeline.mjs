@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readPages, parseCards } from "./lib/pages.mjs";
+import { createPlaceResolver, placeKey } from "./lib/places.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = resolve(ROOT, "transcriptions");
@@ -105,29 +106,9 @@ if (dupes.length) {
 
 
 /* -------------------------------------------------------------------- places */
-const slug = (s) =>
-  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-
-// Keys already used by the hand-authored events, so the two sets do not diverge.
-const ALIAS = {
-  "fort-slocum-new-york": "fort-slocum",
-  "new-york-port-of-embarkation": "nype",
-  "north-atlantic-crossing": "atlantic",
-};
-const placeKey = (name) => ALIAS[slug(name)] ?? slug(name);
-
-const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const matchers = [...gaz.places]
-  .sort((a, b) => b.match.trim().length - a.match.trim().length)
-  .map((p) => ({ ...p, re: new RegExp(`\\b${esc(p.match.trim())}\\b`, "i") }));
-
-const placeFor = (station, date) => {
-  const ov = gaz.overrides.find((o) => date >= o.from && date <= o.to);
-  if (ov) return gaz.places.find((p) => p.match === ov.place) ?? null;
-  if (!station) return null;
-  return matchers.find((p) => p.re.test(station)) ?? null;
-};
+// Whole-word, longest-match-first, with the two Normandy overrides. Shared with
+// the weather fetch through tools/lib/places.mjs so the two cannot drift.
+const placeFor = createPlaceResolver(gaz);
 
 /* --------------------------------------------------------------- classifying */
 const CASUALTY = /killed|wounded|\bLIA\b|injured in action/i;
