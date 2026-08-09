@@ -106,8 +106,8 @@ export async function renderDailyRecord(host, { search, status, more }) {
       status.textContent = `${hits.length} of ${meta.count} cards · frames ${meta.framesTranscribed} of ${meta.framesTotal} transcribed`;
     }
     if (more) {
-      const remaining = hits.length - shown;
-      more.hidden = remaining <= 0;
+      const remaining = Math.max(0, hits.length - shown);
+      more.hidden = remaining === 0;
       more.textContent = `Show more — ${remaining} remaining`;
     }
   };
