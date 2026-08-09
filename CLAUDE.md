@@ -24,6 +24,11 @@ front matter deciding which builder reads it. `public/data/timeline.json` holds
 destroyed and rebuilt by `npm run build:timeline`. Editing one in `timeline.json`
 loses the change on the next build. Edit the page file.
 
+`build:timeline` also writes `public/data/battery.json` — the daily strength line
+and every status change sorted by the clerk's own wording. It is wholly generated
+and holds nothing hand-authored, so it is rebuilt from scratch each run: edit the
+page files or the `ACTION_KINDS` table in the builder, never the JSON.
+
 **The build must never touch hand-authored events.** `build-timeline.mjs` filters
 on the `generated` flag alone. If you change that filter you can silently delete
 the discharge, the citation and Special Orders 66 — the parts with no other copy.
@@ -119,10 +124,15 @@ There is no template step, so a change to the shared chrome is a change to seven
 files including `404.html`. That is the price of having no build; do not
 introduce one to avoid it.
 
-`assets/style.css` is the whole design system and the only stylesheet. Four of
-the modules — `graph.js`, `record.js`, `sheets.js`, `lib/weather.js` — emit their
-own markup and are restyled entirely through the class names they already write.
-Do not edit them to change how something looks.
+`assets/style.css` is the whole design system and the only stylesheet. Five of
+the modules — `graph.js`, `record.js`, `sheets.js`, `battery.js`,
+`lib/weather.js` — emit their own markup and are restyled entirely through the
+class names they already write. Do not edit them to change how something looks.
+
+`battery.js` is the exception to that in one respect: its strength chart is sized
+in JavaScript, at the container's measured pixel width, and redrawn on resize. A
+fixed viewBox scaled by CSS renders an 11px label at 5px on a phone. Changing the
+chart's size is a change to that module, not to the stylesheet.
 
 `.weather` deliberately does not look like `.entry__verbatim`. The verbatim block
 carries a solid accent rule and is the document's own words; the weather line
