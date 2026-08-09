@@ -146,6 +146,7 @@
 .card-meta,
 .colophon,
 .status,
+.weather,
 #record-list,
 #graph-status,
 #record-status {
@@ -1054,6 +1055,40 @@ figcaption {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-accent-600);
+}
+
+/* Modelled weather, on the timeline and on every card of the daily record.
+   Subordinate to everything it sits beside, and never without its tag: this is
+   the only line in either room that did not come off the film.
+
+   The dotted left rule is the tell. .entry__verbatim carries a solid accent
+   rule and that is the document's own voice; the two must not be confusable at
+   a glance, which is why this one is dotted and neutral rather than a lighter
+   shade of the same thing. */
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 8px;
+  margin: 10px 0 0;
+  padding-left: 10px;
+  border-left: 1px dotted var(--color-neutral-400);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--color-neutral-600);
+}
+
+/* Muted rather than loud. It appears on 451 cards, and an accent-coloured tag
+   on every one of them would drown "not yet verified", which is the tag a
+   reader actually has to act on. */
+.weather__tag {
+  border-style: dotted;
+  color: var(--color-neutral-600);
+  cursor: help;
+}
+
+.weather__text {
+  max-width: 62ch;
 }
 
 /* Event type is carried by the marker and the label after the date. Movement is

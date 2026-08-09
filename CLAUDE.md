@@ -34,10 +34,18 @@ frame number and suppresses the generated one. Curated title and summary win.
 This is deliberate: the two efforts overlap on about a dozen dates and the point
 of the merge was to reconcile them, not to print both.
 
-**Gazetteer matching is whole-word, longest-match-first** (`placeFor()` in
-`tools/build-timeline.mjs`). A naive `includes()` made `"Ger"` (Ger, Manche)
-match every station string ending `(Germany)`, silently relocating three months
-of the war to Normandy. If you add a short place name, check the map afterwards.
+**Gazetteer matching is whole-word, longest-match-first**
+(`createPlaceResolver()` in `tools/lib/places.mjs`). A naive `includes()` made
+`"Ger"` (Ger, Manche) match every station string ending `(Germany)`, silently
+relocating three months of the war to Normandy. If you add a short place name,
+check the map afterwards. The timeline build and the weather fetch both resolve
+through this one function so a station cannot land in two places at once.
+
+**38 of the 495 days have a station the gazetteer does not resolve** — the
+Camp Pittsburgh spellings, "Nord de Guerre Zone (Germany)", "Hershausen wG8188",
+"Enroute To Assembly Area", "Calas Staging Area". They appear on the timeline
+with no place and get no weather. Fixing them means checking each against the
+map, not pattern-matching the spelling.
 
 **Two early-Normandy dates carry no place name in the station field** — the clerk
 wrote only "APO 230 France" and named the position in the record of events. These
@@ -56,6 +64,26 @@ about real people who died. Every dated claim carries its microfilm frame. If a
 reading is uncertain it stays uncertain (`pending`, `approximate`, `uncertain`,
 `status: "inferred"`). Never fill a gap from a secondary history — single-source
 fidelity to the documents is the whole premise.
+
+**The weather is the one thing on the site that is not from a document, and it
+is marked as such everywhere it appears.** ERA5 is a reanalysis: a modern model
+rerun over the sparse observations that survive from the 1940s, on a grid cell
+about 25 km across. The cards never mention the weather — the word appears
+nowhere in 284 frames — so nothing here corroborates the film or is corroborated
+by it. `weatherNode()` in `public/assets/lib/weather.js` emits the `modelled`
+tag as part of the line, not as an option a caller can drop; keep it that way.
+Three rules follow, and all three are already enforced:
+
+- **A modelled day names the place it was modelled for**, and `check:data` fails
+  if that place disagrees with the station the battery actually gave. A weather
+  line under the wrong sky is invisible on the page and wrong in the record.
+- **No weather is better than borrowed weather.** Days with an unresolved
+  station get none. Neither does the Atlantic crossing — the gazetteer holds one
+  nominal mid-ocean point for eight days of a moving convoy.
+- **No clock times are published.** Open-Meteo resolves Europe/London to UTC+1
+  for June 1944, but Britain was on British Double Summer Time, so its sunrise
+  is an hour out. Everything is fetched and stored in UTC, and only the *length*
+  of daylight is shown, which no timezone can distort.
 
 **Corrections are content.** The battery filed them constantly, sometimes
 retracting an entry months later. Preserved verbatim, not silently applied.
@@ -91,10 +119,16 @@ There is no template step, so a change to the shared chrome is a change to seven
 files including `404.html`. That is the price of having no build; do not
 introduce one to avoid it.
 
-`assets/style.css` is the whole design system and the only stylesheet. Three of
-the modules — `graph.js`, `record.js`, `sheets.js` — emit their own markup and
-are restyled entirely through the class names they already write. Do not edit
-them to change how something looks.
+`assets/style.css` is the whole design system and the only stylesheet. Four of
+the modules — `graph.js`, `record.js`, `sheets.js`, `lib/weather.js` — emit their
+own markup and are restyled entirely through the class names they already write.
+Do not edit them to change how something looks.
+
+`.weather` deliberately does not look like `.entry__verbatim`. The verbatim block
+carries a solid accent rule and is the document's own words; the weather line
+carries a dotted neutral rule and is not from the film at all. Making the two
+resemble each other would erase the only visual difference between what the
+battery wrote and what a model reconstructed.
 
 On the two pages with maps, `leaflet.css` is linked **before** `style.css`. Our
 rules for the tooltips, the zoom control and the tile grade are single-class
@@ -111,11 +145,31 @@ page; there is no dark variant and adding one is a design decision, not a fix.
 ## Verify after data changes
 
 ```sh
-npm run build:timeline && npm run build:roster && npm run check:data
+npm run build:timeline && npm run build:roster && npm run build:weather && npm run check:data
 ```
 
 `check:data` fails on structural errors and warns on strength figures that do not
 balance. It is the gate before `npm run deploy`.
+
+All four run offline. The only command that touches the network is
+`npm run weather:fetch`, and it is separate for that reason — see below.
+
+## Weather is fetched once, then built like anything else
+
+```sh
+npm run weather:fetch     # network; incremental, --force to refetch everything
+npm run build:weather     # offline; data/weather.json -> public/data/weather.json
+```
+
+`data/weather.json` is the committed record of what was pulled, faithful to the
+API response. `public/data/weather.json` is derived from it and is what the site
+serves. The war is over and these numbers will not change, so the browser never
+asks anyone for them — the site still makes exactly one kind of external
+request, and it is still CARTO map tiles.
+
+Rerun `weather:fetch` only after the gazetteer gains a place or the transcription
+gains a date; it skips everything already cached. It reads
+`public/data/morning-reports.json`, so run `build:timeline` first.
 
 ## Check the page, not just the build
 
@@ -219,6 +273,11 @@ so orders and cards cannot drift apart. `build-roster.mjs` skips
 `kind: morning-report` pages — a card is not a roster row — and
 `build-timeline.mjs` reads only those. Adding a page of either kind needs no
 build change.
+
+`tools/lib/places.mjs` does the same job for stations: one matcher, one slug,
+one alias table, used by `build-timeline.mjs` and `fetch-weather.mjs`. A second
+copy of that regex would let a station resolve to one village on the timeline and
+its neighbour in the weather, and nothing on the page would show it.
 
 Frame counts are computed from the files, never asserted in prose or constants.
 An earlier hardcoded 218 was wrong by eight frames for weeks.
